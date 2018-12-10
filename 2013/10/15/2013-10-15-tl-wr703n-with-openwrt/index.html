@@ -1,0 +1,269 @@
+<!DOCTYPE HTML>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+	<meta charset="utf-8">
+    
+	<title>TL-WR703N with Openwrt patches njit-client - J6rry&#39;s Blog</title>
+    <meta name="author" content="J6rry">
+    
+	<meta name="description" content="&lt;h2 id=&#34;Background&#34;&gt;&lt;a href=&#34;#Background&#34; class=&#34;headerlink&#34; title=&#34;Background&#34;&gt;&lt;/a&gt;Background&lt;/h2&gt;&lt;p&gt;At my campus, the network server center offers us users to use a H3C client to dial to connect to the internet, which can add some limitations for each account. The aim of this scheme is to bind a user with a specific &lt;strong&gt;Mac&lt;/strong&gt; address, so it seems not possible for us to share someone’s account. However, in my lab, we need to make an internet access interface for nearly 30 persons. In the past, I set up a dual network interface cards (NIC) to share the account to a switchboard, which auto dispatch Ips to the client PC. That has been worked good except for the high power consume of the host PC, and once there is any problem with the host, we are all cut off the internet. someday, I saw a blog said &lt;strong&gt;OpenWRT&lt;/strong&gt; can offer some tricks to crack this situation. And I was so exited to buy a new TP-Link WR703N 3G router to have a test. The main reference is the docs on official &lt;a href=&#34;www.wiki.openwrt.org OpenWrt Wiki&#34;&gt;OpenWrt&lt;/a&gt;, where you can find a description of &lt;a href=&#34;http://wiki.openwrt.org/toh/tp-link/tl-wr703n&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;WR703N&lt;/a&gt; . I record the crack process as below.&lt;/p&gt;
+&lt;h2 id=&#34;Prepare-list&#34;&gt;&lt;a href=&#34;#Prepare-list&#34; class=&#34;headerlink&#34; title=&#34;Prepare list&#34;&gt;&lt;/a&gt;Prepare list&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;TP-Link WR703N (of course the main device)&lt;/li&gt;
+&lt;li&gt;a computer with internet access and have a wifi interface&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ssh&lt;/code&gt; tools (SecureCRT and WinScp for Windows)&lt;/li&gt;
+&lt;li&gt;maybe a USB stick if you want to chroot to expand the storage space&lt;a id=&#34;more&#34;&gt;&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;Update-with-OpenWrt&#34;&gt;&lt;a href=&#34;#Update-with-OpenWrt&#34; class=&#34;headerlink&#34; title=&#34;Update with OpenWrt&#34;&gt;&lt;/a&gt;Update with OpenWrt&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Watch out!!&lt;/strong&gt;&lt;br&gt;Be careful to check the version of your router, and download the &lt;strong&gt;right&lt;/strong&gt; firmware from OpenWrt’s repository. DO NOT CHECK THE VERSION ON THE EXTERNAL INFORMATION ON THE STICKER. You need to login the original web UI interface to check that. Connect the router with your computer by a wire and type &lt;code&gt;192.168.1.1&lt;/code&gt; in any web browser’s address bar, by default input &lt;code&gt;admin&lt;/code&gt; and you can enter the Tp-Link default web UI, find the update item at the left list, then you can find the information about the device as shown in the below figure.&lt;/p&gt;
+&lt;img src=&#34;/images/blog_imgs/update.png&#34; width=&#34;320&#34; height=&#34;240&#34;&gt;
+&lt;p&gt;Input the firmware you download from OpenWrt, and click update, it will be OK for one minute or so.&lt;br&gt;When the blue led keep stable, again type &lt;code&gt;192.168.1.1&lt;/code&gt; in the browser and you will get this:&lt;/p&gt;
+&lt;img src=&#34;/images/blog_imgs/luci.png&#34; width=&#34;320&#34; height=&#34;240&#34;&gt;
+&lt;p&gt;Ok, you can now configure your new linux-based router system through the web UI interface (called Luci). You are firstly recommend to set the root password. Now explore the various tabs in Luci.&lt;/p&gt;
+&lt;h2 id=&#34;Configure-for-njit-client&#34;&gt;&lt;a href=&#34;#Configure-for-njit-client&#34; class=&#34;headerlink&#34; title=&#34;Configure for njit-client&#34;&gt;&lt;/a&gt;Configure for njit-client&lt;/h2&gt;&lt;p&gt;Since my purpose is to install &lt;code&gt;njit-client&lt;/code&gt; for my H3C network, so there are some special configurations. First, you can check the free memory space of the system now. At Luci’s &lt;code&gt;System--Software&lt;/code&gt; menu, all the installed packages are list and you can see there are only about 800k free space left. That’s is not enough for njit-client’s installation. So I choose to remove some of the package: ppp, pppoe and kmod-ppp. Then perform a reboot to clear the removed packages space.&lt;br&gt;Then, use &lt;code&gt;ssh&lt;/code&gt; to login you device in a terminal, modify the &lt;code&gt;/etc/config/network&lt;/code&gt; and &lt;code&gt;/etc/config/wifi&lt;/code&gt; to enable the wifi interface and setup the wlan and lan interfaces. The final set is list below:&lt;br&gt;&lt;code&gt;/etc/config/network&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;config interface &amp;apos;loopback&amp;apos;
+option ifname &amp;apos;lo&amp;apos;
+option proto &amp;apos;static&amp;apos;
+option ipaddr &amp;apos;127.0.0.1&amp;apos;
+option netmask &amp;apos;255.0.0.0&amp;apos;
+
+config interface &amp;apos;wan&amp;apos;
+option ifname &amp;apos;eth0&amp;apos;
+option _orig_ifname &amp;apos;eth0&amp;apos;
+option _orig_bridge &amp;apos;false&amp;apos;
+option proto &amp;apos;dhcp&amp;apos;
+
+config interface &amp;apos;lan&amp;apos;
+option type &amp;apos;bridge&amp;apos;
+option proto &amp;apos;static&amp;apos;
+option ipaddr &amp;apos;192.168.1.1&amp;apos;
+option netmask &amp;apos;255.255.255.0&amp;apos;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;code&gt;/etc/config/wifi&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;config wifi-device &amp;apos;radio0&amp;apos;
+option type &amp;apos;mac80211&amp;apos;
+option channel &amp;apos;3&amp;apos;
+option macaddr &amp;apos;14:e6:e4:e7:c6:a2&amp;apos;
+option hwmode &amp;apos;11ng&amp;apos;
+option htmode &amp;apos;HT20&amp;apos;
+option disabled &amp;apos;0&amp;apos;
+option txpower &amp;apos;27&amp;apos;
+option country &amp;apos;US&amp;apos;
+
+config wifi-iface
+option device &amp;apos;radio0&amp;apos;
+option network &amp;apos;lan&amp;apos;
+option mode &amp;apos;ap&amp;apos;
+option ssid &amp;apos;Your own wifi name&amp;apos;
+option encryption &amp;apos;psk2&amp;apos;
+option key &amp;apos;Your own password&amp;apos;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;After that, reboot your device and you can use a computer with wireless card to connect your router device.&lt;br&gt;Next step, download the njit-client package from &lt;a href=&#34;http://openwrt.asxzy.net/backfire/10.03.1/ar71xx/packages/njit8021xclient_1.1-1_ar71xx.ipk njit-client&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt; . Transfer the package to the &lt;code&gt;/tmp&lt;/code&gt; directory by &lt;code&gt;scp&lt;/code&gt; or &lt;code&gt;WinSCP&lt;/code&gt; on you device. Then use &lt;code&gt;ssh&lt;/code&gt; tool to login with &lt;code&gt;root&lt;/code&gt; into your OpenWrt system, execute the commands below:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;okpg update
+okpg install /tmp/njit*
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Then the &lt;code&gt;njit-client&lt;/code&gt; will be installed on your system, it will automatically download some dependencies. Finally, a complement command will show up and you can now test the client by input &lt;code&gt;njit-client user_name password&lt;/code&gt; to check its efficiency. Generally, it will go wrong because of the depended libraries. So we need to link some libs to fix that. Type the commands below:    &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;cd /usr/lib
+ln -s libcrypto.so.1.0.0 libcrypto.so.0.9.8
+ln -s libpcap.so.1.1.1 libpcap.so.1.0
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;And then, check it again, if there is none error, congratulations, it’s OK.&lt;br&gt;I don’k think it is bearable to run the command each time I want to connect to the internet, so I need a auto start up script. According to OpenWrt’s start up sequence with &lt;code&gt;init.d&lt;/code&gt; service, just create a new script such as &lt;strong&gt;xclient&lt;/strong&gt; and input the codes below:&lt;/p&gt;
+&lt;figure class=&#34;highlight sh&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;#!/bin/sh /etc/rc.common&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;START=50&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;function&#34;&gt;&lt;span class=&#34;title&#34;&gt;start&lt;/span&gt;&lt;/span&gt;() &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;njit-client user_name password eth0 &amp;amp;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;function&#34;&gt;&lt;span class=&#34;title&#34;&gt;stop&lt;/span&gt;&lt;/span&gt;()&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;killall njit-client&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;killall udhcpc&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;The last step is to &lt;code&gt;chmod +x xclient&lt;/code&gt; .&lt;br&gt;Jobs done!&lt;/p&gt;
+"> <!-- TODO: truncate -->
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="atom.xml" rel="alternate" title="J6rry&#39;s Blog" type="application/atom+xml">
+	<link href="/favicon.ico" rel="shortcut icon">
+    <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+    <link href="/stylesheets/custom.css" media="screen, projection" rel="stylesheet" type="text/css">
+    <link href="/stylesheets/hljs.css" media="screen, projection" rel="stylesheet" type="text/css">
+
+    <link href="//fonts.googleapis.com/css?family=Slackey" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Amethysta" rel="stylesheet" type="text/css">
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![}]-->
+
+    <script type="text/javascript" src="/javascripts/jquery-tapir.js"></script>
+
+    <!-- remove or comment it to disable ajaxification -->   
+    <!-- <script src="/javascripts/ajaxify.js"></script> -->
+
+    
+
+    
+
+</head>
+</html>
+
+<body>
+    <div id="wrapper">
+    <header id="header" class="inner"><!-- for more effects see _animate.scss -->
+<h1 class="animated bounceInDown">
+    <div id="headerbg">
+        J6rry&#39;s Blog
+    </div>
+</h1>
+<span class="subtitle">blogging a hacker&#39;s life &amp; style</span>
+<br>
+
+<ul id="social-links" style="text-align:center; clear:both;">
+  
+  
+  
+  
+  
+  
+  
+  
+</ul>
+
+
+<!-- use full url including 'index.html' for navigation bar if you are using ajax -->
+<ul id="nav">
+	<li id="ajax"><a href="/index.html">Home</a></li>
+	<li id="ajax"><a href="/archives/index.html">Archives</a></li>
+	<li id="ajax"><a href="/tags/index.html">Tags</a></li>
+    <li><a href="/atom.xml">RSS</a></li>
+    
+    <li>
+    <div id="dark">
+        <form action="//www.google.com.hk/search" method="get" accept-charset="UTF-8" id="search">
+            <input type="hidden" name="sitesearch" value="https://ev6r.github.io">
+            <input type="text" name="q" results="0" placeholder="Search..." x-webkit-speech="">
+        </form>
+    </div>
+    </li>
+        
+</ul>
+
+
+
+
+</header>
+
+<div id="toload">
+<!-- begin toload -->
+    <div id="content" class="inner">
+        <article class="post">
+	<h2 class="title">TL-WR703N with Openwrt patches njit-client</h2>
+    <div class="meta">
+        <div class="date">Published on: <time datetime="2013-10-15T11:50:00.000Z" itemprop="datePublished">Oct 15, 2013</time>
+</div>
+        <div class="tags">Tags: 
+
+
+</div>
+    </div>
+	<div class="entry-content"><h2 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h2><p>At my campus, the network server center offers us users to use a H3C client to dial to connect to the internet, which can add some limitations for each account. The aim of this scheme is to bind a user with a specific <strong>Mac</strong> address, so it seems not possible for us to share someone’s account. However, in my lab, we need to make an internet access interface for nearly 30 persons. In the past, I set up a dual network interface cards (NIC) to share the account to a switchboard, which auto dispatch Ips to the client PC. That has been worked good except for the high power consume of the host PC, and once there is any problem with the host, we are all cut off the internet. someday, I saw a blog said <strong>OpenWRT</strong> can offer some tricks to crack this situation. And I was so exited to buy a new TP-Link WR703N 3G router to have a test. The main reference is the docs on official <a href="www.wiki.openwrt.org OpenWrt Wiki">OpenWrt</a>, where you can find a description of <a href="http://wiki.openwrt.org/toh/tp-link/tl-wr703n" target="_blank" rel="noopener">WR703N</a> . I record the crack process as below.</p>
+<h2 id="Prepare-list"><a href="#Prepare-list" class="headerlink" title="Prepare list"></a>Prepare list</h2><ul>
+<li>TP-Link WR703N (of course the main device)</li>
+<li>a computer with internet access and have a wifi interface</li>
+<li><code>ssh</code> tools (SecureCRT and WinScp for Windows)</li>
+<li>maybe a USB stick if you want to chroot to expand the storage space<a id="more"></a>
+</li>
+</ul>
+<h2 id="Update-with-OpenWrt"><a href="#Update-with-OpenWrt" class="headerlink" title="Update with OpenWrt"></a>Update with OpenWrt</h2><p><strong>Watch out!!</strong><br>Be careful to check the version of your router, and download the <strong>right</strong> firmware from OpenWrt’s repository. DO NOT CHECK THE VERSION ON THE EXTERNAL INFORMATION ON THE STICKER. You need to login the original web UI interface to check that. Connect the router with your computer by a wire and type <code>192.168.1.1</code> in any web browser’s address bar, by default input <code>admin</code> and you can enter the Tp-Link default web UI, find the update item at the left list, then you can find the information about the device as shown in the below figure.</p>
+<img src="/images/blog_imgs/update.png" width="320" height="240">
+<p>Input the firmware you download from OpenWrt, and click update, it will be OK for one minute or so.<br>When the blue led keep stable, again type <code>192.168.1.1</code> in the browser and you will get this:</p>
+<img src="/images/blog_imgs/luci.png" width="320" height="240">
+<p>Ok, you can now configure your new linux-based router system through the web UI interface (called Luci). You are firstly recommend to set the root password. Now explore the various tabs in Luci.</p>
+<h2 id="Configure-for-njit-client"><a href="#Configure-for-njit-client" class="headerlink" title="Configure for njit-client"></a>Configure for njit-client</h2><p>Since my purpose is to install <code>njit-client</code> for my H3C network, so there are some special configurations. First, you can check the free memory space of the system now. At Luci’s <code>System--Software</code> menu, all the installed packages are list and you can see there are only about 800k free space left. That’s is not enough for njit-client’s installation. So I choose to remove some of the package: ppp, pppoe and kmod-ppp. Then perform a reboot to clear the removed packages space.<br>Then, use <code>ssh</code> to login you device in a terminal, modify the <code>/etc/config/network</code> and <code>/etc/config/wifi</code> to enable the wifi interface and setup the wlan and lan interfaces. The final set is list below:<br><code>/etc/config/network</code></p>
+<pre><code>config interface &apos;loopback&apos;
+option ifname &apos;lo&apos;
+option proto &apos;static&apos;
+option ipaddr &apos;127.0.0.1&apos;
+option netmask &apos;255.0.0.0&apos;
+
+config interface &apos;wan&apos;
+option ifname &apos;eth0&apos;
+option _orig_ifname &apos;eth0&apos;
+option _orig_bridge &apos;false&apos;
+option proto &apos;dhcp&apos;
+
+config interface &apos;lan&apos;
+option type &apos;bridge&apos;
+option proto &apos;static&apos;
+option ipaddr &apos;192.168.1.1&apos;
+option netmask &apos;255.255.255.0&apos;
+</code></pre><p><code>/etc/config/wifi</code></p>
+<pre><code>config wifi-device &apos;radio0&apos;
+option type &apos;mac80211&apos;
+option channel &apos;3&apos;
+option macaddr &apos;14:e6:e4:e7:c6:a2&apos;
+option hwmode &apos;11ng&apos;
+option htmode &apos;HT20&apos;
+option disabled &apos;0&apos;
+option txpower &apos;27&apos;
+option country &apos;US&apos;
+
+config wifi-iface
+option device &apos;radio0&apos;
+option network &apos;lan&apos;
+option mode &apos;ap&apos;
+option ssid &apos;Your own wifi name&apos;
+option encryption &apos;psk2&apos;
+option key &apos;Your own password&apos;
+</code></pre><p>After that, reboot your device and you can use a computer with wireless card to connect your router device.<br>Next step, download the njit-client package from <a href="http://openwrt.asxzy.net/backfire/10.03.1/ar71xx/packages/njit8021xclient_1.1-1_ar71xx.ipk njit-client" target="_blank" rel="noopener">here</a> . Transfer the package to the <code>/tmp</code> directory by <code>scp</code> or <code>WinSCP</code> on you device. Then use <code>ssh</code> tool to login with <code>root</code> into your OpenWrt system, execute the commands below:</p>
+<pre><code>okpg update
+okpg install /tmp/njit*
+</code></pre><p>Then the <code>njit-client</code> will be installed on your system, it will automatically download some dependencies. Finally, a complement command will show up and you can now test the client by input <code>njit-client user_name password</code> to check its efficiency. Generally, it will go wrong because of the depended libraries. So we need to link some libs to fix that. Type the commands below:    </p>
+<pre><code>cd /usr/lib
+ln -s libcrypto.so.1.0.0 libcrypto.so.0.9.8
+ln -s libpcap.so.1.1.1 libpcap.so.1.0
+</code></pre><p>And then, check it again, if there is none error, congratulations, it’s OK.<br>I don’k think it is bearable to run the command each time I want to connect to the internet, so I need a auto start up script. According to OpenWrt’s start up sequence with <code>init.d</code> service, just create a new script such as <strong>xclient</strong> and input the codes below:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/bin/sh /etc/rc.common</span></span><br><span class="line">START=50</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">start</span></span>() &#123;</span><br><span class="line">njit-client user_name password eth0 &amp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">stop</span></span>()&#123;</span><br><span class="line">killall njit-client</span><br><span class="line">killall udhcpc</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>The last step is to <code>chmod +x xclient</code> .<br>Jobs done!</p>
+</div>
+
+<div class="meta">
+	
+</div>
+</article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+
+
+    </div>
+    <footer id="footer">
+    <div style="display:inline">
+    Copyright &copy; 2018
+
+    J6rry
+. Powered by <a href="http://zespia.tw/hexo/" target="_blank">Hexo</a> |
+    Theme is <a href="https://github.com/wd/hexo-fabric">hexo-fabric</a>, fork from <a href="http://github.com/panks/fabric">fabric</a> by <a href="http://panks.me">Pankaj Kumar</a>
+</div>
+
+
+    </footer>
+    <script src="/javascripts/fabric.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script>
+ <!-- Delete or comment this line to disable Fancybox -->
+
+
+
+<!-- end toload --> 
+</div>
+</div>
+<script src="/javascripts/jquery.ui.totop.js" type="text/javascript"></script>
+<script type="text/javascript">
+/*<![CDATA[*/
+;(function($){$().UItoTop({easingType:'easeOutCirc'});})(jQuery); 
+/*]]>*/
+</script><!-- remove it to remove the scroll to top button -->
+</body>
+</html>

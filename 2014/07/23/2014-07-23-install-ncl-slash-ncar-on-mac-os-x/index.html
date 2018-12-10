@@ -1,0 +1,161 @@
+<!DOCTYPE HTML>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+	<meta charset="utf-8">
+    
+	<title>Install NCL/NCAR on Mac OS X - J6rry&#39;s Blog</title>
+    <meta name="author" content="J6rry">
+    
+	<meta name="description" content="&lt;p&gt;The NCAR Command Language (NCL) is the coolest graphics tool I’ve ever seen. NCL has robust file input and output. It can read and write netCDF-3, netCDF-4 classic, netCDF-4, HDF4, binary, and ASCII data. It can read HDF-EOS2, HDF-EOS5, GRIB1, GRIB2, and OGR files. Though I don’t know most of the format above, but I saw its perfect plot on other one’s paper, so I decide to install it on my &lt;em&gt;Macbook&lt;/em&gt; with Mac OS X 10.9.4.&lt;/p&gt;
+&lt;p&gt;Please look into this site and finish reading it before starting to step into the door.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.ncl.ucar.edu/Download/macosx.shtml#ESGAccountURL Need an account&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Official site&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;I preferred to run the pre-compiled version, so the only problem after I installed according to the official guideline is the version of my &lt;strong&gt;GCC&lt;/strong&gt;. Then I need to update &lt;strong&gt;GCC&lt;/strong&gt; on my Mac, since I already have homebrew installed, &lt;code&gt;brew install gcc48&lt;/code&gt; will install the new version by itself. It takes about 30 minutes to compile from the source. Be patient!&lt;/p&gt;
+&lt;p&gt;The most complex work is setting some environmental variables, nothing special, just type what are recommended by the guideline. You won’t miss it.&lt;/p&gt;
+"> <!-- TODO: truncate -->
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="atom.xml" rel="alternate" title="J6rry&#39;s Blog" type="application/atom+xml">
+	<link href="/favicon.ico" rel="shortcut icon">
+    <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+    <link href="/stylesheets/custom.css" media="screen, projection" rel="stylesheet" type="text/css">
+    <link href="/stylesheets/hljs.css" media="screen, projection" rel="stylesheet" type="text/css">
+
+    <link href="//fonts.googleapis.com/css?family=Slackey" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Amethysta" rel="stylesheet" type="text/css">
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![}]-->
+
+    <script type="text/javascript" src="/javascripts/jquery-tapir.js"></script>
+
+    <!-- remove or comment it to disable ajaxification -->   
+    <!-- <script src="/javascripts/ajaxify.js"></script> -->
+
+    
+
+    
+
+</head>
+</html>
+
+<body>
+    <div id="wrapper">
+    <header id="header" class="inner"><!-- for more effects see _animate.scss -->
+<h1 class="animated bounceInDown">
+    <div id="headerbg">
+        J6rry&#39;s Blog
+    </div>
+</h1>
+<span class="subtitle">blogging a hacker&#39;s life &amp; style</span>
+<br>
+
+<ul id="social-links" style="text-align:center; clear:both;">
+  
+  
+  
+  
+  
+  
+  
+  
+</ul>
+
+
+<!-- use full url including 'index.html' for navigation bar if you are using ajax -->
+<ul id="nav">
+	<li id="ajax"><a href="/index.html">Home</a></li>
+	<li id="ajax"><a href="/archives/index.html">Archives</a></li>
+	<li id="ajax"><a href="/tags/index.html">Tags</a></li>
+    <li><a href="/atom.xml">RSS</a></li>
+    
+    <li>
+    <div id="dark">
+        <form action="//www.google.com.hk/search" method="get" accept-charset="UTF-8" id="search">
+            <input type="hidden" name="sitesearch" value="https://ev6r.github.io">
+            <input type="text" name="q" results="0" placeholder="Search..." x-webkit-speech="">
+        </form>
+    </div>
+    </li>
+        
+</ul>
+
+
+
+
+</header>
+
+<div id="toload">
+<!-- begin toload -->
+    <div id="content" class="inner">
+        <article class="post">
+	<h2 class="title">Install NCL/NCAR on Mac OS X</h2>
+    <div class="meta">
+        <div class="date">Published on: <time datetime="2014-07-23T09:46:00.000Z" itemprop="datePublished">Jul 23, 2014</time>
+</div>
+        <div class="tags">Tags: 
+
+
+</div>
+    </div>
+	<div class="entry-content"><p>The NCAR Command Language (NCL) is the coolest graphics tool I’ve ever seen. NCL has robust file input and output. It can read and write netCDF-3, netCDF-4 classic, netCDF-4, HDF4, binary, and ASCII data. It can read HDF-EOS2, HDF-EOS5, GRIB1, GRIB2, and OGR files. Though I don’t know most of the format above, but I saw its perfect plot on other one’s paper, so I decide to install it on my <em>Macbook</em> with Mac OS X 10.9.4.</p>
+<p>Please look into this site and finish reading it before starting to step into the door.</p>
+<p><a href="https://www.ncl.ucar.edu/Download/macosx.shtml#ESGAccountURL Need an account" target="_blank" rel="noopener">Official site</a></p>
+<p>I preferred to run the pre-compiled version, so the only problem after I installed according to the official guideline is the version of my <strong>GCC</strong>. Then I need to update <strong>GCC</strong> on my Mac, since I already have homebrew installed, <code>brew install gcc48</code> will install the new version by itself. It takes about 30 minutes to compile from the source. Be patient!</p>
+<p>The most complex work is setting some environmental variables, nothing special, just type what are recommended by the guideline. You won’t miss it.</p>
+</div>
+
+<div class="meta">
+	
+</div>
+</article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+
+
+    </div>
+    <footer id="footer">
+    <div style="display:inline">
+    Copyright &copy; 2018
+
+    J6rry
+. Powered by <a href="http://zespia.tw/hexo/" target="_blank">Hexo</a> |
+    Theme is <a href="https://github.com/wd/hexo-fabric">hexo-fabric</a>, fork from <a href="http://github.com/panks/fabric">fabric</a> by <a href="http://panks.me">Pankaj Kumar</a>
+</div>
+
+
+    </footer>
+    <script src="/javascripts/fabric.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script>
+ <!-- Delete or comment this line to disable Fancybox -->
+
+
+
+<!-- end toload --> 
+</div>
+</div>
+<script src="/javascripts/jquery.ui.totop.js" type="text/javascript"></script>
+<script type="text/javascript">
+/*<![CDATA[*/
+;(function($){$().UItoTop({easingType:'easeOutCirc'});})(jQuery); 
+/*]]>*/
+</script><!-- remove it to remove the scroll to top button -->
+</body>
+</html>

@@ -1,0 +1,191 @@
+<!DOCTYPE HTML>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+	<meta charset="utf-8">
+    
+	<title>start emacs in a UTF-8 environment - J6rry&#39;s Blog</title>
+    <meta name="author" content="J6rry">
+    
+	<meta name="description" content="&lt;h2 id=&#34;Method&#34;&gt;&lt;a href=&#34;#Method&#34; class=&#34;headerlink&#34; title=&#34;Method&#34;&gt;&lt;/a&gt;Method&lt;/h2&gt;&lt;p&gt;The original Emacs in terminal is OK for Chinese input (although I hardly input any Chinese character in a terminal), while it cannot handle switching to Chinese input method in a UI mode. So I googled and found the solution for that.&lt;/p&gt;
+&lt;p&gt;ps: my Chinese input method is &lt;strong&gt;FCITX&lt;/strong&gt; with &lt;em&gt;Wubi&lt;/em&gt;.&lt;br&gt;&lt;a id=&#34;more&#34;&gt;&lt;/a&gt;&lt;br&gt;If I start Emacs with &lt;code&gt;LC_CTYPE=zh_CN.UTF-8 emacs&lt;/code&gt;, the Chinese input is OK as it should be. I understand this command as to run Emacs in a &lt;em&gt;zh_CN.UTF-8&lt;/em&gt; environment, so I assume that if the whole system’s locale is &lt;em&gt;zh_CN.UTF-8&lt;/em&gt;, there won’t be any problem. From &lt;a href=&#34;https://wiki.archlinux.org/index.php/Locale archlinux&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Arch Wiki&lt;/a&gt;, you can check this by &lt;code&gt;locale&lt;/code&gt; command to list your locale settings. Mine is list below:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;LANG=en_US.UTF-8
+LC_CTYPE=&amp;quot;en_US.UTF-8&amp;quot;
+LC_NUMERIC=&amp;quot;en_US.UTF-8&amp;quot;
+LC_TIME=&amp;quot;en_US.UTF-8&amp;quot;
+LC_COLLATE=C
+LC_MONETARY=&amp;quot;en_US.UTF-8&amp;quot;
+LC_MESSAGES=&amp;quot;en_US.UTF-8&amp;quot;
+LC_PAPER=&amp;quot;en_US.UTF-8&amp;quot;
+LC_NAME=&amp;quot;en_US.UTF-8&amp;quot;
+LC_ADDRESS=&amp;quot;en_US.UTF-8&amp;quot;
+LC_TELEPHONE=&amp;quot;en_US.UTF-8&amp;quot;
+LC_MEASUREMENT=&amp;quot;en_US.UTF-8&amp;quot;
+LC_IDENTIFICATION=&amp;quot;en_US.UTF-8&amp;quot;
+LC_ALL=
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;You can see my system environment is &lt;em&gt;en_US.UTF-8&lt;/em&gt;, in order to enable my &lt;em&gt;fcitx&lt;/em&gt; input method, I need to temporal change it to &lt;em&gt;zh_CN.UTF-8&lt;/em&gt;. Since there is no difference to input English under either locale environment, so I decide to make &lt;em&gt;zh_CN.UTF-8&lt;/em&gt; mode as Emacs’s default setting. Considering I used to live in a &lt;em&gt;emacsclient&lt;/em&gt; mode, so I start up the daemon in &lt;em&gt;awesome&lt;/em&gt;‘s auto run applications list:&lt;br&gt;&lt;code&gt;awful.util.spawn_with_shell(&amp;quot;LC_CTYPE=zh_CN.UTF-8 emacs --daemon&amp;quot;)&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;So, job’s done!&lt;/p&gt;
+&lt;p&gt;I found someone used a different technique to modify the &lt;em&gt;emacs&lt;/em&gt; binary file, but I cannot understand that and I don’t want to test it in my working laptop in case it ruins my &lt;em&gt;emacs&lt;/em&gt;. :D&lt;br&gt;Maybe, I will give it a try. &lt;a href=&#34;http://forum.ubuntu.org.cn/viewtopic.php?f=68&amp;amp;t=394937&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;remind me here!&lt;/a&gt;&lt;/p&gt;
+&lt;figure class=&#34;highlight sh&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;sudo mv /usr/bin/emacs /usr/bin/emacs.raw&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;sudo vi /sur/bin/emacs&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;---input below content------------------------&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;meta&#34;&gt;#!/bin/bash&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;built_in&#34;&gt;export&lt;/span&gt; LC_CTYPE=zh_CN.utf8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;/usr/bin/emacs.raw &lt;span class=&#34;string&#34;&gt;&#34;&lt;span class=&#34;variable&#34;&gt;$@&lt;/span&gt;&#34;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+"> <!-- TODO: truncate -->
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="atom.xml" rel="alternate" title="J6rry&#39;s Blog" type="application/atom+xml">
+	<link href="/favicon.ico" rel="shortcut icon">
+    <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+    <link href="/stylesheets/custom.css" media="screen, projection" rel="stylesheet" type="text/css">
+    <link href="/stylesheets/hljs.css" media="screen, projection" rel="stylesheet" type="text/css">
+
+    <link href="//fonts.googleapis.com/css?family=Slackey" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Amethysta" rel="stylesheet" type="text/css">
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![}]-->
+
+    <script type="text/javascript" src="/javascripts/jquery-tapir.js"></script>
+
+    <!-- remove or comment it to disable ajaxification -->   
+    <!-- <script src="/javascripts/ajaxify.js"></script> -->
+
+    
+
+    
+
+</head>
+</html>
+
+<body>
+    <div id="wrapper">
+    <header id="header" class="inner"><!-- for more effects see _animate.scss -->
+<h1 class="animated bounceInDown">
+    <div id="headerbg">
+        J6rry&#39;s Blog
+    </div>
+</h1>
+<span class="subtitle">blogging a hacker&#39;s life &amp; style</span>
+<br>
+
+<ul id="social-links" style="text-align:center; clear:both;">
+  
+  
+  
+  
+  
+  
+  
+  
+</ul>
+
+
+<!-- use full url including 'index.html' for navigation bar if you are using ajax -->
+<ul id="nav">
+	<li id="ajax"><a href="/index.html">Home</a></li>
+	<li id="ajax"><a href="/archives/index.html">Archives</a></li>
+	<li id="ajax"><a href="/tags/index.html">Tags</a></li>
+    <li><a href="/atom.xml">RSS</a></li>
+    
+    <li>
+    <div id="dark">
+        <form action="//www.google.com.hk/search" method="get" accept-charset="UTF-8" id="search">
+            <input type="hidden" name="sitesearch" value="https://ev6r.github.io">
+            <input type="text" name="q" results="0" placeholder="Search..." x-webkit-speech="">
+        </form>
+    </div>
+    </li>
+        
+</ul>
+
+
+
+
+</header>
+
+<div id="toload">
+<!-- begin toload -->
+    <div id="content" class="inner">
+        <article class="post">
+	<h2 class="title">start emacs in a UTF-8 environment</h2>
+    <div class="meta">
+        <div class="date">Published on: <time datetime="2013-10-28T14:53:00.000Z" itemprop="datePublished">Oct 28, 2013</time>
+</div>
+        <div class="tags">Tags: 
+
+
+</div>
+    </div>
+	<div class="entry-content"><h2 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h2><p>The original Emacs in terminal is OK for Chinese input (although I hardly input any Chinese character in a terminal), while it cannot handle switching to Chinese input method in a UI mode. So I googled and found the solution for that.</p>
+<p>ps: my Chinese input method is <strong>FCITX</strong> with <em>Wubi</em>.<br><a id="more"></a><br>If I start Emacs with <code>LC_CTYPE=zh_CN.UTF-8 emacs</code>, the Chinese input is OK as it should be. I understand this command as to run Emacs in a <em>zh_CN.UTF-8</em> environment, so I assume that if the whole system’s locale is <em>zh_CN.UTF-8</em>, there won’t be any problem. From <a href="https://wiki.archlinux.org/index.php/Locale archlinux" target="_blank" rel="noopener">Arch Wiki</a>, you can check this by <code>locale</code> command to list your locale settings. Mine is list below:</p>
+<pre><code>LANG=en_US.UTF-8
+LC_CTYPE=&quot;en_US.UTF-8&quot;
+LC_NUMERIC=&quot;en_US.UTF-8&quot;
+LC_TIME=&quot;en_US.UTF-8&quot;
+LC_COLLATE=C
+LC_MONETARY=&quot;en_US.UTF-8&quot;
+LC_MESSAGES=&quot;en_US.UTF-8&quot;
+LC_PAPER=&quot;en_US.UTF-8&quot;
+LC_NAME=&quot;en_US.UTF-8&quot;
+LC_ADDRESS=&quot;en_US.UTF-8&quot;
+LC_TELEPHONE=&quot;en_US.UTF-8&quot;
+LC_MEASUREMENT=&quot;en_US.UTF-8&quot;
+LC_IDENTIFICATION=&quot;en_US.UTF-8&quot;
+LC_ALL=
+</code></pre><p>You can see my system environment is <em>en_US.UTF-8</em>, in order to enable my <em>fcitx</em> input method, I need to temporal change it to <em>zh_CN.UTF-8</em>. Since there is no difference to input English under either locale environment, so I decide to make <em>zh_CN.UTF-8</em> mode as Emacs’s default setting. Considering I used to live in a <em>emacsclient</em> mode, so I start up the daemon in <em>awesome</em>‘s auto run applications list:<br><code>awful.util.spawn_with_shell(&quot;LC_CTYPE=zh_CN.UTF-8 emacs --daemon&quot;)</code></p>
+<p>So, job’s done!</p>
+<p>I found someone used a different technique to modify the <em>emacs</em> binary file, but I cannot understand that and I don’t want to test it in my working laptop in case it ruins my <em>emacs</em>. :D<br>Maybe, I will give it a try. <a href="http://forum.ubuntu.org.cn/viewtopic.php?f=68&amp;t=394937" target="_blank" rel="noopener">remind me here!</a></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sudo mv /usr/bin/emacs /usr/bin/emacs.raw</span><br><span class="line">sudo vi /sur/bin/emacs</span><br><span class="line">---input below content------------------------</span><br><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">export</span> LC_CTYPE=zh_CN.utf8</span><br><span class="line">/usr/bin/emacs.raw <span class="string">"<span class="variable">$@</span>"</span></span><br></pre></td></tr></table></figure>
+</div>
+
+<div class="meta">
+	
+</div>
+</article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+
+
+    </div>
+    <footer id="footer">
+    <div style="display:inline">
+    Copyright &copy; 2018
+
+    J6rry
+. Powered by <a href="http://zespia.tw/hexo/" target="_blank">Hexo</a> |
+    Theme is <a href="https://github.com/wd/hexo-fabric">hexo-fabric</a>, fork from <a href="http://github.com/panks/fabric">fabric</a> by <a href="http://panks.me">Pankaj Kumar</a>
+</div>
+
+
+    </footer>
+    <script src="/javascripts/fabric.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script>
+ <!-- Delete or comment this line to disable Fancybox -->
+
+
+
+<!-- end toload --> 
+</div>
+</div>
+<script src="/javascripts/jquery.ui.totop.js" type="text/javascript"></script>
+<script type="text/javascript">
+/*<![CDATA[*/
+;(function($){$().UItoTop({easingType:'easeOutCirc'});})(jQuery); 
+/*]]>*/
+</script><!-- remove it to remove the scroll to top button -->
+</body>
+</html>

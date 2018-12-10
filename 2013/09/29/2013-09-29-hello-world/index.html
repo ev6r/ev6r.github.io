@@ -1,0 +1,195 @@
+<!DOCTYPE HTML>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+	<meta charset="utf-8">
+    
+	<title>Gentoo in VirtualBox - J6rry&#39;s Blog</title>
+    <meta name="author" content="J6rry">
+    
+	<meta name="description" content="&lt;h1 id=&#34;My-first-try-with-Gentoo&#34;&gt;&lt;a href=&#34;#My-first-try-with-Gentoo&#34; class=&#34;headerlink&#34; title=&#34;My first try with Gentoo&#34;&gt;&lt;/a&gt;My first try with &lt;strong&gt;Gentoo&lt;/strong&gt;&lt;/h1&gt;&lt;h2 id=&#34;Background&#34;&gt;&lt;a href=&#34;#Background&#34; class=&#34;headerlink&#34; title=&#34;Background&#34;&gt;&lt;/a&gt;Background&lt;/h2&gt;&lt;p&gt;I have heard about &lt;em&gt;Gentoo&lt;/em&gt; for a long time, but it said that to install and configure was too hard for a Linux beginner, especially the complex configurations of the system. From &lt;strong&gt;Wiki&lt;/strong&gt;, I learned that I need to compile all the source code locally according to my settings, that’s cool for sure. So I’d like to firstly install it on my Windows OS within a virtual machine: &lt;em&gt;VirtualBox&lt;/em&gt;. My environment is list below:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;OS: Windows 7 - 32bits
+VirtualBox version: 4.2.18
+&lt;/code&gt;&lt;/pre&gt;&lt;a id=&#34;more&#34;&gt;&lt;/a&gt;
+&lt;h2 id=&#34;Installation&#34;&gt;&lt;a href=&#34;#Installation&#34; class=&#34;headerlink&#34; title=&#34;Installation&#34;&gt;&lt;/a&gt;Installation&lt;/h2&gt;&lt;p&gt;The main reference document is the &lt;a href=&#34;www.gentoo.org/doc/en/gentoo-x86-quickinstall.xml&#34;&gt;official x86 quick install guide&lt;/a&gt;. Firstly, I googled a lot about &lt;em&gt;Gentoo&lt;/em&gt; and prepared the virtual box with a 512 RAM and 20GB static virtual disk and set the VirtrualBox’s net as &lt;strong&gt;NAT&lt;/strong&gt; by default. Secondly, I download the CD ISO from the host nearest to me (the inner educational net), and set the ISO to the virtual CD. Finally, the installation starts. Boot to the livecd:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;boot: gentoo-nofb
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;I test the network with &lt;code&gt;ping www.google.com&lt;/code&gt;, and it was OK. So there is nothing to tune up with the network configuration. I did not use any &lt;strong&gt;ssh&lt;/strong&gt; client to connect to my virtual system. Next, by using &lt;em&gt;cfdisk&lt;/em&gt; I parted my virtual disk as recommended by Wiki and use &lt;code&gt;mkfs.ext4&lt;/code&gt; command to format the partitions. Then enable the swap partition:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;mkswap /dev/sda2
+swapon /dev/sda2
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Get the disk prepared, I mounted the file systems together with set a correct time using &lt;code&gt;date MMDDhhmmYYYY&lt;/code&gt;.&lt;br&gt;Then download the stage3 file from the host by:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;wget ftp://xdlinux.info/.../current-stage3/stage3-*.tar.bz2
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Under the &lt;code&gt;/mnt/gentoo&lt;/code&gt; directory, unpack the stage3 file by&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;tar xjpf stage3*
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Next is the important point where the root will be changed to the &lt;code&gt;/mnt/gentoo&lt;/code&gt;, type the command according to the Wiki carefully, do not miss any command, especially &lt;code&gt;cp -L /etc/resolv.conf /mnt/gentoo/etc/&lt;/code&gt; which enable the network of the &lt;em&gt;chroot&lt;/em&gt; environment. Next step is to retrieve the portage directly by the command &lt;code&gt;emerge-webrsync&lt;/code&gt;, after you create a new folder as &lt;code&gt;/usr/portage&lt;/code&gt;.&lt;br&gt;Set the time zone and date information before going on.&lt;br&gt;Select the desktop profile and set the host name and domain name.&lt;br&gt;Next comes with the most time-consuming stage, kernel source codes downloading and compiling. The cost time depending on the performance of your computer.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;emerge gentoo-sources
+cd /usr/src/linux
+make menuconfig
+make -j2
+make modules_install
+cp arch/iXXX/boo/bzImage /boot/kernel
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;where the &lt;em&gt;XXX&lt;/em&gt; refer to the platform you choose, it is &lt;em&gt;i386&lt;/em&gt; here for x86.&lt;br&gt;Then you must change the &lt;code&gt;/etc/fstab&lt;/code&gt; to declare where the system will mound the partitions.&lt;br&gt;I escaped the network setting for the &lt;strong&gt;NAT&lt;/strong&gt; mode can guarantee the access to the internet.&lt;br&gt;Then set your password for root and some necessary tools. Finally, install a boot-loader such as &lt;strong&gt;GRUB&lt;/strong&gt;. After configured it and &lt;code&gt;unmount&lt;/code&gt; the mounted partitions you can reboot.&lt;br&gt;As usual, add a new user to the system by &lt;code&gt;useradd -g users -G lp,wheel,audio -m jerry &amp;amp;&amp;amp; passwd jerry&lt;/code&gt;. Then, log-in jerry and enjoy!&lt;/p&gt;
+&lt;h2 id=&#34;Conclusion&#34;&gt;&lt;a href=&#34;#Conclusion&#34; class=&#34;headerlink&#34; title=&#34;Conclusion&#34;&gt;&lt;/a&gt;Conclusion&lt;/h2&gt;&lt;p&gt;The basic &lt;em&gt;Gentoo&lt;/em&gt; system can be installed by following the guide, and the further configurations are needed to enhance it as a daily used system. I will enrich it in the future.&lt;/p&gt;
+"> <!-- TODO: truncate -->
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="atom.xml" rel="alternate" title="J6rry&#39;s Blog" type="application/atom+xml">
+	<link href="/favicon.ico" rel="shortcut icon">
+    <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+    <link href="/stylesheets/custom.css" media="screen, projection" rel="stylesheet" type="text/css">
+    <link href="/stylesheets/hljs.css" media="screen, projection" rel="stylesheet" type="text/css">
+
+    <link href="//fonts.googleapis.com/css?family=Slackey" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Amethysta" rel="stylesheet" type="text/css">
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![}]-->
+
+    <script type="text/javascript" src="/javascripts/jquery-tapir.js"></script>
+
+    <!-- remove or comment it to disable ajaxification -->   
+    <!-- <script src="/javascripts/ajaxify.js"></script> -->
+
+    
+
+    
+
+</head>
+</html>
+
+<body>
+    <div id="wrapper">
+    <header id="header" class="inner"><!-- for more effects see _animate.scss -->
+<h1 class="animated bounceInDown">
+    <div id="headerbg">
+        J6rry&#39;s Blog
+    </div>
+</h1>
+<span class="subtitle">blogging a hacker&#39;s life &amp; style</span>
+<br>
+
+<ul id="social-links" style="text-align:center; clear:both;">
+  
+  
+  
+  
+  
+  
+  
+  
+</ul>
+
+
+<!-- use full url including 'index.html' for navigation bar if you are using ajax -->
+<ul id="nav">
+	<li id="ajax"><a href="/index.html">Home</a></li>
+	<li id="ajax"><a href="/archives/index.html">Archives</a></li>
+	<li id="ajax"><a href="/tags/index.html">Tags</a></li>
+    <li><a href="/atom.xml">RSS</a></li>
+    
+    <li>
+    <div id="dark">
+        <form action="//www.google.com.hk/search" method="get" accept-charset="UTF-8" id="search">
+            <input type="hidden" name="sitesearch" value="https://ev6r.github.io">
+            <input type="text" name="q" results="0" placeholder="Search..." x-webkit-speech="">
+        </form>
+    </div>
+    </li>
+        
+</ul>
+
+
+
+
+</header>
+
+<div id="toload">
+<!-- begin toload -->
+    <div id="content" class="inner">
+        <article class="post">
+	<h2 class="title">Gentoo in VirtualBox</h2>
+    <div class="meta">
+        <div class="date">Published on: <time datetime="2013-09-29T09:48:00.000Z" itemprop="datePublished">Sep 29, 2013</time>
+</div>
+        <div class="tags">Tags: 
+
+
+</div>
+    </div>
+	<div class="entry-content"><h1 id="My-first-try-with-Gentoo"><a href="#My-first-try-with-Gentoo" class="headerlink" title="My first try with Gentoo"></a>My first try with <strong>Gentoo</strong></h1><h2 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h2><p>I have heard about <em>Gentoo</em> for a long time, but it said that to install and configure was too hard for a Linux beginner, especially the complex configurations of the system. From <strong>Wiki</strong>, I learned that I need to compile all the source code locally according to my settings, that’s cool for sure. So I’d like to firstly install it on my Windows OS within a virtual machine: <em>VirtualBox</em>. My environment is list below:</p>
+<pre><code>OS: Windows 7 - 32bits
+VirtualBox version: 4.2.18
+</code></pre><a id="more"></a>
+<h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><p>The main reference document is the <a href="www.gentoo.org/doc/en/gentoo-x86-quickinstall.xml">official x86 quick install guide</a>. Firstly, I googled a lot about <em>Gentoo</em> and prepared the virtual box with a 512 RAM and 20GB static virtual disk and set the VirtrualBox’s net as <strong>NAT</strong> by default. Secondly, I download the CD ISO from the host nearest to me (the inner educational net), and set the ISO to the virtual CD. Finally, the installation starts. Boot to the livecd:</p>
+<pre><code>boot: gentoo-nofb
+</code></pre><p>I test the network with <code>ping www.google.com</code>, and it was OK. So there is nothing to tune up with the network configuration. I did not use any <strong>ssh</strong> client to connect to my virtual system. Next, by using <em>cfdisk</em> I parted my virtual disk as recommended by Wiki and use <code>mkfs.ext4</code> command to format the partitions. Then enable the swap partition:</p>
+<pre><code>mkswap /dev/sda2
+swapon /dev/sda2
+</code></pre><p>Get the disk prepared, I mounted the file systems together with set a correct time using <code>date MMDDhhmmYYYY</code>.<br>Then download the stage3 file from the host by:</p>
+<pre><code>wget ftp://xdlinux.info/.../current-stage3/stage3-*.tar.bz2
+</code></pre><p>Under the <code>/mnt/gentoo</code> directory, unpack the stage3 file by</p>
+<pre><code>tar xjpf stage3*
+</code></pre><p>Next is the important point where the root will be changed to the <code>/mnt/gentoo</code>, type the command according to the Wiki carefully, do not miss any command, especially <code>cp -L /etc/resolv.conf /mnt/gentoo/etc/</code> which enable the network of the <em>chroot</em> environment. Next step is to retrieve the portage directly by the command <code>emerge-webrsync</code>, after you create a new folder as <code>/usr/portage</code>.<br>Set the time zone and date information before going on.<br>Select the desktop profile and set the host name and domain name.<br>Next comes with the most time-consuming stage, kernel source codes downloading and compiling. The cost time depending on the performance of your computer.</p>
+<pre><code>emerge gentoo-sources
+cd /usr/src/linux
+make menuconfig
+make -j2
+make modules_install
+cp arch/iXXX/boo/bzImage /boot/kernel
+</code></pre><p>where the <em>XXX</em> refer to the platform you choose, it is <em>i386</em> here for x86.<br>Then you must change the <code>/etc/fstab</code> to declare where the system will mound the partitions.<br>I escaped the network setting for the <strong>NAT</strong> mode can guarantee the access to the internet.<br>Then set your password for root and some necessary tools. Finally, install a boot-loader such as <strong>GRUB</strong>. After configured it and <code>unmount</code> the mounted partitions you can reboot.<br>As usual, add a new user to the system by <code>useradd -g users -G lp,wheel,audio -m jerry &amp;&amp; passwd jerry</code>. Then, log-in jerry and enjoy!</p>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>The basic <em>Gentoo</em> system can be installed by following the guide, and the further configurations are needed to enhance it as a daily used system. I will enrich it in the future.</p>
+</div>
+
+<div class="meta">
+	
+</div>
+</article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+
+
+    </div>
+    <footer id="footer">
+    <div style="display:inline">
+    Copyright &copy; 2018
+
+    J6rry
+. Powered by <a href="http://zespia.tw/hexo/" target="_blank">Hexo</a> |
+    Theme is <a href="https://github.com/wd/hexo-fabric">hexo-fabric</a>, fork from <a href="http://github.com/panks/fabric">fabric</a> by <a href="http://panks.me">Pankaj Kumar</a>
+</div>
+
+
+    </footer>
+    <script src="/javascripts/fabric.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script>
+ <!-- Delete or comment this line to disable Fancybox -->
+
+
+
+<!-- end toload --> 
+</div>
+</div>
+<script src="/javascripts/jquery.ui.totop.js" type="text/javascript"></script>
+<script type="text/javascript">
+/*<![CDATA[*/
+;(function($){$().UItoTop({easingType:'easeOutCirc'});})(jQuery); 
+/*]]>*/
+</script><!-- remove it to remove the scroll to top button -->
+</body>
+</html>

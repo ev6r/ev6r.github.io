@@ -1,0 +1,175 @@
+<!DOCTYPE HTML>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+	<meta charset="utf-8">
+    
+	<title>TP-Link WR703N - J6rry&#39;s Blog</title>
+    <meta name="author" content="J6rry">
+    
+	<meta name="description" content="&lt;p&gt;一块小小的路由器，WR703N，是那么的强大。我的这一块是我2013年在某东上买的。当时就是为了能把学校墙上的网络共享出来，而且还是用的iNODE拨号，我记得。&lt;/p&gt;
+&lt;p&gt;一直稳定着为我服务着，后来，回国后学校的网络已经变成pppoe拨号了，所以也就没用上它。看着一天天的落灰，偶尔想起来，拿出来试了下，发现自己已经忘记应该怎么用OpenWRT系统了。重新一刷，💣，砖了。&lt;/p&gt;
+&lt;p&gt;周末有点时间，做一个串口引线吧，焊上后，重刷。&lt;/p&gt;
+&lt;p&gt;刷不死UBoot。&lt;/p&gt;
+&lt;p&gt;没用几天，忽然想到学校是有ipv6的，所以。。。&lt;/p&gt;
+&lt;p&gt;原生的内核烧写文件太大，无法安装的挂载USB的包，然后，下载源代码，重新生成剪裁过的内核烧写文件。&lt;/p&gt;
+&lt;p&gt;opkg安装usb相关的包，挂载8G的U盘，安装ipv6的包。&lt;/p&gt;
+&lt;p&gt;配置，ipv6地址的转发。&lt;/p&gt;
+&lt;p&gt;😍，搞定。&lt;/p&gt;
+&lt;p&gt;现在我可以说，如果你有一块WR703N，还是卖了吧，买个高端一点的免于折腾。💁💁🏰&lt;/p&gt;
+&lt;a id=&#34;more&#34;&gt;&lt;/a&gt;
+&lt;p&gt;我呢，还要继续搞搞GPS模块、蓝牙和WiFi通信。。。🙌&lt;/p&gt;
+"> <!-- TODO: truncate -->
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="atom.xml" rel="alternate" title="J6rry&#39;s Blog" type="application/atom+xml">
+	<link href="/favicon.ico" rel="shortcut icon">
+    <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+    <link href="/stylesheets/custom.css" media="screen, projection" rel="stylesheet" type="text/css">
+    <link href="/stylesheets/hljs.css" media="screen, projection" rel="stylesheet" type="text/css">
+
+    <link href="//fonts.googleapis.com/css?family=Slackey" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Amethysta" rel="stylesheet" type="text/css">
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![}]-->
+
+    <script type="text/javascript" src="/javascripts/jquery-tapir.js"></script>
+
+    <!-- remove or comment it to disable ajaxification -->   
+    <!-- <script src="/javascripts/ajaxify.js"></script> -->
+
+    
+
+    
+
+</head>
+</html>
+
+<body>
+    <div id="wrapper">
+    <header id="header" class="inner"><!-- for more effects see _animate.scss -->
+<h1 class="animated bounceInDown">
+    <div id="headerbg">
+        J6rry&#39;s Blog
+    </div>
+</h1>
+<span class="subtitle">blogging a hacker&#39;s life &amp; style</span>
+<br>
+
+<ul id="social-links" style="text-align:center; clear:both;">
+  
+  
+  
+  
+  
+  
+  
+  
+</ul>
+
+
+<!-- use full url including 'index.html' for navigation bar if you are using ajax -->
+<ul id="nav">
+	<li id="ajax"><a href="/index.html">Home</a></li>
+	<li id="ajax"><a href="/archives/index.html">Archives</a></li>
+	<li id="ajax"><a href="/tags/index.html">Tags</a></li>
+    <li><a href="/atom.xml">RSS</a></li>
+    
+    <li>
+    <div id="dark">
+        <form action="//www.google.com.hk/search" method="get" accept-charset="UTF-8" id="search">
+            <input type="hidden" name="sitesearch" value="https://ev6r.github.io">
+            <input type="text" name="q" results="0" placeholder="Search..." x-webkit-speech="">
+        </form>
+    </div>
+    </li>
+        
+</ul>
+
+
+
+
+</header>
+
+<div id="toload">
+<!-- begin toload -->
+    <div id="content" class="inner">
+        <article class="post">
+	<h2 class="title">TP-Link WR703N</h2>
+    <div class="meta">
+        <div class="date">Published on: <time datetime="2016-12-04T02:06:00.000Z" itemprop="datePublished">Dec 4, 2016</time>
+</div>
+        <div class="tags">Tags: 
+
+
+</div>
+    </div>
+	<div class="entry-content"><p>一块小小的路由器，WR703N，是那么的强大。我的这一块是我2013年在某东上买的。当时就是为了能把学校墙上的网络共享出来，而且还是用的iNODE拨号，我记得。</p>
+<p>一直稳定着为我服务着，后来，回国后学校的网络已经变成pppoe拨号了，所以也就没用上它。看着一天天的落灰，偶尔想起来，拿出来试了下，发现自己已经忘记应该怎么用OpenWRT系统了。重新一刷，💣，砖了。</p>
+<p>周末有点时间，做一个串口引线吧，焊上后，重刷。</p>
+<p>刷不死UBoot。</p>
+<p>没用几天，忽然想到学校是有ipv6的，所以。。。</p>
+<p>原生的内核烧写文件太大，无法安装的挂载USB的包，然后，下载源代码，重新生成剪裁过的内核烧写文件。</p>
+<p>opkg安装usb相关的包，挂载8G的U盘，安装ipv6的包。</p>
+<p>配置，ipv6地址的转发。</p>
+<p>😍，搞定。</p>
+<p>现在我可以说，如果你有一块WR703N，还是卖了吧，买个高端一点的免于折腾。💁💁🏰</p>
+<a id="more"></a>
+<p>我呢，还要继续搞搞GPS模块、蓝牙和WiFi通信。。。🙌</p>
+</div>
+
+<div class="meta">
+	
+</div>
+</article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+
+
+    </div>
+    <footer id="footer">
+    <div style="display:inline">
+    Copyright &copy; 2018
+
+    J6rry
+. Powered by <a href="http://zespia.tw/hexo/" target="_blank">Hexo</a> |
+    Theme is <a href="https://github.com/wd/hexo-fabric">hexo-fabric</a>, fork from <a href="http://github.com/panks/fabric">fabric</a> by <a href="http://panks.me">Pankaj Kumar</a>
+</div>
+
+
+    </footer>
+    <script src="/javascripts/fabric.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script>
+ <!-- Delete or comment this line to disable Fancybox -->
+
+
+
+<!-- end toload --> 
+</div>
+</div>
+<script src="/javascripts/jquery.ui.totop.js" type="text/javascript"></script>
+<script type="text/javascript">
+/*<![CDATA[*/
+;(function($){$().UItoTop({easingType:'easeOutCirc'});})(jQuery); 
+/*]]>*/
+</script><!-- remove it to remove the scroll to top button -->
+</body>
+</html>

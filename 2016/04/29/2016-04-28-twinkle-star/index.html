@@ -1,0 +1,153 @@
+<!DOCTYPE HTML>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+	<meta charset="utf-8">
+    
+	<title>Twinkle Star - J6rry&#39;s Blog</title>
+    <meta name="author" content="J6rry">
+    
+	<meta name="description" content="&lt;figure class=&#34;highlight plain&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;35&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;36&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;37&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;38&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&amp;apos;Generate starry sky    [STARS.BAS]&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt; DIM level(3)           &amp;apos;magnitude levels&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt; RANDOMIZE TIMER        &amp;apos;so that each sky is different&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt; SCREEN 12              &amp;apos;640x480 pixels&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt; m1 = 3                 &amp;apos;average number of mag 1 stars (default 3)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt; r = 8                  &amp;apos;star number ratio per magnitude (default 8)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt; totalstars = m1 * (1 + r + r * r + r * r * r)  &amp;apos;# of stars in the sky&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt; level(1) = m1 / totalstars                &amp;apos;compute levels to make&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt; level(2) = m1 * (1 + r) / totalstars      &amp;apos;4 different magnitudes&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt; level(3) = m1 * (1 + r + r * r) / totalstars&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt; DO                     &amp;apos;this is the loop that generates a new sky&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;   CLS                  &amp;apos;clear screen/sky&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;   FOR i = 1 TO totalstars      &amp;apos;generate stars one by one&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;     xp = RND * 640             &amp;apos;x position on the screen&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;     yp = RND * 480             &amp;apos;y position on the screen&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;     magtst = RND               &amp;apos;generate a number to determine magnitude&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;     mag = 4                    &amp;apos;start by assuming faintest star&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;     IF magtst &amp;lt; level(3) THEN mag = 3  &amp;apos;then brighten if&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;     IF magtst &amp;lt; level(2) THEN mag = 2  &amp;apos;generated random number is&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;     IF magtst &amp;lt; level(1) THEN mag = 1  &amp;apos;within specified level&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;     SELECT CASE mag            &amp;apos;now plot star according to magnitude&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;       CASE 4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;         PSET (xp, yp), 8       &amp;apos;faintest star (try changing colour to 7?)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;       CASE 3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;         PSET (xp, yp), 15      &amp;apos;brightest star with a single point&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;       CASE 2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;         CIRCLE (xp, yp), 1, 15 &amp;apos;increase app brightness by increasing size&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;         PAINT (xp, yp), 15&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;       CASE 1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;         CIRCLE (xp, yp), 1.5, 15  &amp;apos;brightest stars have largest area&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;         PAINT (xp, yp), 15&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;     END SELECT&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;   NEXT i               &amp;apos;go back and plot all stars until finished&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;   DO&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;     a$ = INKEY$                            &amp;apos;wait for a keyboard input&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;   LOOP WHILE a$ &amp;lt;&amp;gt; CHR$(27) AND a$ &amp;lt;&amp;gt; &amp;quot;q&amp;quot;  &amp;apos;ESC generates new sky&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt; LOOP WHILE a$ &amp;lt;&amp;gt; &amp;quot;q&amp;quot;                       &amp;apos;q quits program&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;END&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+"> <!-- TODO: truncate -->
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="atom.xml" rel="alternate" title="J6rry&#39;s Blog" type="application/atom+xml">
+	<link href="/favicon.ico" rel="shortcut icon">
+    <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+    <link href="/stylesheets/custom.css" media="screen, projection" rel="stylesheet" type="text/css">
+    <link href="/stylesheets/hljs.css" media="screen, projection" rel="stylesheet" type="text/css">
+
+    <link href="//fonts.googleapis.com/css?family=Slackey" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Amethysta" rel="stylesheet" type="text/css">
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![}]-->
+
+    <script type="text/javascript" src="/javascripts/jquery-tapir.js"></script>
+
+    <!-- remove or comment it to disable ajaxification -->   
+    <!-- <script src="/javascripts/ajaxify.js"></script> -->
+
+    
+
+    
+
+</head>
+</html>
+
+<body>
+    <div id="wrapper">
+    <header id="header" class="inner"><!-- for more effects see _animate.scss -->
+<h1 class="animated bounceInDown">
+    <div id="headerbg">
+        J6rry&#39;s Blog
+    </div>
+</h1>
+<span class="subtitle">blogging a hacker&#39;s life &amp; style</span>
+<br>
+
+<ul id="social-links" style="text-align:center; clear:both;">
+  
+  
+  
+  
+  
+  
+  
+  
+</ul>
+
+
+<!-- use full url including 'index.html' for navigation bar if you are using ajax -->
+<ul id="nav">
+	<li id="ajax"><a href="/index.html">Home</a></li>
+	<li id="ajax"><a href="/archives/index.html">Archives</a></li>
+	<li id="ajax"><a href="/tags/index.html">Tags</a></li>
+    <li><a href="/atom.xml">RSS</a></li>
+    
+    <li>
+    <div id="dark">
+        <form action="//www.google.com.hk/search" method="get" accept-charset="UTF-8" id="search">
+            <input type="hidden" name="sitesearch" value="https://ev6r.github.io">
+            <input type="text" name="q" results="0" placeholder="Search..." x-webkit-speech="">
+        </form>
+    </div>
+    </li>
+        
+</ul>
+
+
+
+
+</header>
+
+<div id="toload">
+<!-- begin toload -->
+    <div id="content" class="inner">
+        <article class="post">
+	<h2 class="title">Twinkle Star</h2>
+    <div class="meta">
+        <div class="date">Published on: <time datetime="2016-04-28T21:49:00.000Z" itemprop="datePublished">Apr 28, 2016</time>
+</div>
+        <div class="tags">Tags: 
+
+
+</div>
+    </div>
+	<div class="entry-content"><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">&apos;Generate starry sky    [STARS.BAS]</span><br><span class="line"> DIM level(3)           &apos;magnitude levels</span><br><span class="line"> RANDOMIZE TIMER        &apos;so that each sky is different</span><br><span class="line"> SCREEN 12              &apos;640x480 pixels</span><br><span class="line"> m1 = 3                 &apos;average number of mag 1 stars (default 3)</span><br><span class="line"> r = 8                  &apos;star number ratio per magnitude (default 8)</span><br><span class="line"> totalstars = m1 * (1 + r + r * r + r * r * r)  &apos;# of stars in the sky</span><br><span class="line"> level(1) = m1 / totalstars                &apos;compute levels to make</span><br><span class="line"> level(2) = m1 * (1 + r) / totalstars      &apos;4 different magnitudes</span><br><span class="line"> level(3) = m1 * (1 + r + r * r) / totalstars</span><br><span class="line"> DO                     &apos;this is the loop that generates a new sky</span><br><span class="line">   CLS                  &apos;clear screen/sky</span><br><span class="line">   FOR i = 1 TO totalstars      &apos;generate stars one by one</span><br><span class="line">     xp = RND * 640             &apos;x position on the screen</span><br><span class="line">     yp = RND * 480             &apos;y position on the screen</span><br><span class="line">     magtst = RND               &apos;generate a number to determine magnitude</span><br><span class="line">     mag = 4                    &apos;start by assuming faintest star</span><br><span class="line">     IF magtst &lt; level(3) THEN mag = 3  &apos;then brighten if</span><br><span class="line">     IF magtst &lt; level(2) THEN mag = 2  &apos;generated random number is</span><br><span class="line">     IF magtst &lt; level(1) THEN mag = 1  &apos;within specified level</span><br><span class="line">     SELECT CASE mag            &apos;now plot star according to magnitude</span><br><span class="line">       CASE 4</span><br><span class="line">         PSET (xp, yp), 8       &apos;faintest star (try changing colour to 7?)</span><br><span class="line">       CASE 3</span><br><span class="line">         PSET (xp, yp), 15      &apos;brightest star with a single point</span><br><span class="line">       CASE 2</span><br><span class="line">         CIRCLE (xp, yp), 1, 15 &apos;increase app brightness by increasing size</span><br><span class="line">         PAINT (xp, yp), 15</span><br><span class="line">       CASE 1</span><br><span class="line">         CIRCLE (xp, yp), 1.5, 15  &apos;brightest stars have largest area</span><br><span class="line">         PAINT (xp, yp), 15</span><br><span class="line">     END SELECT</span><br><span class="line">   NEXT i               &apos;go back and plot all stars until finished</span><br><span class="line">   DO</span><br><span class="line">     a$ = INKEY$                            &apos;wait for a keyboard input</span><br><span class="line">   LOOP WHILE a$ &lt;&gt; CHR$(27) AND a$ &lt;&gt; &quot;q&quot;  &apos;ESC generates new sky</span><br><span class="line"> LOOP WHILE a$ &lt;&gt; &quot;q&quot;                       &apos;q quits program</span><br><span class="line">END</span><br></pre></td></tr></table></figure>
+</div>
+
+<div class="meta">
+	
+</div>
+</article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+
+
+    </div>
+    <footer id="footer">
+    <div style="display:inline">
+    Copyright &copy; 2018
+
+    J6rry
+. Powered by <a href="http://zespia.tw/hexo/" target="_blank">Hexo</a> |
+    Theme is <a href="https://github.com/wd/hexo-fabric">hexo-fabric</a>, fork from <a href="http://github.com/panks/fabric">fabric</a> by <a href="http://panks.me">Pankaj Kumar</a>
+</div>
+
+
+    </footer>
+    <script src="/javascripts/fabric.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script>
+ <!-- Delete or comment this line to disable Fancybox -->
+
+
+
+<!-- end toload --> 
+</div>
+</div>
+<script src="/javascripts/jquery.ui.totop.js" type="text/javascript"></script>
+<script type="text/javascript">
+/*<![CDATA[*/
+;(function($){$().UItoTop({easingType:'easeOutCirc'});})(jQuery); 
+/*]]>*/
+</script><!-- remove it to remove the scroll to top button -->
+</body>
+</html>
