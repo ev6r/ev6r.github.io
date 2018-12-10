@@ -389,6 +389,316 @@
 </div>
 </article>
 
+  <article class="post">
+	<h2 class="title">
+		<a href="2016/12/04/2016-12-04-tp-link-wr703n/">TP-Link WR703N</a>
+	</h2>
+    <div class="entry-content">
+    <div class="meta">
+      <div class="date">Published on: <time datetime="2016-12-04T02:06:00.000Z" itemprop="datePublished">Dec 4, 2016</time>
+</div>
+      <div class="tags">Tags: 
+
+
+</div>
+    </div>
+      
+        <p>一块小小的路由器，WR703N，是那么的强大。我的这一块是我2013年在某东上买的。当时就是为了能把学校墙上的网络共享出来，而且还是用的iNODE拨号，我记得。</p>
+<p>一直稳定着为我服务着，后来，回国后学校的网络已经变成pppoe拨号了，所以也就没用上它。看着一天天的落灰，偶尔想起来，拿出来试了下，发现自己已经忘记应该怎么用OpenWRT系统了。重新一刷，💣，砖了。</p>
+<p>周末有点时间，做一个串口引线吧，焊上后，重刷。</p>
+<p>刷不死UBoot。</p>
+<p>没用几天，忽然想到学校是有ipv6的，所以。。。</p>
+<p>原生的内核烧写文件太大，无法安装的挂载USB的包，然后，下载源代码，重新生成剪裁过的内核烧写文件。</p>
+<p>opkg安装usb相关的包，挂载8G的U盘，安装ipv6的包。</p>
+<p>配置，ipv6地址的转发。</p>
+<p>😍，搞定。</p>
+<p>现在我可以说，如果你有一块WR703N，还是卖了吧，买个高端一点的免于折腾。💁💁🏰</p>
+        
+          <p class="more-link">
+            <a href="2016/12/04/2016-12-04-tp-link-wr703n/#more">Read More</a>
+          </p>
+        
+      
+	</div>
+
+<div class="meta">
+	
+		<span class="comments"><a href="https://ev6r.github.io/2016/12/04/2016-12-04-tp-link-wr703n/#disqus_thread">Comments</a></span>
+	
+</div>
+</article>
+
+  <article class="post">
+	<h2 class="title">
+		<a href="2016/11/22/2016-11-22-ji-jian-sheng-huo/">极简</a>
+	</h2>
+    <div class="entry-content">
+    <div class="meta">
+      <div class="date">Published on: <time datetime="2016-11-22T11:20:00.000Z" itemprop="datePublished">Nov 22, 2016</time>
+</div>
+      <div class="tags">Tags: 
+
+
+</div>
+    </div>
+      
+        <p>这个世界太过繁华</p>
+<p>繁华到了快要凋零</p>
+<p>多少舍近与求远</p>
+<p>都是无谓的挣扎</p>
+<p>物质与环境</p>
+<p>精神与肉体</p>
+<p>都缺少了开始时的纯粹</p>
+<p>简单最难</p>
+
+      
+	</div>
+
+<div class="meta">
+	
+		<span class="comments"><a href="https://ev6r.github.io/2016/11/22/2016-11-22-ji-jian-sheng-huo/#disqus_thread">Comments</a></span>
+	
+</div>
+</article>
+
+  <article class="post">
+	<h2 class="title">
+		<a href="2016/11/22/2016-11-21-tplink703n-hacking/">TPLink703N Hacking</a>
+	</h2>
+    <div class="entry-content">
+    <div class="meta">
+      <div class="date">Published on: <time datetime="2016-11-21T22:09:00.000Z" itemprop="datePublished">Nov 21, 2016</time>
+</div>
+      <div class="tags">Tags: 
+
+
+</div>
+    </div>
+      
+        <p>偷得半日闲，在TpLink 703N的软件和硬件上同时做一些Hacking的工作，主要是焊制了串口的通信接口TTL，通过与USB转串口工具与PC机连接，以及刷上了<strong>不死</strong>U-boot，可以开心的使用OpenWRT了。</p>
+<p>在这个过程中，参考了国内外大量的前辈经验，先一并感谢之。</p>
+<p>这里记录几个主要要注意的地方：</p>
+<ul>
+<li>开盖需要小心，从USB上方入起子，最好参考openwrt官网查看PCB板子的图之后再进行开盖的操作，不容易损坏外观。</li>
+<li>在焊TTL线时，PCB上的两上预留的焊点实在太小了（主要还是技术不过硬），不建议直接接线焊，还是按照网上大神给出的PCB电路图找两个相距较远的点来焊，尤其是GND点有多个可选点，就不要在TP_IN和TP_OUT周围找了，我选的是C37的那个大焊点，三个点焊完一定及时的用热胶固定（我在焊TP_IN时不小心拖了一下线，结果那个点直接被撕下来了。。。），我没有将TP_IN和TP_OUT接到Micro USB上，也没有在板子上钻额外的孔，TTL只是用来救砖，以后再考虑串口扩展的问题，先能连上PC的串口就可以了。我是边焊还用万用表检测导通的线路（小心为上，还不熟练）。</li>
+<li>与PC连的USB转串口是过去的一个开发板送的EasyOpenJTAG转换器，上面有四组接口，我选用了4脚插口（引出5V/GND/TXD/RXD四脚），由于原来的标准接口间距太小，与杜邦线的接头不兼容，所以我取了下原来的标准接口，自己焊了四条杜邦线上去，看着丑点，能用就好。</li>
+<li>我原来的703N是已经刷过OpenWRT的，也算是物尽其用了，那时候还要用inode拨号上网时就开始Hacking了，后来怎么把内核搞坏了，我也记不清了，反正是Failure Mode（蓝灯狂闪）也是进不去了。就只能从硬件引出串口，重要烧写内核了。我下载的是OpenWRT官风提供的factorysys*.bin，根据网上的资料进入串口模式，将固件烧写进硬件，重启之后就进入了熟悉的OpenWRT界面了。</li>
+<li>OpenWRT现在的版本变漂亮了，但是本质的配置没有变，通过有线连接<code>telnet</code>进入后设置root密码，然后就可以<code>ssh</code>了。基本的无线配置我选择wan使用<code>dhcp</code>自动获得上次有线网络的IP，无线通过PSK加密连接，重启后，可以用无线连接了，有了基本的使用功能了。</li>
+<li>最后，我担心又会重蹈覆辙，以后再刷出问题还要拆开TTL，虽然也不困难，但是还是有些麻烦的，我想还是直接刷一个“不死”u-boot“吧。在网上找到了资料，有一个完整的百度盘的完整包，里面包含了上传下载工具和固件，果断按提示改了u-boot.bin中的MAC地址，然后使用SCP下载uboot和art备份以及上传更新过的u-boot.bin文件（还好是在MacOS下，上传下载容易一些），最后将新的uboot刷入，重启搞定。其实，在这个过程中我遇到了uboot分区上锁无法刷入的问题，问题出在我没有用那个完整包里的update*.bin的OpenWRT固件解锁uboot，后来在ssh下先解锁uboot后，就可以成功的替换为<strong>不死</strong>u-boot啦。</li>
+</ul>
+<p>ps：备忘一下TTL和EasyOpenJTAG的连线接法，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">TXD-&gt;TP_IN  //绿——黑</span><br><span class="line">RXD-&gt;TP_OUT //蓝——红</span><br><span class="line">GND-&gt;GND    //黄——灰</span><br></pre></td></tr></table></figure>
+<p>秀一下：</p>
+<p><img src="/images/blog_imgs/703n.png" alt="703n"></p>
+
+      
+	</div>
+
+<div class="meta">
+	
+		<span class="comments"><a href="https://ev6r.github.io/2016/11/22/2016-11-21-tplink703n-hacking/#disqus_thread">Comments</a></span>
+	
+</div>
+</article>
+
+  <article class="post">
+	<h2 class="title">
+		<a href="2016/10/26/2016-10-25-cong-tou-kai-shi-you-he-fang/">从头开始又何妨</a>
+	</h2>
+    <div class="entry-content">
+    <div class="meta">
+      <div class="date">Published on: <time datetime="2016-10-25T19:43:00.000Z" itemprop="datePublished">Oct 25, 2016</time>
+</div>
+      <div class="tags">Tags: 
+
+
+</div>
+    </div>
+      
+        <p>过去总是害怕自己的生活不够稳定，但是生活嘛，哪里有一直很稳定的呢？无论是身处高位，还是在于平常之地。日子都会在一天天的过去，一天天的变化着。只要你在努力着，机遇还是会有的。如果真的当你闭上双眼的那一刻时，机遇还是不曾到来，那，也只好安心的去了。<br>有了平静和心安，才能看到生活的五彩斑斓。</p>
+
+      
+	</div>
+
+<div class="meta">
+	
+		<span class="comments"><a href="https://ev6r.github.io/2016/10/26/2016-10-25-cong-tou-kai-shi-you-he-fang/#disqus_thread">Comments</a></span>
+	
+</div>
+</article>
+
+  <article class="post">
+	<h2 class="title">
+		<a href="2016/10/25/2016-10-25-how-to-build-muscles/">How to build muscles</a>
+	</h2>
+    <div class="entry-content">
+    <div class="meta">
+      <div class="date">Published on: <time datetime="2016-10-25T15:49:00.000Z" itemprop="datePublished">Oct 25, 2016</time>
+</div>
+      <div class="tags">Tags: 
+
+
+</div>
+    </div>
+      
+        <h1 id="Get-great-muscles"><a href="#Get-great-muscles" class="headerlink" title="Get great muscles"></a>Get great muscles</h1><p>Some people spend years trying to put on muscle or get more toned, but just can’t seem to make it happen. Others see themselves in the mirror wearing a swimsuit, and realize that they want to get more toned or fill out some muscle, but just don’t know where to start. Whether you want to bulk up, get more curvaceous calves, enhance your chest, or achieve any other muscle building goal, you’re about to get 10 tips to build muscle fast.</p>
+<h2 id="Muscle-Building-Tip-1-Lift"><a href="#Muscle-Building-Tip-1-Lift" class="headerlink" title="Muscle Building Tip #1: Lift"></a>Muscle Building Tip #1: Lift</h2><p>In “How To Build Muscle,” you learn that the only way to significantly increase muscle is to cause muscle fibers to tear, and the only way to do that is to subject your muscles to external forces to which they’re not accustomed. So unless you have a heavy manual labor job like moving or construction, you must get your hands on barbells, dumbbells, and weight lifting machines to see significant muscle building progress.<br>
+        
+          </p><p class="more-link">
+            <a href="2016/10/25/2016-10-25-how-to-build-muscles/#more">Read More</a>
+          </p>
+        
+      
+	</div>
+
+<div class="meta">
+	
+		<span class="comments"><a href="https://ev6r.github.io/2016/10/25/2016-10-25-how-to-build-muscles/#disqus_thread">Comments</a></span>
+	
+</div>
+</article>
+
+  <article class="post">
+	<h2 class="title">
+		<a href="2016/07/06/2016-07-05-finally/">Finally</a>
+	</h2>
+    <div class="entry-content">
+    <div class="meta">
+      <div class="date">Published on: <time datetime="2016-07-05T20:35:00.000Z" itemprop="datePublished">Jul 5, 2016</time>
+</div>
+      <div class="tags">Tags: 
+
+
+</div>
+    </div>
+      
+        <p>I just wanna post a screenshot of a game.</p>
+<p><img src="/images/blog_imgs/nihilumbra.PNG" alt="Nihilumbra"></p>
+
+      
+	</div>
+
+<div class="meta">
+	
+		<span class="comments"><a href="https://ev6r.github.io/2016/07/06/2016-07-05-finally/#disqus_thread">Comments</a></span>
+	
+</div>
+</article>
+
+  <article class="post">
+	<h2 class="title">
+		<a href="2016/04/29/2016-04-28-twinkle-star/">Twinkle Star</a>
+	</h2>
+    <div class="entry-content">
+    <div class="meta">
+      <div class="date">Published on: <time datetime="2016-04-28T21:49:00.000Z" itemprop="datePublished">Apr 28, 2016</time>
+</div>
+      <div class="tags">Tags: 
+
+
+</div>
+    </div>
+      
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">&apos;Generate starry sky    [STARS.BAS]</span><br><span class="line"> DIM level(3)           &apos;magnitude levels</span><br><span class="line"> RANDOMIZE TIMER        &apos;so that each sky is different</span><br><span class="line"> SCREEN 12              &apos;640x480 pixels</span><br><span class="line"> m1 = 3                 &apos;average number of mag 1 stars (default 3)</span><br><span class="line"> r = 8                  &apos;star number ratio per magnitude (default 8)</span><br><span class="line"> totalstars = m1 * (1 + r + r * r + r * r * r)  &apos;# of stars in the sky</span><br><span class="line"> level(1) = m1 / totalstars                &apos;compute levels to make</span><br><span class="line"> level(2) = m1 * (1 + r) / totalstars      &apos;4 different magnitudes</span><br><span class="line"> level(3) = m1 * (1 + r + r * r) / totalstars</span><br><span class="line"> DO                     &apos;this is the loop that generates a new sky</span><br><span class="line">   CLS                  &apos;clear screen/sky</span><br><span class="line">   FOR i = 1 TO totalstars      &apos;generate stars one by one</span><br><span class="line">     xp = RND * 640             &apos;x position on the screen</span><br><span class="line">     yp = RND * 480             &apos;y position on the screen</span><br><span class="line">     magtst = RND               &apos;generate a number to determine magnitude</span><br><span class="line">     mag = 4                    &apos;start by assuming faintest star</span><br><span class="line">     IF magtst &lt; level(3) THEN mag = 3  &apos;then brighten if</span><br><span class="line">     IF magtst &lt; level(2) THEN mag = 2  &apos;generated random number is</span><br><span class="line">     IF magtst &lt; level(1) THEN mag = 1  &apos;within specified level</span><br><span class="line">     SELECT CASE mag            &apos;now plot star according to magnitude</span><br><span class="line">       CASE 4</span><br><span class="line">         PSET (xp, yp), 8       &apos;faintest star (try changing colour to 7?)</span><br><span class="line">       CASE 3</span><br><span class="line">         PSET (xp, yp), 15      &apos;brightest star with a single point</span><br><span class="line">       CASE 2</span><br><span class="line">         CIRCLE (xp, yp), 1, 15 &apos;increase app brightness by increasing size</span><br><span class="line">         PAINT (xp, yp), 15</span><br><span class="line">       CASE 1</span><br><span class="line">         CIRCLE (xp, yp), 1.5, 15  &apos;brightest stars have largest area</span><br><span class="line">         PAINT (xp, yp), 15</span><br><span class="line">     END SELECT</span><br><span class="line">   NEXT i               &apos;go back and plot all stars until finished</span><br><span class="line">   DO</span><br><span class="line">     a$ = INKEY$                            &apos;wait for a keyboard input</span><br><span class="line">   LOOP WHILE a$ &lt;&gt; CHR$(27) AND a$ &lt;&gt; &quot;q&quot;  &apos;ESC generates new sky</span><br><span class="line"> LOOP WHILE a$ &lt;&gt; &quot;q&quot;                       &apos;q quits program</span><br><span class="line">END</span><br></pre></td></tr></table></figure>
+
+      
+	</div>
+
+<div class="meta">
+	
+		<span class="comments"><a href="https://ev6r.github.io/2016/04/29/2016-04-28-twinkle-star/#disqus_thread">Comments</a></span>
+	
+</div>
+</article>
+
+  <article class="post">
+	<h2 class="title">
+		<a href="2016/01/26/2016-01-26-bai-xing/">百姓</a>
+	</h2>
+    <div class="entry-content">
+    <div class="meta">
+      <div class="date">Published on: <time datetime="2016-01-26T13:55:00.000Z" itemprop="datePublished">Jan 26, 2016</time>
+</div>
+      <div class="tags">Tags: 
+
+
+</div>
+    </div>
+      
+        <p>:(</p>
+<p>兴，百姓苦；<br>亡，百姓苦。</p>
+
+      
+	</div>
+
+<div class="meta">
+	
+		<span class="comments"><a href="https://ev6r.github.io/2016/01/26/2016-01-26-bai-xing/#disqus_thread">Comments</a></span>
+	
+</div>
+</article>
+
+  <article class="post">
+	<h2 class="title">
+		<a href="2016/01/11/2016-01-11-xcode-debug-c-plus-plus-array/">XCode Debug C++ array</a>
+	</h2>
+    <div class="entry-content">
+    <div class="meta">
+      <div class="date">Published on: <time datetime="2016-01-11T10:14:00.000Z" itemprop="datePublished">Jan 11, 2016</time>
+</div>
+      <div class="tags">Tags: 
+
+
+</div>
+    </div>
+      
+        <p>I got a bad cold, :&lt;, and it’s cold now.</p>
+<p>However, I got a piece of code to check the contents of a pointer:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">(lldb) memory read -t double -c `10` _new</span><br><span class="line">(double) 0x11003b000 = 141.29869002655289</span><br><span class="line">(double) 0x11003b008 = 141.29869002655286</span><br><span class="line">(double) 0x11003b010 = 141.40261994689422</span><br><span class="line">(double) 0x11003b018 = 140.80829186560609</span><br><span class="line">(double) 0x11003b020 = 139.10087794852376</span><br><span class="line">(double) 0x11003b028 = 137.67006305574671</span><br><span class="line">(double) 0x11003b030 = 138.72145263361659</span><br><span class="line">(double) 0x11003b038 = 140.38247728672476</span><br><span class="line">(double) 0x11003b040 = 141.17656578812017</span><br><span class="line">(double) 0x11003b048 = 140.41071936746977</span><br></pre></td></tr></table></figure>
+<p>Life is not that bad.</p>
+
+      
+	</div>
+
+<div class="meta">
+	
+		<span class="comments"><a href="https://ev6r.github.io/2016/01/11/2016-01-11-xcode-debug-c-plus-plus-array/#disqus_thread">Comments</a></span>
+	
+</div>
+</article>
+
+  <article class="post">
+	<h2 class="title">
+		<a href="2015/12/15/2015-12-14-popclip/">PopClip</a>
+	</h2>
+    <div class="entry-content">
+    <div class="meta">
+      <div class="date">Published on: <time datetime="2015-12-14T16:50:00.000Z" itemprop="datePublished">Dec 14, 2015</time>
+</div>
+      <div class="tags">Tags: 
+
+
+</div>
+    </div>
+      
+        <p>It is a productive tool on Mac OS, which can pop a small menu for the common operations on <strong>text</strong>s, like <em>Copy</em>, <em>Paste</em>, <em>Looking up in a dictionary</em> et al. Additionally, I add some customized extensions, they are:</p>
+<ul>
+<li>PDF highlights</li>
+<li>Youdao</li>
+<li>Join words with _</li>
+</ul>
+<p>My version is 1.4.10, enjoy it.</p>
+
+      
+	</div>
+
+<div class="meta">
+	
+		<span class="comments"><a href="https://ev6r.github.io/2015/12/15/2015-12-14-popclip/#disqus_thread">Comments</a></span>
+	
+</div>
+</article>
+
 
   <nav id="pagenavi">
     

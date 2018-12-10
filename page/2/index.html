@@ -103,11 +103,11 @@
 
   <article class="post">
 	<h2 class="title">
-		<a href="2016/12/04/2016-12-04-tp-link-wr703n/">TP-Link WR703N</a>
+		<a href="2015/12/07/2015-12-07-mac-gone/">Mac gone</a>
 	</h2>
     <div class="entry-content">
     <div class="meta">
-      <div class="date">Published on: <time datetime="2016-12-04T02:06:00.000Z" itemprop="datePublished">Dec 4, 2016</time>
+      <div class="date">Published on: <time datetime="2015-12-07T11:05:00.000Z" itemprop="datePublished">Dec 7, 2015</time>
 </div>
       <div class="tags">Tags: 
 
@@ -115,71 +115,27 @@
 </div>
     </div>
       
-        <p>一块小小的路由器，WR703N，是那么的强大。我的这一块是我2013年在某东上买的。当时就是为了能把学校墙上的网络共享出来，而且还是用的iNODE拨号，我记得。</p>
-<p>一直稳定着为我服务着，后来，回国后学校的网络已经变成pppoe拨号了，所以也就没用上它。看着一天天的落灰，偶尔想起来，拿出来试了下，发现自己已经忘记应该怎么用OpenWRT系统了。重新一刷，💣，砖了。</p>
-<p>周末有点时间，做一个串口引线吧，焊上后，重刷。</p>
-<p>刷不死UBoot。</p>
-<p>没用几天，忽然想到学校是有ipv6的，所以。。。</p>
-<p>原生的内核烧写文件太大，无法安装的挂载USB的包，然后，下载源代码，重新生成剪裁过的内核烧写文件。</p>
-<p>opkg安装usb相关的包，挂载8G的U盘，安装ipv6的包。</p>
-<p>配置，ipv6地址的转发。</p>
-<p>😍，搞定。</p>
-<p>现在我可以说，如果你有一块WR703N，还是卖了吧，买个高端一点的免于折腾。💁💁🏰</p>
-        
-          <p class="more-link">
-            <a href="2016/12/04/2016-12-04-tp-link-wr703n/#more">Read More</a>
-          </p>
-        
-      
-	</div>
-
-<div class="meta">
-	
-		<span class="comments"><a href="https://ev6r.github.io/2016/12/04/2016-12-04-tp-link-wr703n/#disqus_thread">Comments</a></span>
-	
-</div>
-</article>
-
-  <article class="post">
-	<h2 class="title">
-		<a href="2016/11/22/2016-11-22-ji-jian-sheng-huo/">极简</a>
-	</h2>
-    <div class="entry-content">
-    <div class="meta">
-      <div class="date">Published on: <time datetime="2016-11-22T11:20:00.000Z" itemprop="datePublished">Nov 22, 2016</time>
-</div>
-      <div class="tags">Tags: 
-
-
-</div>
-    </div>
-      
-        <p>这个世界太过繁华</p>
-<p>繁华到了快要凋零</p>
-<p>多少舍近与求远</p>
-<p>都是无谓的挣扎</p>
-<p>物质与环境</p>
-<p>精神与肉体</p>
-<p>都缺少了开始时的纯粹</p>
-<p>简单最难</p>
+        <p>I was broken when my Mac was stolen, I am sad until now.</p>
+<p>However, I don’t think my life should be ruined by this.</p>
+<p>Come on, cowboy!</p>
 
       
 	</div>
 
 <div class="meta">
 	
-		<span class="comments"><a href="https://ev6r.github.io/2016/11/22/2016-11-22-ji-jian-sheng-huo/#disqus_thread">Comments</a></span>
+		<span class="comments"><a href="https://ev6r.github.io/2015/12/07/2015-12-07-mac-gone/#disqus_thread">Comments</a></span>
 	
 </div>
 </article>
 
   <article class="post">
 	<h2 class="title">
-		<a href="2016/11/22/2016-11-21-tplink703n-hacking/">TPLink703N Hacking</a>
+		<a href="2015/11/27/2015-11-26-a-command-for-utf-8-encoding/">A command for UTF-8 encoding</a>
 	</h2>
     <div class="entry-content">
     <div class="meta">
-      <div class="date">Published on: <time datetime="2016-11-21T22:09:00.000Z" itemprop="datePublished">Nov 21, 2016</time>
+      <div class="date">Published on: <time datetime="2015-11-26T21:04:00.000Z" itemprop="datePublished">Nov 26, 2015</time>
 </div>
       <div class="tags">Tags: 
 
@@ -187,39 +143,27 @@
 </div>
     </div>
       
-        <p>偷得半日闲，在TpLink 703N的软件和硬件上同时做一些Hacking的工作，主要是焊制了串口的通信接口TTL，通过与USB转串口工具与PC机连接，以及刷上了<strong>不死</strong>U-boot，可以开心的使用OpenWRT了。</p>
-<p>在这个过程中，参考了国内外大量的前辈经验，先一并感谢之。</p>
-<p>这里记录几个主要要注意的地方：</p>
-<ul>
-<li>开盖需要小心，从USB上方入起子，最好参考openwrt官网查看PCB板子的图之后再进行开盖的操作，不容易损坏外观。</li>
-<li>在焊TTL线时，PCB上的两上预留的焊点实在太小了（主要还是技术不过硬），不建议直接接线焊，还是按照网上大神给出的PCB电路图找两个相距较远的点来焊，尤其是GND点有多个可选点，就不要在TP_IN和TP_OUT周围找了，我选的是C37的那个大焊点，三个点焊完一定及时的用热胶固定（我在焊TP_IN时不小心拖了一下线，结果那个点直接被撕下来了。。。），我没有将TP_IN和TP_OUT接到Micro USB上，也没有在板子上钻额外的孔，TTL只是用来救砖，以后再考虑串口扩展的问题，先能连上PC的串口就可以了。我是边焊还用万用表检测导通的线路（小心为上，还不熟练）。</li>
-<li>与PC连的USB转串口是过去的一个开发板送的EasyOpenJTAG转换器，上面有四组接口，我选用了4脚插口（引出5V/GND/TXD/RXD四脚），由于原来的标准接口间距太小，与杜邦线的接头不兼容，所以我取了下原来的标准接口，自己焊了四条杜邦线上去，看着丑点，能用就好。</li>
-<li>我原来的703N是已经刷过OpenWRT的，也算是物尽其用了，那时候还要用inode拨号上网时就开始Hacking了，后来怎么把内核搞坏了，我也记不清了，反正是Failure Mode（蓝灯狂闪）也是进不去了。就只能从硬件引出串口，重要烧写内核了。我下载的是OpenWRT官风提供的factorysys*.bin，根据网上的资料进入串口模式，将固件烧写进硬件，重启之后就进入了熟悉的OpenWRT界面了。</li>
-<li>OpenWRT现在的版本变漂亮了，但是本质的配置没有变，通过有线连接<code>telnet</code>进入后设置root密码，然后就可以<code>ssh</code>了。基本的无线配置我选择wan使用<code>dhcp</code>自动获得上次有线网络的IP，无线通过PSK加密连接，重启后，可以用无线连接了，有了基本的使用功能了。</li>
-<li>最后，我担心又会重蹈覆辙，以后再刷出问题还要拆开TTL，虽然也不困难，但是还是有些麻烦的，我想还是直接刷一个“不死”u-boot“吧。在网上找到了资料，有一个完整的百度盘的完整包，里面包含了上传下载工具和固件，果断按提示改了u-boot.bin中的MAC地址，然后使用SCP下载uboot和art备份以及上传更新过的u-boot.bin文件（还好是在MacOS下，上传下载容易一些），最后将新的uboot刷入，重启搞定。其实，在这个过程中我遇到了uboot分区上锁无法刷入的问题，问题出在我没有用那个完整包里的update*.bin的OpenWRT固件解锁uboot，后来在ssh下先解锁uboot后，就可以成功的替换为<strong>不死</strong>u-boot啦。</li>
-</ul>
-<p>ps：备忘一下TTL和EasyOpenJTAG的连线接法，</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">TXD-&gt;TP_IN  //绿——黑</span><br><span class="line">RXD-&gt;TP_OUT //蓝——红</span><br><span class="line">GND-&gt;GND    //黄——灰</span><br></pre></td></tr></table></figure>
-<p>秀一下：</p>
-<p><img src="/images/blog_imgs/703n.png" alt="703n"></p>
+        <p>I know it is a common command for <strong>Vimer</strong>s, however, I knew it just now.</p>
+<p><code>:write ++enc=utf-8 test.m</code></p>
+<p>Done!</p>
 
       
 	</div>
 
 <div class="meta">
 	
-		<span class="comments"><a href="https://ev6r.github.io/2016/11/22/2016-11-21-tplink703n-hacking/#disqus_thread">Comments</a></span>
+		<span class="comments"><a href="https://ev6r.github.io/2015/11/27/2015-11-26-a-command-for-utf-8-encoding/#disqus_thread">Comments</a></span>
 	
 </div>
 </article>
 
   <article class="post">
 	<h2 class="title">
-		<a href="2016/10/26/2016-10-25-cong-tou-kai-shi-you-he-fang/">从头开始又何妨</a>
+		<a href="2015/11/24/2015-11-23-xvim-playboy/">XVim playboy</a>
 	</h2>
     <div class="entry-content">
     <div class="meta">
-      <div class="date">Published on: <time datetime="2016-10-25T19:43:00.000Z" itemprop="datePublished">Oct 25, 2016</time>
+      <div class="date">Published on: <time datetime="2015-11-23T18:04:00.000Z" itemprop="datePublished">Nov 23, 2015</time>
 </div>
       <div class="tags">Tags: 
 
@@ -227,25 +171,27 @@
 </div>
     </div>
       
-        <p>过去总是害怕自己的生活不够稳定，但是生活嘛，哪里有一直很稳定的呢？无论是身处高位，还是在于平常之地。日子都会在一天天的过去，一天天的变化着。只要你在努力着，机遇还是会有的。如果真的当你闭上双眼的那一刻时，机遇还是不曾到来，那，也只好安心的去了。<br>有了平静和心安，才能看到生活的五彩斑斓。</p>
+        <p>Today I found <strong>XVim</strong> which is a plugin for XCode, it offers a flood of funcitons of <strong>VIM</strong> for Xcode. Actrually, I only wnat the navigation functions. <em>h,j,k,l,w,e,b</em> are engough for me. When coding in XCode, I am comfortable with Apple’s touchboard. In <strong>Insert</strong> mode, I also prefer to use <strong>Emacs</strong>-like navigations, <code>ctrl + n, p, e, a, d</code>. So I made some modification in the <code>rc</code> file of <strong>XVim</strong>, a <code>.xvimrc</code> file in my home directory:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">inoremap &lt;C-e&gt; &lt;C-o&gt;$</span><br><span class="line">inoremap &lt;C-n&gt; &lt;Down&gt;</span><br><span class="line">inoremap &lt;C-p&gt; &lt;Up&gt;</span><br><span class="line">inoremap jk &lt;Esc&gt;</span><br></pre></td></tr></table></figure>
+<p>That’s it, enjoy!</p>
 
       
 	</div>
 
 <div class="meta">
 	
-		<span class="comments"><a href="https://ev6r.github.io/2016/10/26/2016-10-25-cong-tou-kai-shi-you-he-fang/#disqus_thread">Comments</a></span>
+		<span class="comments"><a href="https://ev6r.github.io/2015/11/24/2015-11-23-xvim-playboy/#disqus_thread">Comments</a></span>
 	
 </div>
 </article>
 
   <article class="post">
 	<h2 class="title">
-		<a href="2016/10/25/2016-10-25-how-to-build-muscles/">How to build muscles</a>
+		<a href="2015/11/21/2015-11-20-vim-as-a-new-user/">Vim as a new user</a>
 	</h2>
     <div class="entry-content">
     <div class="meta">
-      <div class="date">Published on: <time datetime="2016-10-25T15:49:00.000Z" itemprop="datePublished">Oct 25, 2016</time>
+      <div class="date">Published on: <time datetime="2015-11-20T23:09:00.000Z" itemprop="datePublished">Nov 20, 2015</time>
 </div>
       <div class="tags">Tags: 
 
@@ -253,11 +199,102 @@
 </div>
     </div>
       
-        <h1 id="Get-great-muscles"><a href="#Get-great-muscles" class="headerlink" title="Get great muscles"></a>Get great muscles</h1><p>Some people spend years trying to put on muscle or get more toned, but just can’t seem to make it happen. Others see themselves in the mirror wearing a swimsuit, and realize that they want to get more toned or fill out some muscle, but just don’t know where to start. Whether you want to bulk up, get more curvaceous calves, enhance your chest, or achieve any other muscle building goal, you’re about to get 10 tips to build muscle fast.</p>
-<h2 id="Muscle-Building-Tip-1-Lift"><a href="#Muscle-Building-Tip-1-Lift" class="headerlink" title="Muscle Building Tip #1: Lift"></a>Muscle Building Tip #1: Lift</h2><p>In “How To Build Muscle,” you learn that the only way to significantly increase muscle is to cause muscle fibers to tear, and the only way to do that is to subject your muscles to external forces to which they’re not accustomed. So unless you have a heavy manual labor job like moving or construction, you must get your hands on barbells, dumbbells, and weight lifting machines to see significant muscle building progress.<br>
+        <p>突然发现Vim的使用还是不够好，里面很多东西还没有熟练的使用，因此又折腾了一下。可能还是越简单的东西越容易高效的使用吧。这次折腾的几个功能都是最常用的，我想用Vim来完成基本的文字输入、记录、博客、Shell脚本、C、C++的编程应该对于我来说是比较全面的了。</p>
+<ol>
+<li>显示行号</li>
+<li>高亮110列的标志</li>
+<li>自动()、{}、[]、””、’’的配对出现</li>
+<li>NERDTree的使用</li>
+<li>superTab可以对Tab后的字符进行预测，在已有的文字中寻找</li>
+<li>easymotion可以通过s来查找文件中的任意一个字符然后通过相应的字母来跳转</li>
+<li>vimacs可以在vim中使用eamcs的几个移动光标的快捷键，在Mac OSX下使用毫无违和感，:P</li>
+<li>lastplace让Vim记住一个文件上次编辑的位置，下次打开后可以直接显示</li>
+<li>Vundle.vim一个插件管理的工具，可以轻松的安装其他的一些插件，但是它是依托于Github的，so，你懂的</li>
+</ol>
+
+      
+	</div>
+
+<div class="meta">
+	
+		<span class="comments"><a href="https://ev6r.github.io/2015/11/21/2015-11-20-vim-as-a-new-user/#disqus_thread">Comments</a></span>
+	
+</div>
+</article>
+
+  <article class="post">
+	<h2 class="title">
+		<a href="2015/05/11/2015-05-10-good/">Good</a>
+	</h2>
+    <div class="entry-content">
+    <div class="meta">
+      <div class="date">Published on: <time datetime="2015-05-10T22:43:00.000Z" itemprop="datePublished">May 10, 2015</time>
+</div>
+      <div class="tags">Tags: 
+
+
+</div>
+    </div>
+      
+        <p>Today, I was surprised that Google revised the smart zoom in Chrome. I submitted the report several weeks ago asking if Chrome can act like Safari to automatically zoom the website text content when you double click on the content.</p>
+<p>I want to say: Good Google, thank you.</p>
+
+      
+	</div>
+
+<div class="meta">
+	
+		<span class="comments"><a href="https://ev6r.github.io/2015/05/11/2015-05-10-good/#disqus_thread">Comments</a></span>
+	
+</div>
+</article>
+
+  <article class="post">
+	<h2 class="title">
+		<a href="2015/04/29/2015-04-29-fortran/">Fortran</a>
+	</h2>
+    <div class="entry-content">
+    <div class="meta">
+      <div class="date">Published on: <time datetime="2015-04-29T01:12:00.000Z" itemprop="datePublished">Apr 29, 2015</time>
+</div>
+      <div class="tags">Tags: 
+
+
+</div>
+    </div>
+      
+        <p>Fortran is a great programming language, but I am not good at it. More effort are needed. Come on, boy!</p>
+
+      
+	</div>
+
+<div class="meta">
+	
+		<span class="comments"><a href="https://ev6r.github.io/2015/04/29/2015-04-29-fortran/#disqus_thread">Comments</a></span>
+	
+</div>
+</article>
+
+  <article class="post">
+	<h2 class="title">
+		<a href="2015/04/19/2015-04-19-how-to-stop-giving-a-f-star-star-ck-what-people-think/">How to Stop Giving a F**ck What People Think</a>
+	</h2>
+    <div class="entry-content">
+    <div class="meta">
+      <div class="date">Published on: <time datetime="2015-04-19T00:10:00.000Z" itemprop="datePublished">Apr 19, 2015</time>
+</div>
+      <div class="tags">Tags: 
+
+
+</div>
+    </div>
+      
+        <p>从这个题目上来看“如何不再在意别人眼中的你”虽然作者用词激烈点，但是相信也是他（她）自己的心声。此文有鸡汤文的嫌疑，然偶尔给自己充下电也是件不错的事，下面是我边读的感想和边翻译的内容。</p>
+<p>We’re all guilty. Every day from the moment we wake up, we live our lives caring what other people think of us.<br>我们都是有罪的。每一天从我们醒来起，我们始终都在关心着别人是怎么看待自己的。</p>
+<p>We accept the status quo for what it is because everyone around us does. We tip toe our way through life by doing things in order to please others, not because it’s what we believe in. Eventually our actions, appearances, and lives become molded by how we think other people perceive us. How are these pants going to make me look? What will my colleagues think if I spoke out? Are those people talking shit behind my back? If I take this job, what will my friends and family think of me?<br>我们一直接受这种现状的原因是我们周围其他的人也是这样。我们小心冀冀的这样做去取悦别人，而所做的这些东西却不是我们信仰的。最终，我们的行为、外貌打扮和整个生活都被“别人是怎么看我的”这个标准左右着。比如下面的这些问题：一条裤子好不好看？我讲一些话同事会怎么看？有别人在我背后说坏话么？如果我做这份工作我的朋友和家人会怎么看我呢？<br>
         
           </p><p class="more-link">
-            <a href="2016/10/25/2016-10-25-how-to-build-muscles/#more">Read More</a>
+            <a href="2015/04/19/2015-04-19-how-to-stop-giving-a-f-star-star-ck-what-people-think/#more">Read More</a>
           </p>
         
       
@@ -265,18 +302,18 @@
 
 <div class="meta">
 	
-		<span class="comments"><a href="https://ev6r.github.io/2016/10/25/2016-10-25-how-to-build-muscles/#disqus_thread">Comments</a></span>
+		<span class="comments"><a href="https://ev6r.github.io/2015/04/19/2015-04-19-how-to-stop-giving-a-f-star-star-ck-what-people-think/#disqus_thread">Comments</a></span>
 	
 </div>
 </article>
 
   <article class="post">
 	<h2 class="title">
-		<a href="2016/07/06/2016-07-05-finally/">Finally</a>
+		<a href="2015/04/02/2015-04-02-osxxia-wu-bi-dao-di-na-jia-qiang-?/">OSX下五笔到底哪家强？</a>
 	</h2>
     <div class="entry-content">
     <div class="meta">
-      <div class="date">Published on: <time datetime="2016-07-05T20:35:00.000Z" itemprop="datePublished">Jul 5, 2016</time>
+      <div class="date">Published on: <time datetime="2015-04-02T13:41:00.000Z" itemprop="datePublished">Apr 2, 2015</time>
 </div>
       <div class="tags">Tags: 
 
@@ -284,26 +321,30 @@
 </div>
     </div>
       
-        <p>I just wanna post a screenshot of a game.</p>
-<p><img src="/images/blog_imgs/nihilumbra.PNG" alt="Nihilumbra"></p>
-
+        <p>软件综合症晚期的我，已经不期望能够康复了~<br><strong>清歌</strong>五笔输入法在保证功能齐全的前提下已经相当稳定了，但是我还是想折腾一下「神级输入」：鼠须管。<br>过去我一听说它的名字就不想去使用了，但是网上叫好的呼声一片，我禁不住蛊惑花了几个小时折腾了一把，得到「果然是神级输入法」的结论。<br>先说我达到的效果：</p>
+<img src="/images/blog_imgs/sq.png" width="320" height="240">
+        
+          <p class="more-link">
+            <a href="2015/04/02/2015-04-02-osxxia-wu-bi-dao-di-na-jia-qiang-?/#more">Read More</a>
+          </p>
+        
       
 	</div>
 
 <div class="meta">
 	
-		<span class="comments"><a href="https://ev6r.github.io/2016/07/06/2016-07-05-finally/#disqus_thread">Comments</a></span>
+		<span class="comments"><a href="https://ev6r.github.io/2015/04/02/2015-04-02-osxxia-wu-bi-dao-di-na-jia-qiang-?/#disqus_thread">Comments</a></span>
 	
 </div>
 </article>
 
   <article class="post">
 	<h2 class="title">
-		<a href="2016/04/29/2016-04-28-twinkle-star/">Twinkle Star</a>
+		<a href="2015/01/22/2015-01-21-ipaddian-rong-bi-yu-ruan-jian-dui-bi/">iPad电容笔与软件对比</a>
 	</h2>
     <div class="entry-content">
     <div class="meta">
-      <div class="date">Published on: <time datetime="2016-04-28T21:49:00.000Z" itemprop="datePublished">Apr 28, 2016</time>
+      <div class="date">Published on: <time datetime="2015-01-21T21:23:00.000Z" itemprop="datePublished">Jan 21, 2015</time>
 </div>
       <div class="tags">Tags: 
 
@@ -311,102 +352,378 @@
 </div>
     </div>
       
-        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">&apos;Generate starry sky    [STARS.BAS]</span><br><span class="line"> DIM level(3)           &apos;magnitude levels</span><br><span class="line"> RANDOMIZE TIMER        &apos;so that each sky is different</span><br><span class="line"> SCREEN 12              &apos;640x480 pixels</span><br><span class="line"> m1 = 3                 &apos;average number of mag 1 stars (default 3)</span><br><span class="line"> r = 8                  &apos;star number ratio per magnitude (default 8)</span><br><span class="line"> totalstars = m1 * (1 + r + r * r + r * r * r)  &apos;# of stars in the sky</span><br><span class="line"> level(1) = m1 / totalstars                &apos;compute levels to make</span><br><span class="line"> level(2) = m1 * (1 + r) / totalstars      &apos;4 different magnitudes</span><br><span class="line"> level(3) = m1 * (1 + r + r * r) / totalstars</span><br><span class="line"> DO                     &apos;this is the loop that generates a new sky</span><br><span class="line">   CLS                  &apos;clear screen/sky</span><br><span class="line">   FOR i = 1 TO totalstars      &apos;generate stars one by one</span><br><span class="line">     xp = RND * 640             &apos;x position on the screen</span><br><span class="line">     yp = RND * 480             &apos;y position on the screen</span><br><span class="line">     magtst = RND               &apos;generate a number to determine magnitude</span><br><span class="line">     mag = 4                    &apos;start by assuming faintest star</span><br><span class="line">     IF magtst &lt; level(3) THEN mag = 3  &apos;then brighten if</span><br><span class="line">     IF magtst &lt; level(2) THEN mag = 2  &apos;generated random number is</span><br><span class="line">     IF magtst &lt; level(1) THEN mag = 1  &apos;within specified level</span><br><span class="line">     SELECT CASE mag            &apos;now plot star according to magnitude</span><br><span class="line">       CASE 4</span><br><span class="line">         PSET (xp, yp), 8       &apos;faintest star (try changing colour to 7?)</span><br><span class="line">       CASE 3</span><br><span class="line">         PSET (xp, yp), 15      &apos;brightest star with a single point</span><br><span class="line">       CASE 2</span><br><span class="line">         CIRCLE (xp, yp), 1, 15 &apos;increase app brightness by increasing size</span><br><span class="line">         PAINT (xp, yp), 15</span><br><span class="line">       CASE 1</span><br><span class="line">         CIRCLE (xp, yp), 1.5, 15  &apos;brightest stars have largest area</span><br><span class="line">         PAINT (xp, yp), 15</span><br><span class="line">     END SELECT</span><br><span class="line">   NEXT i               &apos;go back and plot all stars until finished</span><br><span class="line">   DO</span><br><span class="line">     a$ = INKEY$                            &apos;wait for a keyboard input</span><br><span class="line">   LOOP WHILE a$ &lt;&gt; CHR$(27) AND a$ &lt;&gt; &quot;q&quot;  &apos;ESC generates new sky</span><br><span class="line"> LOOP WHILE a$ &lt;&gt; &quot;q&quot;                       &apos;q quits program</span><br><span class="line">END</span><br></pre></td></tr></table></figure>
-
-      
-	</div>
-
-<div class="meta">
-	
-		<span class="comments"><a href="https://ev6r.github.io/2016/04/29/2016-04-28-twinkle-star/#disqus_thread">Comments</a></span>
-	
-</div>
-</article>
-
-  <article class="post">
-	<h2 class="title">
-		<a href="2016/01/26/2016-01-26-bai-xing/">百姓</a>
-	</h2>
-    <div class="entry-content">
-    <div class="meta">
-      <div class="date">Published on: <time datetime="2016-01-26T13:55:00.000Z" itemprop="datePublished">Jan 26, 2016</time>
-</div>
-      <div class="tags">Tags: 
-
-
-</div>
-    </div>
-      
-        <p>:(</p>
-<p>兴，百姓苦；<br>亡，百姓苦。</p>
-
-      
-	</div>
-
-<div class="meta">
-	
-		<span class="comments"><a href="https://ev6r.github.io/2016/01/26/2016-01-26-bai-xing/#disqus_thread">Comments</a></span>
-	
-</div>
-</article>
-
-  <article class="post">
-	<h2 class="title">
-		<a href="2016/01/11/2016-01-11-xcode-debug-c-plus-plus-array/">XCode Debug C++ array</a>
-	</h2>
-    <div class="entry-content">
-    <div class="meta">
-      <div class="date">Published on: <time datetime="2016-01-11T10:14:00.000Z" itemprop="datePublished">Jan 11, 2016</time>
-</div>
-      <div class="tags">Tags: 
-
-
-</div>
-    </div>
-      
-        <p>I got a bad cold, :&lt;, and it’s cold now.</p>
-<p>However, I got a piece of code to check the contents of a pointer:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">(lldb) memory read -t double -c `10` _new</span><br><span class="line">(double) 0x11003b000 = 141.29869002655289</span><br><span class="line">(double) 0x11003b008 = 141.29869002655286</span><br><span class="line">(double) 0x11003b010 = 141.40261994689422</span><br><span class="line">(double) 0x11003b018 = 140.80829186560609</span><br><span class="line">(double) 0x11003b020 = 139.10087794852376</span><br><span class="line">(double) 0x11003b028 = 137.67006305574671</span><br><span class="line">(double) 0x11003b030 = 138.72145263361659</span><br><span class="line">(double) 0x11003b038 = 140.38247728672476</span><br><span class="line">(double) 0x11003b040 = 141.17656578812017</span><br><span class="line">(double) 0x11003b048 = 140.41071936746977</span><br></pre></td></tr></table></figure>
-<p>Life is not that bad.</p>
-
-      
-	</div>
-
-<div class="meta">
-	
-		<span class="comments"><a href="https://ev6r.github.io/2016/01/11/2016-01-11-xcode-debug-c-plus-plus-array/#disqus_thread">Comments</a></span>
-	
-</div>
-</article>
-
-  <article class="post">
-	<h2 class="title">
-		<a href="2015/12/15/2015-12-14-popclip/">PopClip</a>
-	</h2>
-    <div class="entry-content">
-    <div class="meta">
-      <div class="date">Published on: <time datetime="2015-12-14T16:50:00.000Z" itemprop="datePublished">Dec 14, 2015</time>
-</div>
-      <div class="tags">Tags: 
-
-
-</div>
-    </div>
-      
-        <p>It is a productive tool on Mac OS, which can pop a small menu for the common operations on <strong>text</strong>s, like <em>Copy</em>, <em>Paste</em>, <em>Looking up in a dictionary</em> et al. Additionally, I add some customized extensions, they are:</p>
+        <p>在iPad air 2上做了测试，先说笔吧。我一共买了三支：</p>
 <ul>
-<li>PDF highlights</li>
-<li>Youdao</li>
-<li>Join words with _</li>
+<li>Bamboo stylus fineline: <a href="http://www.wacom.com/en-us/products/stylus/bamboo-stylus-fineline" target="_blank" rel="noopener">http://www.wacom.com/en-us/products/stylus/bamboo-stylus-fineline</a></li>
 </ul>
-<p>My version is 1.4.10, enjoy it.</p>
+<p>握感不错，但是在屏幕上书写的体验特别差，笔尖会出现较大的偏移，而且在非自己软件里会出现滞后现象。</p>
+<p>推荐指数：#</p>
+<ul>
+<li>Bamboo stylus solo:<a href="http://www.wacom.com/en-us/products/stylus/bamboo-stylus-solo" target="_blank" rel="noopener">http://www.wacom.com/en-us/products/stylus/bamboo-stylus-solo</a></li>
+</ul>
+<p>外观漂亮，精致带笔帽。握感也很出色，果然不愧是Wacom出品的。随身携带很方便，因为没有蓝牙连接功能，所以无压力感应设置，作为一支日常的写写画画的笔足够。</p>
+<p>推荐指数：####</p>
+<ul>
+<li>Pencil by FiftyThree:<a href="http://www.fiftythree.com/pencil" target="_blank" rel="noopener">http://www.fiftythree.com/pencil</a></li>
+</ul>
+<p>这个笔是我感觉功能和外观都很满意的一支，配合自家的Paper软件来随手画点东西，记点东西都很不错。充一次电可以用好久，不必担心用一段时间就没电。握感上可能有一点点不适应，因为它是扁的，但是手感上绝对舒服。可以与iPad蓝牙连接，也可以直接当普通电容笔使用。</p>
+<p>推荐指数：#####<br>
+        
+          </p><p class="more-link">
+            <a href="2015/01/22/2015-01-21-ipaddian-rong-bi-yu-ruan-jian-dui-bi/#more">Read More</a>
+          </p>
+        
+      
+	</div>
+
+<div class="meta">
+	
+		<span class="comments"><a href="https://ev6r.github.io/2015/01/22/2015-01-21-ipaddian-rong-bi-yu-ruan-jian-dui-bi/#disqus_thread">Comments</a></span>
+	
+</div>
+</article>
+
+  <article class="post">
+	<h2 class="title">
+		<a href="2015/01/09/2015-01-09-liu-mei-xiao-jie-([?]-)/">留美小结（一）</a>
+	</h2>
+    <div class="entry-content">
+    <div class="meta">
+      <div class="date">Published on: <time datetime="2015-01-09T00:25:00.000Z" itemprop="datePublished">Jan 9, 2015</time>
+</div>
+      <div class="tags">Tags: 
+
+
+</div>
+    </div>
+      
+        <p>来美国的一年多里，在实验室里，学到了很多的东西，得到了实验室同事和同学的很多帮助。尤其是从老板身上学到了很多做人与做学问的道理。首先在做人上，理解了为什么为人正直是处事的根本，原因是人与人交流是建立在诚信的基础上，而诚信的直接做法就是正义、直率的对待他人。其次，在美国的社会生活中要建立自由、民主和平等的思想，先进的思想才能带来创造力和灵感。再次，看待问题和困难时要从多个角度来想，有时候换到另外一个角度可能就豁然开朗了。最后是在做学问上，从老板对我的严格要求上，我已经深深体会到做学问的不易之处，除了科研方法的严谨与实验数据处理技巧外，甚至要注意到在论文撰写中的每一个单词、每一句话，不仅仅要从语法上讲得通顺，而且要注意到逻辑表达的准确性，让我受益非浅。虽然在这一年多的学习和工作中没有在老板的指导下发表任何论文，但是在老板的指导下学习了以下内容：</p>
+<ul>
+<li>Matlab 的编程规范</li>
+<li>矩阵求逆的快速算法</li>
+<li>Fortran 代码 到 Matlab 代码的转换方法</li>
+</ul>
+<p>以此为记，铭刻入骨。</p>
 
       
 	</div>
 
 <div class="meta">
 	
-		<span class="comments"><a href="https://ev6r.github.io/2015/12/15/2015-12-14-popclip/#disqus_thread">Comments</a></span>
+		<span class="comments"><a href="https://ev6r.github.io/2015/01/09/2015-01-09-liu-mei-xiao-jie-([?]-)/#disqus_thread">Comments</a></span>
+	
+</div>
+</article>
+
+  <article class="post">
+	<h2 class="title">
+		<a href="2014/11/19/2014-11-18-mac-os-ruan-jian-tui-jian-lie-biao/">Mac OS 软件推荐列表</a>
+	</h2>
+    <div class="entry-content">
+    <div class="meta">
+      <div class="date">Published on: <time datetime="2014-11-18T16:15:00.000Z" itemprop="datePublished">Nov 18, 2014</time>
+</div>
+      <div class="tags">Tags: 
+
+
+</div>
+    </div>
+      
+        <p>我没有离开，我还在，还好我还在。</p>
+<p>用 Mac OS X 已经半年多了，总想总结总结，就把我的纠结与不纠结都纠结的写在这里吧，给自己的一个理由，已经折腾过的理由。</p>
+<p>Macbook 真的很适合科研和学习使用，至少对于我这样的理工科的很适合。以下的推荐不仅仅是我自己的摸索也参考了诸多网站和大神的列表。国内用的比较多的网站就是 MacGG 了，不要和我说版权问题，相信很多人和我一样，买软件之前先用用 x 版的试用下。</p>
+<h2 id="学术类"><a href="#学术类" class="headerlink" title=" 学术类"></a> 学术类</h2><ul>
+<li><p>Office 2011:可能出现不兼容其他版本的情况，但是，不管再怎么不兼容还是要有的软件。（而且，我感觉也不错的用着）</p>
+</li>
+<li><p>Papers:一个学术论文管理、发掘和论文参考文献辅助工具。有学生折扣。（当然，其他的类似软件也都可以，但是我认为无论是哪一个软件，一定要坚持使用上三个月之后，有一定的自己数据的积累，这样才会慢慢对你的需求明确起来）</p>
+</li>
+<li><p>OmniGraffle:一个画示意图、结构框图、原理图的矢量工具。价格有点贵，但是功能的确很优秀。</p>
+</li>
+<li><p>DataGraph:做出专业曲线图、分析结果图、统计分布图等的数据可视化工具。也有点贵，图的效果还是很专业的。另外，如果希望使用免费工具的话，可以选择<strong>Plot2</strong>。但是两个工具的学习曲线还是有一点区别的。</p>
+</li>
+<li><p>LaTeXiT 和 MathType:因为做论文可能会用到 Office 2011 和 LaTeX 两种平台，所以这两个公式编辑器还是都准备上。</p>
+</li>
+<li><p>Seashore:很喜欢的一个免费画图小工具，可以在实验结果图上做一些简单的标注，功能不多，但简单实用。</p>
+</li>
+</ul>
+<p>To be continued …</p>
+
+      
+	</div>
+
+<div class="meta">
+	
+		<span class="comments"><a href="https://ev6r.github.io/2014/11/19/2014-11-18-mac-os-ruan-jian-tui-jian-lie-biao/#disqus_thread">Comments</a></span>
+	
+</div>
+</article>
+
+  <article class="post">
+	<h2 class="title">
+		<a href="2014/08/17/2014-08-17-you-de-gou-wei-shi-yao-ba-wan-tian-de-na-yao-gan-jing-?/">有的狗为什么把碗舔的那么干净？</a>
+	</h2>
+    <div class="entry-content">
+    <div class="meta">
+      <div class="date">Published on: <time datetime="2014-08-17T09:04:00.000Z" itemprop="datePublished">Aug 17, 2014</time>
+</div>
+      <div class="tags">Tags: 
+
+
+</div>
+    </div>
+      
+        <p>这是一个令人悲伤的故事，自从狗儿们被称为狗，它们就已经变成了人类的朋友。一同抵御外敌、相依为命。可是有一天人们不再需要他们的保护了，狗的就有了其他的身份：食、色。它们没有选择离开人类回归自然，不是因为它们回归自然后生存不下去（我见过的狗基本上都属于杂食，吃草估计也可以生存），也不是因为它们没有这个智商，而是它们选择了陪伴。这是一个客观的原因。狗的祖祖辈辈都是跟人类一起生活着，虽然有过流浪，有过被捕杀和驱逐，但是它们都是围绕在人的周围。如果真的像科幻电影里的那样有一天《人猿崛起》，我更加可能相信的是崛起的主角是狗们。因为狗与人类共同生活了这么久，相比猿类狗比他们更加了解人类。还好，直到今天狗还是人类的好朋友，可能关系更加好了。</p>
+<p>那么，为什么有的狗把它吃饭的碗舔的那么干净呢？在我看来它是为了表示自己没吃饱。当喂它的人看到被舔干净的碗的时候就会给它更多一点食物。原因很简单。但是说好的悲伤呢？说好的故事呢？</p>
+<p>悲伤的是，我们很多人不也是一只愿意把碗舔干净的狗么？我们时刻生存在一个人与狗的世界里。好，还是不好？</p>
+
+      
+	</div>
+
+<div class="meta">
+	
+		<span class="comments"><a href="https://ev6r.github.io/2014/08/17/2014-08-17-you-de-gou-wei-shi-yao-ba-wan-tian-de-na-yao-gan-jing-?/#disqus_thread">Comments</a></span>
+	
+</div>
+</article>
+
+  <article class="post">
+	<h2 class="title">
+		<a href="2014/08/10/2014-08-10-zen-yao-zuo-xue-wen-([?]-)/">怎么做学问（一）</a>
+	</h2>
+    <div class="entry-content">
+    <div class="meta">
+      <div class="date">Published on: <time datetime="2014-08-10T12:03:00.000Z" itemprop="datePublished">Aug 10, 2014</time>
+</div>
+      <div class="tags">Tags: 
+
+
+</div>
+    </div>
+      
+        <p>这个话题太大了，不是我这样的小小菜鸟可以发表公识的见解的，所以，这里我只是说我个人的感受，情况如有特殊相似，纯属「巧合」。</p>
+<p>没有人在一开始就会对某个科研方向感兴趣的，每个人都有一个探索的过程，当然有的「人才」从小就有志向做什么的就排除了。从而，无论大家想在科研的中获得什么 or 为科研贡献什么的时候都需要考虑的一个问题是：我要做什么？</p>
+<p><strong>我要做什么</strong> 这个问题可能人生于斯世一生要求解的问题之一，但是在科研的道路上这个却是要首先要确定的问题。下面有几个途径可以快速的明确这个问题的答案：<br>
+        
+          </p><p class="more-link">
+            <a href="2014/08/10/2014-08-10-zen-yao-zuo-xue-wen-([?]-)/#more">Read More</a>
+          </p>
+        
+      
+	</div>
+
+<div class="meta">
+	
+		<span class="comments"><a href="https://ev6r.github.io/2014/08/10/2014-08-10-zen-yao-zuo-xue-wen-([?]-)/#disqus_thread">Comments</a></span>
+	
+</div>
+</article>
+
+  <article class="post">
+	<h2 class="title">
+		<a href="2014/08/08/2014-08-07-ebates-is-great/">EBATES is great</a>
+	</h2>
+    <div class="entry-content">
+    <div class="meta">
+      <div class="date">Published on: <time datetime="2014-08-07T18:11:00.000Z" itemprop="datePublished">Aug 7, 2014</time>
+</div>
+      <div class="tags">Tags: 
+
+
+</div>
+    </div>
+      
+        <p>I don’t know what support <strong>EBATES</strong> to offer so much discount for online shopping, but I really get some checks back~ Cool!</p>
+<p>Check this:<br><a href="http://www.ebates.com/rf.do?referrerid=GsdQOXZljfBQ9J6TWDfRDw%3D%3D&amp;eeid=26471 http://www.ebates.com" target="_blank" rel="noopener">goto</a></p>
+
+      
+	</div>
+
+<div class="meta">
+	
+		<span class="comments"><a href="https://ev6r.github.io/2014/08/08/2014-08-07-ebates-is-great/#disqus_thread">Comments</a></span>
+	
+</div>
+</article>
+
+  <article class="post">
+	<h2 class="title">
+		<a href="2014/07/23/2014-07-23-install-ncl-slash-ncar-on-mac-os-x/">Install NCL/NCAR on Mac OS X</a>
+	</h2>
+    <div class="entry-content">
+    <div class="meta">
+      <div class="date">Published on: <time datetime="2014-07-23T09:46:00.000Z" itemprop="datePublished">Jul 23, 2014</time>
+</div>
+      <div class="tags">Tags: 
+
+
+</div>
+    </div>
+      
+        <p>The NCAR Command Language (NCL) is the coolest graphics tool I’ve ever seen. NCL has robust file input and output. It can read and write netCDF-3, netCDF-4 classic, netCDF-4, HDF4, binary, and ASCII data. It can read HDF-EOS2, HDF-EOS5, GRIB1, GRIB2, and OGR files. Though I don’t know most of the format above, but I saw its perfect plot on other one’s paper, so I decide to install it on my <em>Macbook</em> with Mac OS X 10.9.4.</p>
+<p>Please look into this site and finish reading it before starting to step into the door.</p>
+<p><a href="https://www.ncl.ucar.edu/Download/macosx.shtml#ESGAccountURL Need an account" target="_blank" rel="noopener">Official site</a></p>
+<p>I preferred to run the pre-compiled version, so the only problem after I installed according to the official guideline is the version of my <strong>GCC</strong>. Then I need to update <strong>GCC</strong> on my Mac, since I already have homebrew installed, <code>brew install gcc48</code> will install the new version by itself. It takes about 30 minutes to compile from the source. Be patient!</p>
+<p>The most complex work is setting some environmental variables, nothing special, just type what are recommended by the guideline. You won’t miss it.</p>
+
+      
+	</div>
+
+<div class="meta">
+	
+		<span class="comments"><a href="https://ev6r.github.io/2014/07/23/2014-07-23-install-ncl-slash-ncar-on-mac-os-x/#disqus_thread">Comments</a></span>
+	
+</div>
+</article>
+
+  <article class="post">
+	<h2 class="title">
+		<a href="2014/07/09/2014-07-09-ru-he-zai-ibookzhong-fu-zhi-jiao-chang-nei-rong/">如何在iBook中复制较长内容</a>
+	</h2>
+    <div class="entry-content">
+    <div class="meta">
+      <div class="date">Published on: <time datetime="2014-07-09T15:47:00.000Z" itemprop="datePublished">Jul 9, 2014</time>
+</div>
+      <div class="tags">Tags: 
+
+
+</div>
+    </div>
+      
+        <p>最近在看「囚徒健身」，因为相摘抄一点笔记所以才发现原来iBook为了保护版权和避免抄袭，限制了一次能复制的文本内容（多少个字的限制不记不清了），这种机制是好的，但是并不是所有的情况都适合，经过搜索终于找到一个能够在iBook里复制较多文本的办法如下：</p>
+<ul>
+<li>选中要复制的段落</li>
+<li>在Context Menu里找到More下面的Search Wikipedia</li>
+<li>然后在Safari里或者你的浏览器里就可以看到一个搜索文本框里的文本了</li>
+<li>复制 or 剪切里面的文本到你想放的地方就ok了</li>
+</ul>
+<p>畅享Macbook下阅读的快乐吧。</p>
+
+      
+	</div>
+
+<div class="meta">
+	
+		<span class="comments"><a href="https://ev6r.github.io/2014/07/09/2014-07-09-ru-he-zai-ibookzhong-fu-zhi-jiao-chang-nei-rong/#disqus_thread">Comments</a></span>
+	
+</div>
+</article>
+
+  <article class="post">
+	<h2 class="title">
+		<a href="2014/06/26/2014-06-25-application-uninstall/">Application Uninstall</a>
+	</h2>
+    <div class="entry-content">
+    <div class="meta">
+      <div class="date">Published on: <time datetime="2014-06-25T19:25:00.000Z" itemprop="datePublished">Jun 25, 2014</time>
+</div>
+      <div class="tags">Tags: 
+
+
+</div>
+    </div>
+      
+        <p>As a newer to <strong>Mac OS X</strong>, I don’t know how to uninstall a package as I did on the <strong>Windows</strong>. Someone may tell me to directly delete the <em>app</em> and it will be uninstalled, however, from my experience with <strong>Linux</strong> distributions, I feel that may not true. So, I did some research and found that there are a lot of methods about how to uninstall an application on <strong>Mac OS</strong> cleanly.</p>
+<p>There is a free application named <strong>AppCleaner</strong> and a $7.99 <strong>AppDelete</strong>, I tried both and didn’t find any difference between them, so I choose the free one. Enjoy you Mac~</p>
+
+      
+	</div>
+
+<div class="meta">
+	
+		<span class="comments"><a href="https://ev6r.github.io/2014/06/26/2014-06-25-application-uninstall/#disqus_thread">Comments</a></span>
+	
+</div>
+</article>
+
+  <article class="post">
+	<h2 class="title">
+		<a href="2014/05/28/2014-05-27-huan-shuo-macxia-de-wu-bi-shu-ru-fa/">还说Mac下的五笔输入法</a>
+	</h2>
+    <div class="entry-content">
+    <div class="meta">
+      <div class="date">Published on: <time datetime="2014-05-27T23:14:00.000Z" itemprop="datePublished">May 27, 2014</time>
+</div>
+      <div class="tags">Tags: 
+
+
+</div>
+    </div>
+      
+        <p>我还是没有经得住诱惑,又体验了一把Mac下输入法的大战,我的路线是这样的:</p>
+<ul>
+<li>原生</li>
+<li>百度 and QQ</li>
+<li>搜狗</li>
+<li>清歌
+        
+          <p class="more-link">
+            <a href="2014/05/28/2014-05-27-huan-shuo-macxia-de-wu-bi-shu-ru-fa/#more">Read More</a>
+          </p>
+        
+      
+	</li></ul></div>
+
+<div class="meta">
+	
+		<span class="comments"><a href="https://ev6r.github.io/2014/05/28/2014-05-27-huan-shuo-macxia-de-wu-bi-shu-ru-fa/#disqus_thread">Comments</a></span>
+	
+</div>
+</article>
+
+  <article class="post">
+	<h2 class="title">
+		<a href="2014/05/15/2014-05-14-aviris-remote-data/">AVIRIS Remote Data</a>
+	</h2>
+    <div class="entry-content">
+    <div class="meta">
+      <div class="date">Published on: <time datetime="2014-05-14T22:20:00.000Z" itemprop="datePublished">May 14, 2014</time>
+</div>
+      <div class="tags">Tags: 
+
+
+</div>
+    </div>
+      
+        <p><img src="http://aviris.jpl.nasa.gov/data/images/avcubebig.gif" alt="Image Cube"><br>
+        
+          </p><p class="more-link">
+            <a href="2014/05/15/2014-05-14-aviris-remote-data/#more">Read More</a>
+          </p>
+        
+      
+	</div>
+
+<div class="meta">
+	
+		<span class="comments"><a href="https://ev6r.github.io/2014/05/15/2014-05-14-aviris-remote-data/#disqus_thread">Comments</a></span>
+	
+</div>
+</article>
+
+  <article class="post">
+	<h2 class="title">
+		<a href="2014/05/09/2014-05-09-ting/">听</a>
+	</h2>
+    <div class="entry-content">
+    <div class="meta">
+      <div class="date">Published on: <time datetime="2014-05-09T00:04:00.000Z" itemprop="datePublished">May 9, 2014</time>
+</div>
+      <div class="tags">Tags: 
+
+
+</div>
+    </div>
+      
+        <p>听,<br>细雨蒙蒙,<br>听,<br>花开无声,<br>唯风雨润物,<br>唯花开怡人.  </p>
+<p>听,<br>夜深人静,<br>听,<br>叶落窗棂,<br>唯独处清明,<br>唯静思动情.  </p>
+<p>万物终究溯其源,<br>报效国家心拳拳.<br>未敢遗忘父母爱,<br>夜思日思奋向前.  </p>
+
+      
+	</div>
+
+<div class="meta">
+	
+		<span class="comments"><a href="https://ev6r.github.io/2014/05/09/2014-05-09-ting/#disqus_thread">Comments</a></span>
 	
 </div>
 </article>
