@@ -103,6 +103,42 @@
 
   <article class="post">
 	<h2 class="title">
+		<a href="2013/10/15/2013-10-14-explore-chord-mode-in-emacs/">Explore key-chord mode in Emacs</a>
+	</h2>
+    <div class="entry-content">
+    <div class="meta">
+      <div class="date">Published on: <time datetime="2013-10-14T17:47:00.000Z" itemprop="datePublished">Oct 14, 2013</time>
+</div>
+      <div class="tags">Tags: 
+
+
+</div>
+    </div>
+      
+        <h2 id="Default-key-chord-mode-in-Prelude"><a href="#Default-key-chord-mode-in-Prelude" class="headerlink" title="Default key-chord mode in Prelude"></a>Default <strong>key-chord</strong> mode in <em>Prelude</em></h2><p>Today I read the source codes of <em>Prelude</em>, except for knowing some new global key bindings, the most interesting one is the key-chord mode. Maybe I came from <strong>vi</strong>, so the double pressing key is familiar for me. And I enjoy that a lot. So I write down it as a note for its usage. :P<br><em>Predlude</em> set key-chord mode enabled by default, of course it can be turned off by:</p>
+<pre><code>(key-chord-mode -1)
+</code></pre><p>This piece of code can be added to the <code>custom.el</code> file, which is the personal configure file for <em>Prelude</em>. In that case, <code>evil-mode</code> maybe used to mixture some operations with <strong>vi</strong>, while I never tried it. Below are the shortcuts and commands in key-chord mode:</p>
+<pre><code>jj+`c`      jump to a word starts with a character
+jl+`c`      jump to a line marked with a letter
+jk+`c`      jump to a word contains a letter
+JJ          switch to the previous buffer
+uu          open the undo-tree
+</code></pre><p>ps: I updated the <strong>key-chord</strong> mode by add a new command in my <code>custom.el</code>:</p>
+<pre><code>(key-chord-define-global &quot;kk&quot; &apos;prelude-kill-whole-line)
+</code></pre><p>Maybe that needs some tests for several days, I will post any update by then.<br><!--ps:本文参考了*Prelude*的官方github文档写的，如有不妥之处，还望指正。(input by **Fcitx** with sunpinyin)--></p>
+
+      
+	</div>
+
+<div class="meta">
+	
+		<span class="comments"><a href="https://ev6r.github.io/2013/10/15/2013-10-14-explore-chord-mode-in-emacs/#disqus_thread">Comments</a></span>
+	
+</div>
+</article>
+
+  <article class="post">
+	<h2 class="title">
 		<a href="2013/10/12/2013-10-12-usage-of-undo-tree-in-emacs/">Usage of undo-tree in Emacs</a>
 	</h2>
     <div class="entry-content">
