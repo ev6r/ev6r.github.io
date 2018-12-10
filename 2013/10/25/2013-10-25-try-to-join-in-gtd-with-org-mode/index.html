@@ -1,191 +1,4 @@
-<!DOCTYPE HTML>
-<html>
-<head><meta name="generator" content="Hexo 3.8.0">
-	<meta charset="utf-8">
-    
-	<title>Try to join in GTD with org-mode - J6rry&#39;s Blog</title>
-    <meta name="author" content="J6rry">
-    
-	<meta name="description" content="&lt;h2 id=&#34;Background&#34;&gt;&lt;a href=&#34;#Background&#34; class=&#34;headerlink&#34; title=&#34;Background&#34;&gt;&lt;/a&gt;Background&lt;/h2&gt;&lt;p&gt;Recently, several days have be invested in learning GTD (Get Tings Done) and setting up the org-mode in Emacs.&lt;br&gt;However, I have not finished reading the two guide books of David Allen: &lt;em&gt;Getting Things Done - The Art of Stress Free Productivity&lt;/em&gt; and &lt;em&gt;Ready for Anything - 52 Productivity Principles for Work and Life&lt;/em&gt;, but I will. The main references are list below:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.yifeiyang.net/emacs/use-emacs-org-mode.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;http://www.yifeiyang.net/emacs/use-emacs-org-mode.html&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://doc.norang.ca/org-mode.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;http://doc.norang.ca/org-mode.html&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.cnblogs.com/holbrook/archive/2012/04/14/2447754.html#sec-7-2&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;http://www.cnblogs.com/holbrook/archive/2012/04/14/2447754.html#sec-7-2&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;The famous application of GTD with Emacs is the document &lt;a href=&#34;http://doc.norang.ca/org-mode.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Org Mode - Organize Your Life In Plain Text!&lt;/a&gt;, so I read it three times but still cannot catch all of them, all of my settings of org-mode are from it.&lt;/p&gt;
-&lt;h2 id=&#34;Principles-of-GTD&#34;&gt;&lt;a href=&#34;#Principles-of-GTD&#34; class=&#34;headerlink&#34; title=&#34;Principles of GTD&#34;&gt;&lt;/a&gt;Principles of GTD&lt;/h2&gt;&lt;p&gt;According to some of Chinese blogs as list above, GTD is a system to handle all your things and lead you to get them done one by one. It can record the timing cost of each task, which is helpful for construct the ability of correctly estimating the task duration. As the book’s name indicates &lt;strong&gt;STRESS FREE&lt;/strong&gt;, there must be a flood of things around you and new ideas coming up randomly. From my life experiments, some tedious things can ruin your whole enthusiasm, cause you maybe disturbed or interrupted again and again, leading to a situation where you do not know what you are focus on yourself. GTD can save you from it, and get your things in control. There are five progresses in GTD:&lt;br&gt;&lt;a id=&#34;more&#34;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Collection. Collect all your stuff into a &lt;strong&gt;inbox&lt;/strong&gt;.&lt;/li&gt;
-&lt;li&gt;Refile. Identify each stuff and make a decision on each of them with deleting, archive or generate a new task to do.  &lt;/li&gt;
-&lt;li&gt;Organization. Judge each stuff’s importance and time consideration, send(refile) them into specification destinations.&lt;/li&gt;
-&lt;li&gt;Review. Check the list of things to be done, and mark them with some tags, deadlines, schedules and status.&lt;/li&gt;
-&lt;li&gt;Do it. Select the right things to do with a right time and right place.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;All in one, the core of GTD is:&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;WRITE DOWN ALL THE STUFF IN YOUR MIND, AND ORGANIZE THEM INTO STREAM OF DOING THINGS.&lt;/strong&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&#34;Org-Mode-Settings-in-Emacs&#34;&gt;&lt;a href=&#34;#Org-Mode-Settings-in-Emacs&#34; class=&#34;headerlink&#34; title=&#34;Org-Mode Settings in Emacs&#34;&gt;&lt;/a&gt;Org-Mode Settings in Emacs&lt;/h2&gt;&lt;p&gt;Org-Mode is a super powerful tool to manage your life, it is said org-mode can get track of all your stuff: to-do list, account, projects…As I said in the &lt;em&gt;Background&lt;/em&gt; section, all the settings are get from &lt;a href=&#34;http://doc.norang.ca/org-mode.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Org Mode - Organize Your Life In Plain Text!&lt;/a&gt;, but there are several changes should be noted for a org-mode newer like me. Most of the settings by &lt;strong&gt;Bernt Hansen&lt;/strong&gt; is OK, except for the &lt;em&gt;org-habit.el&lt;/em&gt; file you should download from the internet. That’s the first tip, the second one is the stuff capture process. I set the capture settings as below:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;(setq org-agenda-files (list &amp;quot;/home/jerry/GTD/&amp;quot;))
-;; Org Capture
-;; Capture templates for: TODO tasks, Notes, appointments, phone calls, meetings, and org-protocol
-(setq org-capture-templates
-(quote ((&amp;quot;t&amp;quot; &amp;quot;todo&amp;quot; entry (file concat org-directory  &amp;quot;/refile.org&amp;quot;)
-       &amp;quot;* TODO %?\n%U\n%a\n&amp;quot; :clock-in t :clock-resume t)
-      (&amp;quot;r&amp;quot; &amp;quot;respond&amp;quot; entry (file concat org-directory &amp;quot;/refile.org&amp;quot;)
-       &amp;quot;* NEXT Respond to %:from on %:subject\nSCHEDULED: %t\n%U\n%a\n&amp;quot; :clock-in t :clock-resume t :immediate-finish t)
-      (&amp;quot;n&amp;quot; &amp;quot;note&amp;quot; entry (file concat org-directory  &amp;quot;/refile.org&amp;quot;)
-       &amp;quot;* %? :NOTE:\n%U\n%a\n&amp;quot; :clock-in t :clock-resume t)
-      (&amp;quot;j&amp;quot; &amp;quot;journal&amp;quot; entry (file+datetree &amp;quot;/home/jerry/GTD/diary.org&amp;quot;)
-       &amp;quot;* %?\n%U\n&amp;quot; :clock-in t :clock-resume t)
-      (&amp;quot;w&amp;quot; &amp;quot;org-protocol&amp;quot; entry (file concat org-directory &amp;quot;/refile.org&amp;quot;)
-       &amp;quot;* TODO Review %c\n%U\n&amp;quot; :immediate-finish t)
-      (&amp;quot;m&amp;quot; &amp;quot;meeting&amp;quot; entry (file concat org-directory &amp;quot;/refile.org&amp;quot;)
-       &amp;quot;* MEETING with %? :MEETING:\n%U&amp;quot; :clock-in t :clock-resume t)
-      (&amp;quot;p&amp;quot; &amp;quot;phone call&amp;quot; entry (file concat org-directory &amp;quot;/refile.org&amp;quot;)
-       &amp;quot;* PHONE %? :PHONE:\n%U&amp;quot; :clock-in t :clock-resume t)
-      (&amp;quot;h&amp;quot; &amp;quot;habit&amp;quot; entry (file concat org-directory &amp;quot;/refile.org&amp;quot;)
-       &amp;quot;* NEXT %?\n%U\n%a\nSCHEDULED: %(format-time-string \&amp;quot;&amp;lt;%Y-%m-%d %a .+1d/3d&amp;gt;\&amp;quot;)\n:PROPERTIES:\n:STYLE: habit\n:REPEAT_TO_STATE: NEXT\n:END:\n&amp;quot;))))
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;In this section, all the stuff collected in &lt;em&gt;refile.org&lt;/em&gt;, which should be cleaned (refile) everyday, for example at the end of the day. Mettings and phones are handled intermediately, which are also clocked by &lt;em&gt;org-mode&lt;/em&gt;. If you have a habit of writing a diary, the &lt;em&gt;journal&lt;/em&gt; section will be perfect for you, it will generate a time tree in the &lt;em&gt;diary.org&lt;/em&gt; file.&lt;/p&gt;
-&lt;p&gt;Agenda view is also tuned by the advice of &lt;strong&gt;Bernt Hansen&lt;/strong&gt;. The below picture shows a to-do list:&lt;/p&gt;
-&lt;img src=&#34;/images/blog_imgs/todo.png&#34; width=&#34;320&#34; height=&#34;240&#34;&gt;
-&lt;p&gt;Because I am a very newer to GTD and org-mode, so I did not setup the publish and export section. Next step, I will add some feature of time estimation and summery.&lt;/p&gt;
-&lt;h2 id=&#34;Practice-with-GTD&#34;&gt;&lt;a href=&#34;#Practice-with-GTD&#34; class=&#34;headerlink&#34; title=&#34;Practice with GTD&#34;&gt;&lt;/a&gt;Practice with GTD&lt;/h2&gt;&lt;p&gt;Firstly, I update my Emacs’s key bindings to fit both the &lt;em&gt;Prelude&lt;/em&gt; mode and &lt;em&gt;org-mode&lt;/em&gt;, the mostly used key bindings are list below:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;(global-set-key (kbd &amp;quot;&amp;lt;f10&amp;gt;&amp;quot;) &amp;apos;org-agenda)
-(global-set-key (kbd &amp;quot;&amp;lt;f9&amp;gt; c&amp;quot;) &amp;apos;calendar)
-(global-set-key (kbd &amp;quot;&amp;lt;f9&amp;gt; g&amp;quot;) &amp;apos;gnus)
-(global-set-key (kbd &amp;quot;&amp;lt;f9&amp;gt; w&amp;quot;) &amp;apos;widen)
-(global-set-key (kbd &amp;quot;&amp;lt;f9&amp;gt; I&amp;quot;) &amp;apos;bh/punch-in)
-(global-set-key (kbd &amp;quot;&amp;lt;f9&amp;gt; O&amp;quot;) &amp;apos;bh/punch-out)
-(global-set-key (kbd &amp;quot;&amp;lt;f9&amp;gt; t&amp;quot;) &amp;apos;bh/insert-inactive-timestamp)
-(global-set-key (kbd &amp;quot;&amp;lt;f9&amp;gt; v&amp;quot;) &amp;apos;visible-mode)
-(global-set-key (kbd &amp;quot;&amp;lt;f9&amp;gt; SPC&amp;quot;) &amp;apos;bh/clock-in-last-task)
-(global-set-key (kbd &amp;quot;C-&amp;lt;f9&amp;gt;&amp;quot;) &amp;apos;previous-buffer)
-(global-set-key (kbd &amp;quot;C-&amp;lt;f10&amp;gt;&amp;quot;) &amp;apos;next-buffer)
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Referring to &lt;strong&gt;Bernt Hansen&lt;/strong&gt;‘s life style, I work out my own as below:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Punch in (it will start the default clock of &lt;strong&gt;Organization&lt;/strong&gt;)&lt;/li&gt;
-&lt;li&gt;Look at the agenda and make a decision from the &lt;strong&gt;NEXT&lt;/strong&gt; tags&lt;/li&gt;
-&lt;li&gt;Check email and news from thunderbird and android phone&lt;ul&gt;
-&lt;li&gt;Create notes, new tasks with org-capture&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Look at the agenda and work on important tasks for today&lt;ul&gt;
-&lt;li&gt;Clock it in&lt;/li&gt;
-&lt;li&gt;Work on it until it is &lt;strong&gt;DONE&lt;/strong&gt; or gets any interrupted by &lt;em&gt;Meetings&lt;/em&gt; or &lt;em&gt;Phone&lt;/em&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Work on tasks&lt;/li&gt;
-&lt;li&gt;Make journal entries for interruptions&lt;/li&gt;
-&lt;li&gt;Punch out fro lunch and punch back in after lunch&lt;/li&gt;
-&lt;li&gt;Work on more tasks&lt;/li&gt;
-&lt;li&gt;Refile tasks to empty the list&lt;ul&gt;
-&lt;li&gt;Bulk refile the tasks to the same target with &lt;strong&gt;B r&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;Repeat refile (&lt;strong&gt;C-c C-w&lt;/strong&gt;) until all refile tasks are gone&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Mark habits done today as &lt;strong&gt;DONE&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;Punch out at the end of the day&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Seems cool? aha?&lt;/p&gt;
-"> <!-- TODO: truncate -->
-	
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-	<link href="atom.xml" rel="alternate" title="J6rry&#39;s Blog" type="application/atom+xml">
-	<link href="/favicon.ico" rel="shortcut icon">
-    <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-    <link href="/stylesheets/custom.css" media="screen, projection" rel="stylesheet" type="text/css">
-    <link href="/stylesheets/hljs.css" media="screen, projection" rel="stylesheet" type="text/css">
-
-    <link href="//fonts.googleapis.com/css?family=Slackey" rel="stylesheet" type="text/css">
-    <link href="//fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet" type="text/css">
-    <link href="//fonts.googleapis.com/css?family=Amethysta" rel="stylesheet" type="text/css">
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![}]-->
-
-    <script type="text/javascript" src="/javascripts/jquery-tapir.js"></script>
-
-    <!-- remove or comment it to disable ajaxification -->   
-    <!-- <script src="/javascripts/ajaxify.js"></script> -->
-
-    
-
-    
-
-</head>
-</html>
-
-<body>
-    <div id="wrapper">
-    <header id="header" class="inner"><!-- for more effects see _animate.scss -->
-<h1 class="animated bounceInDown">
-    <div id="headerbg">
-        J6rry&#39;s Blog
-    </div>
-</h1>
-<span class="subtitle">blogging a hacker&#39;s life &amp; style</span>
-<br>
-
-<ul id="social-links" style="text-align:center; clear:both;">
-  
-  <!-- GitHub -->
-  <li>
-  <a href="https://github.com/ev6r" class="github" title="Github"></a>
-  </li>
-  
-  
-  
-  
-  <!-- Twitter -->
-  <li>
-  <a href="http://www.twitter.com/ev6r27" class="twitter" title="Twitter"></a>
-  </li>
-  
-  
-  
-  
-  
-</ul>
-
-
-<!-- use full url including 'index.html' for navigation bar if you are using ajax -->
-<ul id="nav">
-	<li id="ajax"><a href="/index.html">Home</a></li>
-	<li id="ajax"><a href="/archives/index.html">Archives</a></li>
-	<li id="ajax"><a href="/tags/index.html">Tags</a></li>
-    <li><a href="/atom.xml">RSS</a></li>
-    
-    <li>
-    <div id="dark">
-        <form action="//www.google.com.hk/search" method="get" accept-charset="UTF-8" id="search">
-            <input type="hidden" name="sitesearch" value="https://ev6r.github.io">
-            <input type="text" name="q" results="0" placeholder="Search..." x-webkit-speech="">
-        </form>
-    </div>
-    </li>
-        
-</ul>
-
-
-
-
-</header>
-
-<div id="toload">
-<!-- begin toload -->
-    <div id="content" class="inner">
-        <article class="post">
-	<h2 class="title">Try to join in GTD with org-mode</h2>
-    <div class="meta">
-        <div class="date">Published on: <time datetime="2013-10-25T15:03:00.000Z" itemprop="datePublished">Oct 25, 2013</time>
-</div>
-        <div class="tags">Tags: 
-
-
-</div>
-    </div>
-	<div class="entry-content"><h2 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h2><p>Recently, several days have be invested in learning GTD (Get Tings Done) and setting up the org-mode in Emacs.<br>However, I have not finished reading the two guide books of David Allen: <em>Getting Things Done - The Art of Stress Free Productivity</em> and <em>Ready for Anything - 52 Productivity Principles for Work and Life</em>, but I will. The main references are list below:</p>
+<!DOCTYPE html><html><head><meta name="generator" content="Hexo 3.8.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>Try to join in GTD with org-mode | J6rry's Blog</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/8.0.1/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/3.3.1/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Try to join in GTD with org-mode</h1><a id="logo" href="/.">J6rry's Blog</a><p class="description">blogging a hacker's life &amp; style</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> Start</i></a><a href="/archives/"><i class="fa fa-archive"> Archiv</i></a><a href="/about/"><i class="fa fa-user"> Über</i></a><a href="/atom.xml"><i class="fa fa-rss"> RSS</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">Try to join in GTD with org-mode</h1><div class="post-meta">Oct 25, 2013<span> | </span><span class="category"><a href="/categories/Productive-Emacs-org-mode/">Productive, Emacs, org-mode</a></span></div><a class="disqus-comment-count" data-disqus-identifier="2013/10/25/2013-10-25-try-to-join-in-gtd-with-org-mode/" href="/2013/10/25/2013-10-25-try-to-join-in-gtd-with-org-mode/#disqus_thread"></a><div class="post-content"><h2 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h2><p>Recently, several days have be invested in learning GTD (Get Tings Done) and setting up the org-mode in Emacs.<br>However, I have not finished reading the two guide books of David Allen: <em>Getting Things Done - The Art of Stress Free Productivity</em> and <em>Ready for Anything - 52 Productivity Principles for Work and Life</em>, but I will. The main references are list below:</p>
 <ul>
 <li><a href="http://www.yifeiyang.net/emacs/use-emacs-org-mode.html" target="_blank" rel="noopener">http://www.yifeiyang.net/emacs/use-emacs-org-mode.html</a></li>
 <li><a href="http://doc.norang.ca/org-mode.html" target="_blank" rel="noopener">http://doc.norang.ca/org-mode.html</a></li>
@@ -267,86 +80,49 @@
 <li>Punch out at the end of the day</li>
 </ul>
 <p>Seems cool? aha?</p>
-</div>
-
-<div class="meta">
-	
-		<span class="comments"><a href="https://ev6r.github.io/2013/10/25/2013-10-25-try-to-join-in-gtd-with-org-mode/#disqus_thread">Comments</a></span>
-	
-</div>
-</article>
-
-	<div class="share">
-	<div class="addthis_toolbox addthis_default_style ">
-	
-	
-	<a class="addthis_button_tweet"></a>
-	
-	
-	<a class="addthis_counter addthis_pill_style"></a>
-	</div>
-  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
-</div>
-
-
-
-
-
-    
-      <script type="text/javascript">
-        var disqus_config = function () {
-            this.page.url = 'https://ev6r.github.io/2013/10/25/2013-10-25-try-to-join-in-gtd-with-org-mode/';
-            this.page.identifier = 'https://ev6r.github.io/2013/10/25/2013-10-25-try-to-join-in-gtd-with-org-mode/';
-        };
-
-        (function() {
-          var d = document, s = d.createElement('script');
-          s.src = '//ev6rgithubio.disqus.com/embed.js';
-          s.setAttribute('data-timestamp', +new Date());
-          (d.head || d.body).appendChild(s);
-        })();
-      </script>
-    
-
-
-<section id="comment">
-    <h2 class="title">Comments</h2>
-    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-</div>
-</section>
-
-
-    </div>
-    <footer id="footer">
-    <div style="display:inline">
-    Copyright &copy; 2018
-
-    J6rry
-. Powered by <a href="http://zespia.tw/hexo/" target="_blank">Hexo</a> |
-    Theme is <a href="https://github.com/wd/hexo-fabric">hexo-fabric</a>, fork from <a href="http://github.com/panks/fabric">fabric</a> by <a href="http://panks.me">Pankaj Kumar</a>
-</div>
-
-
-    </footer>
-    <script src="/javascripts/fabric.js"></script>
-<script src="/javascripts/jquery.fancybox.pack.js"></script>
-<script type="text/javascript">
-(function($){
-	$('.fancybox').fancybox();
-})(jQuery);
-</script>
- <!-- Delete or comment this line to disable Fancybox -->
-
-
-
-<!-- end toload --> 
-</div>
-</div>
-<script src="/javascripts/jquery.ui.totop.js" type="text/javascript"></script>
-<script type="text/javascript">
-/*<![CDATA[*/
-;(function($){$().UItoTop({easingType:'easeOutCirc'});})(jQuery); 
-/*]]>*/
-</script><!-- remove it to remove the scroll to top button -->
-</body>
-</html>
+</div><div class="tags"></div><div class="post-nav"><a class="pre" href="/2013/10/28/2013-10-28-start-emacs-in-a-utf-8-environment/">start emacs in a UTF-8 environment</a><a class="next" href="/2013/10/15/2013-10-15-tl-wr703n-with-openwrt/">TL-WR703N with Openwrt patches njit-client</a></div><div id="disqus_thread"><div class="btn_click_load"><button class="disqus_click_btn">阅读评论（请确保 Disqus 可以正常加载）</button></div><script type="text/javascript">var disqus_config = function () {
+    this.page.url = 'https://ev6r.github.io/2013/10/25/2013-10-25-try-to-join-in-gtd-with-org-mode/';
+    this.page.identifier = '2013/10/25/2013-10-25-try-to-join-in-gtd-with-org-mode/';
+    this.page.title = 'Try to join in GTD with org-mode';
+  };</script><script type="text/javascript" id="disqus-lazy-load-script">$.ajax({
+url: 'https://disqus.com/next/config.json',
+timeout: 2500,
+type: 'GET',
+success: function(){
+  var d = document;
+  var s = d.createElement('script');
+  s.src = '//ev6rgithubio.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', + new Date());
+  (d.head || d.body).appendChild(s);
+  $('.disqus_click_btn').css('display', 'none');
+},
+error: function() {
+  $('.disqus_click_btn').css('display', 'block');
+}
+});</script><script type="text/javascript" id="disqus-click-load">$('.btn_click_load').click(() => {  //click to load comments
+    (() => { // DON'T EDIT BELOW THIS LINE
+        var d = document;
+        var s = d.createElement('script');
+        s.src = '//ev6rgithubio.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', + new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+    $('.disqus_click_btn').css('display','none');
+});</script><script type="text/javascript" id="disqus-count-script">$(function() {
+     var xhr = new XMLHttpRequest();
+     xhr.open('GET', '//disqus.com/next/config.json', true);
+     xhr.timeout = 2500;
+     xhr.onreadystatechange = function () {
+       if (xhr.readyState === 4 && xhr.status === 200) {
+         $('.post-meta .post-comments-count').show();
+         var s = document.createElement('script');
+         s.id = 'dsq-count-scr';
+         s.src = 'https://ev6rgithubio.disqus.com/count.js';
+         s.async = true;
+         (document.head || document.body).appendChild(s);
+       }
+     };
+     xhr.ontimeout = function () { xhr.abort(); };
+     xhr.send(null);
+   });
+</script></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"><input type="hidden" name="sitesearch" value="https://ev6r.github.io"></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> Kategorien</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Life-Tips-Pictures/">Life, Tips, Pictures</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux-Emacs/">Linux Emacs</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux-Arch-Awesome/">Linux, Arch, Awesome</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux-Emacs/">Linux, Emacs</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux-Emacs-Chinese-input-method/">Linux, Emacs, Chinese input method</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux-Emacs-Region/">Linux, Emacs, Region</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mac-SSD/">Mac, SSD</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Math-Blog/">Math, Blog</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Movies-Names/">Movies, Names</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Others/">Others</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Productive-Emacs-org-mode/">Productive, Emacs, org-mode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tp-Link-OpenWrt-njit-client/">Tp-Link, OpenWrt, njit-client</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/blender-render-practice/">blender, render, practice</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/life-simple/">life simple</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/macos/">macos</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/sci/">sci</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/人生/">人生</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/信仰，恐惧/">信仰，恐惧</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/感悟，出世/">感悟，出世</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/折腾，快乐，OpenWRT-串口，IPV6-USB/">折腾，快乐，OpenWRT, 串口，IPV6, USB</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/收纳-精力管理/">收纳 精力管理</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/蜗牛，-有感/">蜗牛， 有感</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> Tags</i></div><div class="tagcloud"><a href="/tags/software-programming/" style="font-size: 15px;">software, programming</a> <a href="/tags/new/" style="font-size: 15px;">new</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> Letzte</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/12/11/2018-12-10-Software-design-with-a-workflow/">2018-12-10-Software design with a workflow</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/11/博客迁移/">博客迁移</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/02/2018-08-01-ru-he-guan-li-hao-zi-ji-de-wu-pin-?/">如何管理好自己的物品？</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/16/2018-07-16-wu-zhi-you-ya-,er-xue-wu-ya/">吾知有涯，而学无涯</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/03/2018-07-03-wu-he-zhi-zhong/">乌合之众</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/24/2018-06-24-broken-ssd-of-my-macbook-pro/">Broken SSD of my Macbook Pro</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/02/2018-03-01-hong-wai-re-xiang-yi-ji-ben-yuan-li/">红外热像仪基本原理</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/09/2018-01-08-gong-zuo-shi-mei-you-jin-tou-de/">工作是没有尽头的</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/05/2018-01-05-computing-and-physics/">Computing and Physics</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/16/2017-02-15-many-bulbs/">Many bulbs</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-comment-o"> Letzte Kommentare</i></div><script type="text/javascript" src="//ev6rgithubio.disqus.com/recent_comments_widget.js?num_items=5&amp;hide_avatars=1&amp;avatar_size=32&amp;excerpt_length=20&amp;hide_mods=1"></script></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> Blogroll</i></div><ul></ul><a href="http://www.example1.com/" title="site-name1" target="_blank">site-name1</a><ul></ul><a href="http://www.example2.com/" title="site-name2" target="_blank">site-name2</a><ul></ul><a href="http://www.example3.com/" title="site-name3" target="_blank">site-name3</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2018 <a href="/." rel="nofollow">J6rry's Blog.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//lib.baomitu.com/fancybox/3.5.2/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/fancybox/3.5.2/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
