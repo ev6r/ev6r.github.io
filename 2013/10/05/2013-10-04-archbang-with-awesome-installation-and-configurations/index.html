@@ -1,4 +1,177 @@
-<!DOCTYPE html><html lang="en"><head><meta name="generator" content="Hexo 3.8.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>Archbang with awesome: Installation and configurations | J6rry's Blog</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/8.0.1/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/3.3.1/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Archbang with awesome: Installation and configurations</h1><a id="logo" href="/.">J6rry's Blog</a><p class="description">blogging a hacker's life &amp; style</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> Home</i></a><a href="/archives/"><i class="fa fa-archive"> Archive</i></a><a href="/atom.xml"><i class="fa fa-rss"> RSS</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">Archbang with awesome: Installation and configurations</h1><div class="post-meta">Oct 5, 2013<span> | </span><span class="category"><a href="/categories/Linux-Arch-Awesome/">Linux, Arch, Awesome</a></span></div><a class="disqus-comment-count" data-disqus-identifier="2013/10/05/2013-10-04-archbang-with-awesome-installation-and-configurations/" href="/2013/10/05/2013-10-04-archbang-with-awesome-installation-and-configurations/#disqus_thread"></a><div class="post-content"><h2 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h2><p><a href="www.archbang.org">Archbang</a> is a lightweight Linux distribution base on Archlinux, which include a suite of desktop of openbox for basic usage.<br>I choose to start with Archbang with three reasons:</p>
+<!DOCTYPE HTML>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+	<meta charset="utf-8">
+    
+	<title>Archbang with awesome: Installation and configurations - J6rry&#39;s Blog</title>
+    <meta name="author" content="J6rry">
+    
+	<meta name="description" content="&lt;h2 id=&#34;Background&#34;&gt;&lt;a href=&#34;#Background&#34; class=&#34;headerlink&#34; title=&#34;Background&#34;&gt;&lt;/a&gt;Background&lt;/h2&gt;&lt;p&gt;&lt;a href=&#34;www.archbang.org&#34;&gt;Archbang&lt;/a&gt; is a lightweight Linux distribution base on Archlinux, which include a suite of desktop of openbox for basic usage.&lt;br&gt;I choose to start with Archbang with three reasons:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;it has the basic openbox desktop, sometime it really save me a lot from a crashed DM;&lt;/li&gt;
+&lt;li&gt;some software are selected and they are also my tastes;&lt;/li&gt;
+&lt;li&gt;of course it is based on Archlinux, which is my favorite baseline by now;&lt;/li&gt;
+&lt;li&gt;you needn’t worry about the hardware stuff (basic drivers).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a href=&#34;https://wiki.archlinux.org/index.php/awesome&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Awesome&lt;/a&gt; is a &lt;em&gt;highly&lt;/em&gt; configurable window manager for &lt;strong&gt;X&lt;/strong&gt;. It is said Awesome could be the next generation &lt;em&gt;framework&lt;/em&gt;. Anyway, it is fast and extendable, and it’s &lt;strong&gt;free&lt;/strong&gt;!! All these features can easily fulfill a geek’s life style. So I am coming, and here I am.&lt;br&gt;&lt;a id=&#34;more&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;Install-Archbang&#34;&gt;&lt;a href=&#34;#Install-Archbang&#34; class=&#34;headerlink&#34; title=&#34;Install Archbang&#34;&gt;&lt;/a&gt;Install Archbang&lt;/h2&gt;&lt;p&gt;Archbang’s installation is easy as shown on the &lt;a href=&#34;http://wiki.archbang.org/index.php?title=Installation&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;official guide&lt;/a&gt;, you can see there are only one page, &lt;em&gt;awesome&lt;/em&gt;! Nevertheless, there are still several tips for fast installation:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;if using a USB key (strongly recommend to save one CD), be careful for the &lt;code&gt;dd&lt;/code&gt; command;&lt;/li&gt;
+&lt;li&gt;set the right date and time, it’s a good manner to check that, cause you may mess up the installation when using a repository on a host. You know what I mean if you ever installed newly distributed Archlinux or Gentoo;&lt;/li&gt;
+&lt;li&gt;after the system was installed you need check the pacman mirrorlist to access a fast host;&lt;/li&gt;
+&lt;li&gt;get your network prepared if you’d like to update the system;&lt;/li&gt;
+&lt;li&gt;when you reboot and add a new user by &lt;code&gt;useradd&lt;/code&gt;, login with the new user not with &lt;strong&gt;root&lt;/strong&gt; in case you ruined your system.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Ok, then you should have a new Archlinux-based system with some necessary packages, you can glance at the left &lt;em&gt;conky&lt;/em&gt; panel to have a rough outline of the basic applications, such as terminal, browser, text editor…Another tip is to setup your network by the default &lt;em&gt;Network Manager&lt;/em&gt;, and update your system right now. In the past, I encountered a wired problem that I try the command &lt;code&gt;pacman -Syu&lt;/code&gt; and it actually failed to update although the right mirrorlist has already been set. So if your are also in that case, just try &lt;code&gt;pacman -Syyuu&lt;/code&gt;. Next, let’s get out of the openbox desktop and install awesome, awesome~&lt;/p&gt;
+&lt;h2 id=&#34;Install-awesome&#34;&gt;&lt;a href=&#34;#Install-awesome&#34; class=&#34;headerlink&#34; title=&#34;Install awesome&#34;&gt;&lt;/a&gt;Install awesome&lt;/h2&gt;&lt;p&gt;As you know about archlinux’s package manager &lt;code&gt;pacman -S awesome&lt;/code&gt;, done!&lt;br&gt;Are you kidding? No.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[root@arch jerry]# pacman -S awesome
+resolving dependencies...
+looking for inter-conflicts...
+
+Packages (1): awesome-3.5.1-3
+
+Total Installed Size:   2.26 MiB
+Net Upgrade Size:       0.00 MiB
+
+:: Proceed with installation? [Y/n]
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Yes, we need root authority to access any operation of &lt;code&gt;pacman&lt;/code&gt;. Perhaps, the guys are right that trey said it is the root evil of a system crash by typing &lt;code&gt;pacman -Syu&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;##Setup awesome for basic usage&lt;br&gt;Awesome is attractive for its &lt;em&gt;highly&lt;/em&gt; configurable features, so let’s setup awesome for a customized usage. Maybe some of them are not fit for you guys, however, I write down it here for my reference one day maybe.&lt;br&gt;Before going into the configuration file of awesome, I tuned up the system, and add some alternative package to my taste. Here is a list, some of them are only for checking:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;pacman -S alsa-utils alsa-plugins % for sound
+pacman -S xorg-server xorg-xinit xorg-server-utils xf86-video-xxxcard xf86-input-synaptics % for video
+pacman -S network manager % for network and applet
+pacman -S slim % a login manager
+pacman -S flashplugin % for flash
+pacman -S dwb % for browser
+pacman -S spacefm % for file manager
+pacman -S unrar zip % for package
+pacman -S vlc deadbeaf gstreamer0.10-plugins % for media play
+pacman -S leafpad % for temporary text editor
+pacman -S evince zathura % for pdf browser
+pacman -S scrot % for screen print
+pacman -S urxvt % as a backup for your main terminal
+pacman -S thunderbird % email
+pacman -S gimp inkscape % for all the drawings
+pacman -S gpicview % for browser pictures fast
+pacman -S emacs % !!!
+pacman -S stardict % dictionary
+pacman -S fcitx % Chinese input methods
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;That’s all for me, I may update this list as I learn deeper about them. Next, turn to Awesome.&lt;br&gt;For awesome there is only one configure file located at &lt;code&gt;$HOME/.config/awesome/rc.lua&lt;/code&gt;, so feel free to open it with your favorite editor. The most important thing to be done is read! Read the .lua file to the end, DONOT change any of them. According to the file and its comments, you can find there are a large number of operations with shortcuts, which you need to try them. All my configures are on the github &lt;a href=&#34;https://github.com/ev6r/archlinux_configs&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;rc.lua&lt;/a&gt;.&lt;br&gt;I added the &lt;em&gt;vicious&lt;/em&gt; to offer a status bar at the bottom of the screen. And most of the default settings are kept, except some keyboarding and tags display. According to my new comments and the origin ones, it is easy to reproduce the awesome desktop as mine below:&lt;/p&gt;
+&lt;img src=&#34;/images/blog_imgs/desktop.png&#34; width=&#34;800&#34; height=&#34;600&#34;&gt;  
+&lt;p&gt;That’s all about it.&lt;/p&gt;
+&lt;h2 id=&#34;Conclusion&#34;&gt;&lt;a href=&#34;#Conclusion&#34; class=&#34;headerlink&#34; title=&#34;Conclusion&#34;&gt;&lt;/a&gt;Conclusion&lt;/h2&gt;&lt;p&gt;With awesome there is a key-binding list of mine as a conclusion.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Super + Tab     jump between the last two tags
+Super + 1, 2..  jump to the specified tag
+Super + m       open the default awesome menu
+Super + j,k     jump between windows within a tag page
+Super + n       minimize the current window
+Super + a       maximize the current window
+Super + Space   toggle between the different tile styles
+Super + Enter   open a terminal
+Super + T       open the backup terminal(urxvt)
+Super + e       open a new emacs frame
+Super + r       open run command line
+Super + p       open a run menu
+Super + p       kill the current window
+Super + w       open default web browser
+Super + f       open default file browser
+&lt;/code&gt;&lt;/pre&gt;"> <!-- TODO: truncate -->
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="atom.xml" rel="alternate" title="J6rry&#39;s Blog" type="application/atom+xml">
+	<link href="/favicon.ico" rel="shortcut icon">
+    <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+    <link href="/stylesheets/custom.css" media="screen, projection" rel="stylesheet" type="text/css">
+    <link href="/stylesheets/hljs.css" media="screen, projection" rel="stylesheet" type="text/css">
+
+    <link href="//fonts.googleapis.com/css?family=Slackey" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Amethysta" rel="stylesheet" type="text/css">
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![}]-->
+
+    <script type="text/javascript" src="/javascripts/jquery-tapir.js"></script>
+
+    <!-- remove or comment it to disable ajaxification -->   
+    <!-- <script src="/javascripts/ajaxify.js"></script> -->
+
+    
+
+    
+
+</head>
+</html>
+
+<body>
+    <div id="wrapper">
+    <header id="header" class="inner"><!-- for more effects see _animate.scss -->
+<h1 class="animated bounceInDown">
+    <div id="headerbg">
+        J6rry&#39;s Blog
+    </div>
+</h1>
+<span class="subtitle">blogging a hacker&#39;s life &amp; style</span>
+<br>
+
+<ul id="social-links" style="text-align:center; clear:both;">
+  
+  <!-- GitHub -->
+  <li>
+  <a href="https://github.com/ev6r" class="github" title="Github"></a>
+  </li>
+  
+  
+  
+  
+  <!-- Twitter -->
+  <li>
+  <a href="http://www.twitter.com/ev6r27" class="twitter" title="Twitter"></a>
+  </li>
+  
+  
+  
+  
+  
+</ul>
+
+
+<!-- use full url including 'index.html' for navigation bar if you are using ajax -->
+<ul id="nav">
+	<li id="ajax"><a href="/index.html">Home</a></li>
+	<li id="ajax"><a href="/archives/index.html">Archives</a></li>
+	<li id="ajax"><a href="/tags/index.html">Tags</a></li>
+    <li><a href="/atom.xml">RSS</a></li>
+    
+    <li>
+    <div id="dark">
+        <form action="//www.google.com.hk/search" method="get" accept-charset="UTF-8" id="search">
+            <input type="hidden" name="sitesearch" value="https://ev6r.github.io">
+            <input type="text" name="q" results="0" placeholder="Search..." x-webkit-speech="">
+        </form>
+    </div>
+    </li>
+        
+</ul>
+
+
+
+
+</header>
+
+<div id="toload">
+<!-- begin toload -->
+    <div id="content" class="inner">
+        <article class="post">
+	<h2 class="title">Archbang with awesome: Installation and configurations</h2>
+    <div class="meta">
+        <div class="date">Published on: <time datetime="2013-10-04T18:30:00.000Z" itemprop="datePublished">Oct 4, 2013</time>
+</div>
+        <div class="tags">Tags: 
+
+
+</div>
+    </div>
+	<div class="entry-content"><h2 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h2><p><a href="www.archbang.org">Archbang</a> is a lightweight Linux distribution base on Archlinux, which include a suite of desktop of openbox for basic usage.<br>I choose to start with Archbang with three reasons:</p>
 <ul>
 <li>it has the basic openbox desktop, sometime it really save me a lot from a crashed DM;</li>
 <li>some software are selected and they are also my tastes;</li>
@@ -66,49 +239,86 @@ Super + p       open a run menu
 Super + p       kill the current window
 Super + w       open default web browser
 Super + f       open default file browser
-</code></pre></div><div class="tags"></div><div class="post-nav"><a class="pre" href="/2013/10/07/2013-10-06-first-sight-on-emacs/">first sight on Emacs</a><a class="next" href="/2013/09/29/2013-09-29-hello-world/">Gentoo in VirtualBox</a></div><div id="disqus_thread"><div class="btn_click_load"><button class="disqus_click_btn">阅读评论（请确保 Disqus 可以正常加载）</button></div><script type="text/javascript">var disqus_config = function () {
-    this.page.url = 'https://ev6r.github.io/2013/10/05/2013-10-04-archbang-with-awesome-installation-and-configurations/';
-    this.page.identifier = '2013/10/05/2013-10-04-archbang-with-awesome-installation-and-configurations/';
-    this.page.title = 'Archbang with awesome: Installation and configurations';
-  };</script><script type="text/javascript" id="disqus-lazy-load-script">$.ajax({
-url: 'https://disqus.com/next/config.json',
-timeout: 2500,
-type: 'GET',
-success: function(){
-  var d = document;
-  var s = d.createElement('script');
-  s.src = '//ev6rgithubio.disqus.com/embed.js';
-  s.setAttribute('data-timestamp', + new Date());
-  (d.head || d.body).appendChild(s);
-  $('.disqus_click_btn').css('display', 'none');
-},
-error: function() {
-  $('.disqus_click_btn').css('display', 'block');
-}
-});</script><script type="text/javascript" id="disqus-click-load">$('.btn_click_load').click(() => {  //click to load comments
-    (() => { // DON'T EDIT BELOW THIS LINE
-        var d = document;
-        var s = d.createElement('script');
-        s.src = '//ev6rgithubio.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', + new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-    $('.disqus_click_btn').css('display','none');
-});</script><script type="text/javascript" id="disqus-count-script">$(function() {
-     var xhr = new XMLHttpRequest();
-     xhr.open('GET', '//disqus.com/next/config.json', true);
-     xhr.timeout = 2500;
-     xhr.onreadystatechange = function () {
-       if (xhr.readyState === 4 && xhr.status === 200) {
-         $('.post-meta .post-comments-count').show();
-         var s = document.createElement('script');
-         s.id = 'dsq-count-scr';
-         s.src = 'https://ev6rgithubio.disqus.com/count.js';
-         s.async = true;
-         (document.head || document.body).appendChild(s);
-       }
-     };
-     xhr.ontimeout = function () { xhr.abort(); };
-     xhr.send(null);
-   });
-</script></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"><input type="hidden" name="sitesearch" value="https://ev6r.github.io"></form></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> Tags</i></div><div class="tagcloud"><a href="/tags/blog/" style="font-size: 15px;">blog</a> <a href="/tags/外星人/" style="font-size: 15px;">外星人</a> <a href="/tags/project/" style="font-size: 15px;">project</a> <a href="/tags/目标检测/" style="font-size: 15px;">目标检测</a> <a href="/tags/UML/" style="font-size: 15px;">UML</a> <a href="/tags/论语/" style="font-size: 15px;">论语</a> <a href="/tags/QT-OGRE-图像/" style="font-size: 15px;">QT, OGRE, 图像</a> <a href="/tags/健康/" style="font-size: 15px;">健康</a> <a href="/tags/流程图/" style="font-size: 15px;">流程图</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> Recent</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/08/17/2019-08-17-QImage加载图像的坑儿/">QImage加载图像的坑儿</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/24/2019-01-23-不教而诛/">不教而诛</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/10/2019-1-10-程序员防瞎指南/">程序员防瞎指南</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/03/2019-1-2-钢笔保养维护/">C语言中的流程图与钢笔的保养</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/17/2018-12-17-重读论语/">重读《论语》</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/17/2018-12-17-目标检测与识别的威力慢慢展现出来了/">目标检测与识别的威力慢慢展现出来了</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/17/2018-12-16-外星人为什么还不来地球/">外星人为什么还不来地球</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/16/2018-12-15-UML实践详细经典教程/">转：UML实践详细经典教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/11/2018-12-10-Software-design-with-a-workflow/">Software design with a workflow</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/11/2018-12-10-博客迁移/">博客迁移</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-comment-o"> Recent Comments</i></div><script type="text/javascript" src="//ev6rgithubio.disqus.com/recent_comments_widget.js?num_items=5&amp;hide_avatars=1&amp;avatar_size=32&amp;excerpt_length=20&amp;hide_mods=1"></script></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2019 <a href="/." rel="nofollow">J6rry's Blog.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//lib.baomitu.com/fancybox/3.5.2/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/fancybox/3.5.2/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
+</code></pre></div>
+
+<div class="meta">
+	
+		<span class="comments"><a href="https://ev6r.github.io/2013/10/05/2013-10-04-archbang-with-awesome-installation-and-configurations/#disqus_thread">Comments</a></span>
+	
+</div>
+</article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+
+
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+            this.page.url = 'https://ev6r.github.io/2013/10/05/2013-10-04-archbang-with-awesome-installation-and-configurations/';
+            this.page.identifier = 'https://ev6r.github.io/2013/10/05/2013-10-04-archbang-with-awesome-installation-and-configurations/';
+        };
+
+        (function() {
+          var d = document, s = d.createElement('script');
+          s.src = '//ev6rgithubio.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+
+
+<section id="comment">
+    <h2 class="title">Comments</h2>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
+
+
+    </div>
+    <footer id="footer">
+    <div style="display:inline">
+    Copyright &copy; 2019
+
+    J6rry
+. Powered by <a href="http://zespia.tw/hexo/" target="_blank">Hexo</a> |
+    Theme is <a href="https://github.com/wd/hexo-fabric">hexo-fabric</a>, fork from <a href="http://github.com/panks/fabric">fabric</a> by <a href="http://panks.me">Pankaj Kumar</a>
+</div>
+
+
+    </footer>
+    <script src="/javascripts/fabric.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script>
+ <!-- Delete or comment this line to disable Fancybox -->
+
+
+
+<!-- end toload --> 
+</div>
+</div>
+<script src="/javascripts/jquery.ui.totop.js" type="text/javascript"></script>
+<script type="text/javascript">
+/*<![CDATA[*/
+;(function($){$().UItoTop({easingType:'easeOutCirc'});})(jQuery); 
+/*]]>*/
+</script><!-- remove it to remove the scroll to top button -->
+</body>
+</html>

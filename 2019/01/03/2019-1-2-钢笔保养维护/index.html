@@ -1,4 +1,148 @@
-<!DOCTYPE html><html lang="en"><head><meta name="generator" content="Hexo 3.8.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>C语言中的流程图与钢笔的保养 | J6rry's Blog</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/8.0.1/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/3.3.1/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">C语言中的流程图与钢笔的保养</h1><a id="logo" href="/.">J6rry's Blog</a><p class="description">blogging a hacker's life &amp; style</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> Home</i></a><a href="/archives/"><i class="fa fa-archive"> Archive</i></a><a href="/atom.xml"><i class="fa fa-rss"> RSS</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">C语言中的流程图与钢笔的保养</h1><div class="post-meta">Jan 3, 2019</div><a class="disqus-comment-count" data-disqus-identifier="2019/01/03/2019-1-2-钢笔保养维护/" href="/2019/01/03/2019-1-2-钢笔保养维护/#disqus_thread"></a><div class="post-content"><p>流程图（Flow Chart）是在程序设计阶段帮助程序员梳理解决问题流程的一种工具。在学习程序设计时是每一个人都必须反复练习使用的（天才和人肉编译器除外），它利用图形化的符号框来代表各种不同性质的操作，并用<strong>流程线</strong>来连接这些操作。在程序的设计（实际在编写代码码之前）阶段，通过画流程图，可以帮助我们理清程序思路。下面我来说明一下画流程图的一些关键和走过的坑。</p>
+<!DOCTYPE HTML>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+	<meta charset="utf-8">
+    
+	<title>C语言中的流程图与钢笔的保养 - J6rry&#39;s Blog</title>
+    <meta name="author" content="J6rry">
+    
+	<meta name="description" content="&lt;p&gt;流程图（Flow Chart）是在程序设计阶段帮助程序员梳理解决问题流程的一种工具。在学习程序设计时是每一个人都必须反复练习使用的（天才和人肉编译器除外），它利用图形化的符号框来代表各种不同性质的操作，并用&lt;strong&gt;流程线&lt;/strong&gt;来连接这些操作。在程序的设计（实际在编写代码码之前）阶段，通过画流程图，可以帮助我们理清程序思路。下面我来说明一下画流程图的一些关键和走过的坑。&lt;/p&gt;
+&lt;h2 id=&#34;用于程序设计的流程图&#34;&gt;&lt;a href=&#34;#用于程序设计的流程图&#34; class=&#34;headerlink&#34; title=&#34;用于程序设计的流程图&#34;&gt;&lt;/a&gt;用于程序设计的流程图&lt;/h2&gt;&lt;p&gt;其实流程图在日常生活中也很常见，我们基本的思考过程都可以用流程来表示，所谓的『流程』就是指顺序。按照某种顺序做完一件事或思考一个问题，其背后都一张流程图。在程序设计时只不过是把理解问题、分析问题、解决问题的思路用框框线线表现出来，在实际去写代码时能够全局地统筹与规划。无论是C语言、C++、C#、Java等等编程语言，还是数据库、前端等设计语言都可以借助流程图把需求、功能或者算法表达清楚。最常用的12种流程图如下图所示。&lt;/p&gt;
+&lt;a id=&#34;more&#34;&gt;&lt;/a&gt;
+&lt;p&gt;&lt;img src=&#34;https://s2.ax1x.com/2019/01/02/FIcRRs.md.png&#34; alt=&#34;常用的流程图元素&#34;&gt;&lt;/p&gt;
+&lt;p&gt;流程图反映出来一个问题的解决思路通常是由三种基本过程组成的：顺序、分支、循环。用流程图来表示这三种过程是几乎所有编程语言教材中必讲的内容之一。这里就不再重复了，下面举一个例子吧，看看画流程图的一般过程。&lt;/p&gt;
+&lt;p&gt;假设我们要使用C语言编程实现以下问题的求解：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;例 有一数列表达式：1/3-3/5+5/7-7/9…+19/21+…，编程求前n项的计算结果，其中正整数n为用户输入的值，n&amp;gt;0且n&amp;lt;1000。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;通过分析题目的要求，可以发现这属于“累和”一类的问题，关键在于找出不同项之间的关系，不难看出分子和分母的变化是有规则的，都是奇数列，且累和的符号随第几项也在交替变化，奇数项为正，偶数项为负。&lt;/p&gt;
+&lt;p&gt;在以上的分析基础上，我们来思考如何使用程序来实现这个数学式子计算结果的输出。下面再分析下处理这个问题的『流程』，首先，这个程序的输入和输出很明确，输入为n，输出为计算结果。其次，对输入的n有值域范围的约束。最后，需要根据奇偶项判断其符号的正负。下面直接给出解决这个题目的流程图。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://s2.ax1x.com/2019/01/02/FIcWzn.md.png&#34; alt=&#34;解题流程图&#34;&gt;&lt;/p&gt;
+&lt;p&gt;有了流程图之后，可以进行实际的代码编写了，编写代码时要从流程图中找出那三种基本结构，然后一一对应代码的写法。从上面的流程图中可以看到有三处分支结构，最后一处分支结构还实现了循环。于是，写出下面的代码。&lt;/p&gt;
+&lt;figure class=&#34;highlight c&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;32&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;/**&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt; * @file main.c&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt; * @author Xer&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt; * @date 20190102&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt; * @brief 求n项&#34;累和&#34;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt; */&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;meta&#34;&gt;#&lt;span class=&#34;meta-keyword&#34;&gt;include&lt;/span&gt; &lt;span class=&#34;meta-string&#34;&gt;&amp;lt;stdio.h&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;function&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;title&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;params&#34;&gt;(&lt;span class=&#34;keyword&#34;&gt;int&lt;/span&gt; argc, &lt;span class=&#34;keyword&#34;&gt;char&lt;/span&gt; *argv[])&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;int&lt;/span&gt; n = &lt;span class=&#34;number&#34;&gt;0&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;double&lt;/span&gt; result = &lt;span class=&#34;number&#34;&gt;0&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;double&lt;/span&gt; temp = &lt;span class=&#34;number&#34;&gt;0&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;built_in&#34;&gt;scanf&lt;/span&gt;(&lt;span class=&#34;string&#34;&gt;&#34;%d&#34;&lt;/span&gt;, &amp;amp;n);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;if&lt;/span&gt; (n &amp;lt;= &lt;span class=&#34;number&#34;&gt;0&lt;/span&gt; || n &amp;gt;= &lt;span class=&#34;number&#34;&gt;1000&lt;/span&gt;) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;built_in&#34;&gt;printf&lt;/span&gt;(&lt;span class=&#34;string&#34;&gt;&#34;输入n不在约束范围内\n&#34;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;keyword&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;number&#34;&gt;0&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;for&lt;/span&gt; (&lt;span class=&#34;keyword&#34;&gt;int&lt;/span&gt; i = &lt;span class=&#34;number&#34;&gt;0&lt;/span&gt;;i &amp;lt; n; ++i) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;comment&#34;&gt;// 构建新的一项&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        temp = (&lt;span class=&#34;keyword&#34;&gt;double&lt;/span&gt;) (&lt;span class=&#34;number&#34;&gt;2&lt;/span&gt; * i + &lt;span class=&#34;number&#34;&gt;1&lt;/span&gt;)/(&lt;span class=&#34;number&#34;&gt;2&lt;/span&gt; * i + &lt;span class=&#34;number&#34;&gt;1&lt;/span&gt; + &lt;span class=&#34;number&#34;&gt;2&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;keyword&#34;&gt;if&lt;/span&gt;((i + &lt;span class=&#34;number&#34;&gt;1&lt;/span&gt;) % &lt;span class=&#34;number&#34;&gt;2&lt;/span&gt; == &lt;span class=&#34;number&#34;&gt;0&lt;/span&gt;)&lt;span class=&#34;comment&#34;&gt;// 判断奇偶项&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            result = result - temp;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;keyword&#34;&gt;else&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            result = result + temp;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;built_in&#34;&gt;printf&lt;/span&gt;(&lt;span class=&#34;string&#34;&gt;&#34;%lf\n&#34;&lt;/span&gt;, result);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;number&#34;&gt;0&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;通过测试几个典型的值，以及边界条件，程序的输出无误（如何判断？用计算器算出几组结果！计算器能算出当n=999时的答案？不能！如何验证？再写一个Matlab的程序计算一下…考虑下使用代数直接求解出表达式？大坑啊）。&lt;/p&gt;
+&lt;p&gt;通过上面的过程可以发现解决这个问题的关键在于绘制出一个相对准确的流程图，对照流程图再来写代码就容易了一些。但是这个过程的『坑儿』在哪呢？来挖挖吧。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;用户输入不在范围如何处理？（上面的解法直接到结束了）&lt;/li&gt;
+&lt;li&gt;”组建一项“这个过程才是编写代码的关键？从流程图中的一个框能写出来么？&lt;/li&gt;
+&lt;li&gt;如果我不记得如何判断奇偶怎么办？&lt;/li&gt;
+&lt;li&gt;我怎么从来都不能一次画对流程图？&lt;/li&gt;
+&lt;li&gt;你用什么软件画的？输出的是位图还是矢量图？&lt;/li&gt;
+&lt;li&gt;上面的代码在我的电脑上编译不了？&lt;/li&gt;
+&lt;li&gt;为什么我没有从流程图中发现这里面的三种程序结构？&lt;/li&gt;
+&lt;li&gt;我缺少逻辑思考的能力。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;无论是初学还是在工程中的应用，到处都是坑的，躲不掉的。勤于思考，勤于绘制，掌握流程图还是很快的，其他的坑只有一个个踩了。对于流程图我用过的软件可以说下：Inkscape、Adobe Illustrator、OmniGrafle、yED、Shapes、Diagrammix、EdrawMax、Visio、Affinity Disigner、Sketch、draw.io、Scapple、PowerPoint、Dia、Delineato Pro、LibreOffice。以上列表是我认真想过的，都用过，画的图形都在不同的文档中出现过。这又是一个大坑啊！&lt;/p&gt;
+&lt;p&gt;所以，现在画流程图时我选择一支钢笔、一张纸，画草图，然后修改，再画，然后再修改。最后从上面的列表中先一个软件画出矢量图（依然在坑里，出不去了）。为什么用钢笔？钢笔经常不下水，还得加墨，万一没有墨水了岂不是很惨？万一漏墨了岂不更惨？是的，又一个坑！&lt;/p&gt;
+&lt;p&gt;怎么办？怎么办？&lt;/p&gt;
+&lt;p&gt;『上网学习如何保养钢笔吧』见下文。&lt;/p&gt;
+&lt;h2 id=&#34;钢笔保养维护&#34;&gt;&lt;a href=&#34;#钢笔保养维护&#34; class=&#34;headerlink&#34; title=&#34;钢笔保养维护&#34;&gt;&lt;/a&gt;钢笔保养维护&lt;/h2&gt;&lt;p&gt;定期清洗、正常使用状况每三个月应清洗一次；超过1个月以上时间暂不使用的钢笔，笔应彻底清洗擦干，以免墨水干滞而堵塞出水管线而影响钢笔使用寿命。&lt;/p&gt;
+&lt;p&gt;A. 使用吸墨器清洗&lt;br&gt;准备干净的温水、将温水填充入吸墨器，置于钢笔后重复吸墨与释出的动作，直到释出的温水不再浑浊并用面纸擦拭即可。&lt;/p&gt;
+&lt;p&gt;B. 无吸墨器清洗（活塞式内置储墨器笔除外）&lt;br&gt;将前端缓缓转出并置于清水下冲洗使清水自然流入导墨装置后自然释出，直到释出的温水不再浑浊并用面纸擦拭即可。&lt;/p&gt;
+&lt;p&gt;C. 活塞式内置储墨器笔&lt;br&gt;准备干净温水，将温水以正常入墨及释出的方式清洗，直到释出的温水不再浑浊再用面纸擦拭即可。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;钢笔使用完毕应随手将笔盖盖上，以保护笔尖，携带时笔尖朝上；&lt;/li&gt;
+&lt;li&gt;吸墨器长时间使用时会造成磨损间隙，因而产生漏水现象，此时应购买更换新的吸墨器即可；&lt;/li&gt;
+&lt;li&gt;金属笔身的金属表面氧化是自然现象因此需要经常用干净棉布擦拭。&lt;/li&gt;
+&lt;/ul&gt;
+"> <!-- TODO: truncate -->
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="atom.xml" rel="alternate" title="J6rry&#39;s Blog" type="application/atom+xml">
+	<link href="/favicon.ico" rel="shortcut icon">
+    <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+    <link href="/stylesheets/custom.css" media="screen, projection" rel="stylesheet" type="text/css">
+    <link href="/stylesheets/hljs.css" media="screen, projection" rel="stylesheet" type="text/css">
+
+    <link href="//fonts.googleapis.com/css?family=Slackey" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Amethysta" rel="stylesheet" type="text/css">
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![}]-->
+
+    <script type="text/javascript" src="/javascripts/jquery-tapir.js"></script>
+
+    <!-- remove or comment it to disable ajaxification -->   
+    <!-- <script src="/javascripts/ajaxify.js"></script> -->
+
+    
+
+    
+
+</head>
+</html>
+
+<body>
+    <div id="wrapper">
+    <header id="header" class="inner"><!-- for more effects see _animate.scss -->
+<h1 class="animated bounceInDown">
+    <div id="headerbg">
+        J6rry&#39;s Blog
+    </div>
+</h1>
+<span class="subtitle">blogging a hacker&#39;s life &amp; style</span>
+<br>
+
+<ul id="social-links" style="text-align:center; clear:both;">
+  
+  <!-- GitHub -->
+  <li>
+  <a href="https://github.com/ev6r" class="github" title="Github"></a>
+  </li>
+  
+  
+  
+  
+  <!-- Twitter -->
+  <li>
+  <a href="http://www.twitter.com/ev6r27" class="twitter" title="Twitter"></a>
+  </li>
+  
+  
+  
+  
+  
+</ul>
+
+
+<!-- use full url including 'index.html' for navigation bar if you are using ajax -->
+<ul id="nav">
+	<li id="ajax"><a href="/index.html">Home</a></li>
+	<li id="ajax"><a href="/archives/index.html">Archives</a></li>
+	<li id="ajax"><a href="/tags/index.html">Tags</a></li>
+    <li><a href="/atom.xml">RSS</a></li>
+    
+    <li>
+    <div id="dark">
+        <form action="//www.google.com.hk/search" method="get" accept-charset="UTF-8" id="search">
+            <input type="hidden" name="sitesearch" value="https://ev6r.github.io">
+            <input type="text" name="q" results="0" placeholder="Search..." x-webkit-speech="">
+        </form>
+    </div>
+    </li>
+        
+</ul>
+
+
+
+
+</header>
+
+<div id="toload">
+<!-- begin toload -->
+    <div id="content" class="inner">
+        <article class="post">
+	<h2 class="title">C语言中的流程图与钢笔的保养</h2>
+    <div class="meta">
+        <div class="date">Published on: <time datetime="2019-01-02T23:14:00.000Z" itemprop="datePublished">Jan 2, 2019</time>
+</div>
+        <div class="tags">Tags: 
+
+<a href="/tags/流程图/">流程图</a>
+</div>
+    </div>
+	<div class="entry-content"><p>流程图（Flow Chart）是在程序设计阶段帮助程序员梳理解决问题流程的一种工具。在学习程序设计时是每一个人都必须反复练习使用的（天才和人肉编译器除外），它利用图形化的符号框来代表各种不同性质的操作，并用<strong>流程线</strong>来连接这些操作。在程序的设计（实际在编写代码码之前）阶段，通过画流程图，可以帮助我们理清程序思路。下面我来说明一下画流程图的一些关键和走过的坑。</p>
 <h2 id="用于程序设计的流程图"><a href="#用于程序设计的流程图" class="headerlink" title="用于程序设计的流程图"></a>用于程序设计的流程图</h2><p>其实流程图在日常生活中也很常见，我们基本的思考过程都可以用流程来表示，所谓的『流程』就是指顺序。按照某种顺序做完一件事或思考一个问题，其背后都一张流程图。在程序设计时只不过是把理解问题、分析问题、解决问题的思路用框框线线表现出来，在实际去写代码时能够全局地统筹与规划。无论是C语言、C++、C#、Java等等编程语言，还是数据库、前端等设计语言都可以借助流程图把需求、功能或者算法表达清楚。最常用的12种流程图如下图所示。</p>
 <a id="more"></a>
 <p><img src="https://s2.ax1x.com/2019/01/02/FIcRRs.md.png" alt="常用的流程图元素"></p>
@@ -37,49 +181,86 @@
 <li>吸墨器长时间使用时会造成磨损间隙，因而产生漏水现象，此时应购买更换新的吸墨器即可；</li>
 <li>金属笔身的金属表面氧化是自然现象因此需要经常用干净棉布擦拭。</li>
 </ul>
-</div><div class="tags"><a href="/tags/流程图/">流程图</a></div><div class="post-nav"><a class="pre" href="/2019/01/10/2019-1-10-程序员防瞎指南/">程序员防瞎指南</a><a class="next" href="/2018/12/17/2018-12-17-重读论语/">重读《论语》</a></div><div id="disqus_thread"><div class="btn_click_load"><button class="disqus_click_btn">阅读评论（请确保 Disqus 可以正常加载）</button></div><script type="text/javascript">var disqus_config = function () {
-    this.page.url = 'https://ev6r.github.io/2019/01/03/2019-1-2-钢笔保养维护/';
-    this.page.identifier = '2019/01/03/2019-1-2-钢笔保养维护/';
-    this.page.title = 'C语言中的流程图与钢笔的保养';
-  };</script><script type="text/javascript" id="disqus-lazy-load-script">$.ajax({
-url: 'https://disqus.com/next/config.json',
-timeout: 2500,
-type: 'GET',
-success: function(){
-  var d = document;
-  var s = d.createElement('script');
-  s.src = '//ev6rgithubio.disqus.com/embed.js';
-  s.setAttribute('data-timestamp', + new Date());
-  (d.head || d.body).appendChild(s);
-  $('.disqus_click_btn').css('display', 'none');
-},
-error: function() {
-  $('.disqus_click_btn').css('display', 'block');
-}
-});</script><script type="text/javascript" id="disqus-click-load">$('.btn_click_load').click(() => {  //click to load comments
-    (() => { // DON'T EDIT BELOW THIS LINE
-        var d = document;
-        var s = d.createElement('script');
-        s.src = '//ev6rgithubio.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', + new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-    $('.disqus_click_btn').css('display','none');
-});</script><script type="text/javascript" id="disqus-count-script">$(function() {
-     var xhr = new XMLHttpRequest();
-     xhr.open('GET', '//disqus.com/next/config.json', true);
-     xhr.timeout = 2500;
-     xhr.onreadystatechange = function () {
-       if (xhr.readyState === 4 && xhr.status === 200) {
-         $('.post-meta .post-comments-count').show();
-         var s = document.createElement('script');
-         s.id = 'dsq-count-scr';
-         s.src = 'https://ev6rgithubio.disqus.com/count.js';
-         s.async = true;
-         (document.head || document.body).appendChild(s);
-       }
-     };
-     xhr.ontimeout = function () { xhr.abort(); };
-     xhr.send(null);
-   });
-</script></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"><input type="hidden" name="sitesearch" value="https://ev6r.github.io"></form></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> Tags</i></div><div class="tagcloud"><a href="/tags/blog/" style="font-size: 15px;">blog</a> <a href="/tags/外星人/" style="font-size: 15px;">外星人</a> <a href="/tags/project/" style="font-size: 15px;">project</a> <a href="/tags/目标检测/" style="font-size: 15px;">目标检测</a> <a href="/tags/UML/" style="font-size: 15px;">UML</a> <a href="/tags/论语/" style="font-size: 15px;">论语</a> <a href="/tags/QT-OGRE-图像/" style="font-size: 15px;">QT, OGRE, 图像</a> <a href="/tags/健康/" style="font-size: 15px;">健康</a> <a href="/tags/流程图/" style="font-size: 15px;">流程图</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> Recent</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/08/17/2019-08-17-QImage加载图像的坑儿/">QImage加载图像的坑儿</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/24/2019-01-23-不教而诛/">不教而诛</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/10/2019-1-10-程序员防瞎指南/">程序员防瞎指南</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/03/2019-1-2-钢笔保养维护/">C语言中的流程图与钢笔的保养</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/17/2018-12-17-重读论语/">重读《论语》</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/17/2018-12-17-目标检测与识别的威力慢慢展现出来了/">目标检测与识别的威力慢慢展现出来了</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/17/2018-12-16-外星人为什么还不来地球/">外星人为什么还不来地球</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/16/2018-12-15-UML实践详细经典教程/">转：UML实践详细经典教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/11/2018-12-10-Software-design-with-a-workflow/">Software design with a workflow</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/11/2018-12-10-博客迁移/">博客迁移</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-comment-o"> Recent Comments</i></div><script type="text/javascript" src="//ev6rgithubio.disqus.com/recent_comments_widget.js?num_items=5&amp;hide_avatars=1&amp;avatar_size=32&amp;excerpt_length=20&amp;hide_mods=1"></script></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2019 <a href="/." rel="nofollow">J6rry's Blog.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//lib.baomitu.com/fancybox/3.5.2/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/fancybox/3.5.2/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
+</div>
+
+<div class="meta">
+	
+		<span class="comments"><a href="https://ev6r.github.io/2019/01/03/2019-1-2-钢笔保养维护/#disqus_thread">Comments</a></span>
+	
+</div>
+</article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+
+
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+            this.page.url = 'https://ev6r.github.io/2019/01/03/2019-1-2-钢笔保养维护/';
+            this.page.identifier = 'https://ev6r.github.io/2019/01/03/2019-1-2-钢笔保养维护/';
+        };
+
+        (function() {
+          var d = document, s = d.createElement('script');
+          s.src = '//ev6rgithubio.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+
+
+<section id="comment">
+    <h2 class="title">Comments</h2>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
+
+
+    </div>
+    <footer id="footer">
+    <div style="display:inline">
+    Copyright &copy; 2019
+
+    J6rry
+. Powered by <a href="http://zespia.tw/hexo/" target="_blank">Hexo</a> |
+    Theme is <a href="https://github.com/wd/hexo-fabric">hexo-fabric</a>, fork from <a href="http://github.com/panks/fabric">fabric</a> by <a href="http://panks.me">Pankaj Kumar</a>
+</div>
+
+
+    </footer>
+    <script src="/javascripts/fabric.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script>
+ <!-- Delete or comment this line to disable Fancybox -->
+
+
+
+<!-- end toload --> 
+</div>
+</div>
+<script src="/javascripts/jquery.ui.totop.js" type="text/javascript"></script>
+<script type="text/javascript">
+/*<![CDATA[*/
+;(function($){$().UItoTop({easingType:'easeOutCirc'});})(jQuery); 
+/*]]>*/
+</script><!-- remove it to remove the scroll to top button -->
+</body>
+</html>
