@@ -1,4 +1,117 @@
-<!DOCTYPE html><html lang="en"><head><meta name="generator" content="Hexo 3.8.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>quick post and publish scripts for octopress | J6rry's Blog</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/8.0.1/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/3.4.0/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">quick post and publish scripts for octopress</h1><a id="logo" href="/.">J6rry's Blog</a><p class="description">blogging a hacker's life &amp; style</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> Home</i></a><a href="/archives/"><i class="fa fa-archive"> Archive</i></a><a href="/atom.xml"><i class="fa fa-rss"> RSS</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">quick post and publish scripts for octopress</h1><div class="post-meta">Feb 19, 2014</div><a class="disqus-comment-count" data-disqus-identifier="2014/02/19/2014-02-19-quick-post-and-publish-scripts-for-octopress/" href="/2014/02/19/2014-02-19-quick-post-and-publish-scripts-for-octopress/#disqus_thread"></a><div class="post-content"><p>The old to post on <strong>Octopress</strong> is slow with much code to input, so I<br>need quickly to post what I want. I searched on <em> Google </em> and the do<br>have someone catch the same idea~</p>
+<!DOCTYPE HTML>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+	<!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    
+	<title>quick post and publish scripts for octopress - J6rry&#39;s Blog</title>
+    <meta name="author" content="J6rry">
+    
+	<meta name="description" content="&lt;p&gt;The old to post on &lt;strong&gt;Octopress&lt;/strong&gt; is slow with much code to input, so I&lt;br&gt;need quickly to post what I want. I searched on &lt;em&gt; Google &lt;/em&gt; and the do&lt;br&gt;have someone catch the same idea~&lt;/p&gt;
+&lt;p&gt;I mainly referred to&lt;br&gt;&lt;a href=&#34;https://coderwall.com/p/qadtqq by Shu Yang
+Quek&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://codewall.com&lt;/a&gt; . However, I’d like to separate the &lt;em&gt;blog_post&lt;/em&gt; and &lt;em&gt;publish&lt;/em&gt;&lt;br&gt;processes. So I updated the scripts as below:&lt;/p&gt;
+&lt;figure class=&#34;highlight sh&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;meta&#34;&gt;#! /bin/bash&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;EDITOR=/Applications/Aquamacs.app/Contents/MacOS/Aquamacs&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;BLOG_DIR=~/Documents/octopress&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;built_in&#34;&gt;cd&lt;/span&gt; &lt;span class=&#34;variable&#34;&gt;$BLOG_DIR&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;NEW_POST_PATH=`rake new_post[&lt;span class=&#34;string&#34;&gt;&#34;$*&#34;&lt;/span&gt;] | awk &lt;span class=&#34;string&#34;&gt;&#39;/Creating new post:/ &amp;#123;print $4&amp;#125;&#39;&lt;/span&gt;`&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;built_in&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;string&#34;&gt;&#34;Editing blog entry &lt;span class=&#34;variable&#34;&gt;$BLOG_DIR&lt;/span&gt;/&lt;span class=&#34;variable&#34;&gt;$NEW_POST_PATH&lt;/span&gt;&#34;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;sleep 1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;variable&#34;&gt;$EDITOR&lt;/span&gt; &lt;span class=&#34;variable&#34;&gt;$BLOG_DIR&lt;/span&gt;/&lt;span class=&#34;variable&#34;&gt;$NEW_POST_PATH&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;That is for &lt;em&gt;post&lt;/em&gt; which is saved as &lt;strong&gt;blog_post&lt;/strong&gt; and &lt;code&gt;chmod +x blog_post&lt;/code&gt; .&lt;/p&gt;
+&lt;figure class=&#34;highlight sh&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;meta&#34;&gt;#! /bin/bash&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;BLOG_DIR=~/Documents/octopress&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;built_in&#34;&gt;cd&lt;/span&gt; &lt;span class=&#34;variable&#34;&gt;$BLOG_DIR&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;rake generate&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;git add -A&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;git commit -m&lt;span class=&#34;string&#34;&gt;&#34;&lt;span class=&#34;variable&#34;&gt;$1&lt;/span&gt;&#34;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;git push origin &lt;span class=&#34;built_in&#34;&gt;source&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;rake deploy&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;That is for &lt;em&gt;publish&lt;/em&gt; which is also saved as executable script as&lt;br&gt;above. I moved them to the &lt;code&gt;/usr/local/bin&lt;/code&gt; directory, where I can&lt;br&gt;directly call from terminal by tying their names.&lt;/p&gt;
+&lt;p&gt;That’s all.&lt;/p&gt;
+"> <!-- TODO: truncate -->
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="atom.xml" rel="alternate" title="J6rry&#39;s Blog" type="application/atom+xml">
+	<link href="/favicon.ico" rel="shortcut icon">
+    <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+    <link href="/stylesheets/custom.css" media="screen, projection" rel="stylesheet" type="text/css">
+    <link href="/stylesheets/hljs.css" media="screen, projection" rel="stylesheet" type="text/css">
+
+    <link href="//fonts.googleapis.com/css?family=Slackey" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Amethysta" rel="stylesheet" type="text/css">
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![}]-->
+
+    <script type="text/javascript" src="/javascripts/jquery-tapir.js"></script>
+
+    <!-- remove or comment it to disable ajaxification -->   
+    <!-- <script src="/javascripts/ajaxify.js"></script> --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+    
+
+    
+
+</head>
+</html>
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="wrapper">
+    <header id="header" class="inner"><!-- for more effects see _animate.scss -->
+<h1 class="animated bounceInDown">
+    <div id="headerbg">
+        J6rry&#39;s Blog
+    </div>
+</h1>
+<span class="subtitle">blogging a hacker&#39;s life &amp; style</span>
+<br>
+
+<ul id="social-links" style="text-align:center; clear:both;">
+  
+  <!-- GitHub -->
+  <li>
+  <a href="https://github.com/ev6r" class="github" title="Github"></a>
+  </li>
+  
+  
+  
+  
+  <!-- Twitter -->
+  <li>
+  <a href="http://www.twitter.com/ev6r27" class="twitter" title="Twitter"></a>
+  </li>
+  
+  
+  
+  
+  
+</ul>
+
+
+<!-- use full url including 'index.html' for navigation bar if you are using ajax -->
+<ul id="nav">
+	<li id="ajax"><a href="/index.html">Home</a></li>
+	<li id="ajax"><a href="/archives/index.html">Archives</a></li>
+	<li id="ajax"><a href="/tags/index.html">Tags</a></li>
+    <li><a href="/atom.xml">RSS</a></li>
+    
+    <li>
+    <div id="dark">
+        <form action="//www.google.com.hk/search" method="get" accept-charset="UTF-8" id="search">
+            <input type="hidden" name="sitesearch" value="https://ev6r.github.io">
+            <input type="text" name="q" results="0" placeholder="Search..." x-webkit-speech="">
+        </form>
+    </div>
+    </li>
+        
+</ul>
+
+
+
+
+</header>
+
+<div id="toload">
+<!-- begin toload -->
+    <div id="content" class="inner">
+        <article class="post">
+	<h2 class="title">quick post and publish scripts for octopress</h2>
+    <div class="meta">
+        <div class="date">Published on: <time datetime="2014-02-19T13:53:00.000Z" itemprop="datePublished">Feb 19, 2014</time>
+</div>
+        <div class="tags">Tags: 
+
+
+</div>
+    </div>
+	<div class="entry-content"><p>The old to post on <strong>Octopress</strong> is slow with much code to input, so I<br>need quickly to post what I want. I searched on <em> Google </em> and the do<br>have someone catch the same idea~</p>
 <p>I mainly referred to<br><a href="https://coderwall.com/p/qadtqq by Shu Yang
 Quek" target="_blank" rel="noopener">https://codewall.com</a> . However, I’d like to separate the <em>blog_post</em> and <em>publish</em><br>processes. So I updated the scripts as below:</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#! /bin/bash</span></span><br><span class="line">EDITOR=/Applications/Aquamacs.app/Contents/MacOS/Aquamacs</span><br><span class="line">BLOG_DIR=~/Documents/octopress</span><br><span class="line"><span class="built_in">cd</span> <span class="variable">$BLOG_DIR</span></span><br><span class="line">NEW_POST_PATH=`rake new_post[<span class="string">"$*"</span>] | awk <span class="string">'/Creating new post:/ &#123;print $4&#125;'</span>`</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"Editing blog entry <span class="variable">$BLOG_DIR</span>/<span class="variable">$NEW_POST_PATH</span>"</span></span><br><span class="line">sleep 1</span><br><span class="line"><span class="variable">$EDITOR</span> <span class="variable">$BLOG_DIR</span>/<span class="variable">$NEW_POST_PATH</span></span><br></pre></td></tr></table></figure>
@@ -6,49 +119,103 @@ Quek" target="_blank" rel="noopener">https://codewall.com</a> . However, I’d l
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#! /bin/bash</span></span><br><span class="line">BLOG_DIR=~/Documents/octopress</span><br><span class="line"><span class="built_in">cd</span> <span class="variable">$BLOG_DIR</span></span><br><span class="line"></span><br><span class="line">rake generate</span><br><span class="line">git add -A</span><br><span class="line">git commit -m<span class="string">"<span class="variable">$1</span>"</span></span><br><span class="line">git push origin <span class="built_in">source</span></span><br><span class="line">rake deploy</span><br></pre></td></tr></table></figure>
 <p>That is for <em>publish</em> which is also saved as executable script as<br>above. I moved them to the <code>/usr/local/bin</code> directory, where I can<br>directly call from terminal by tying their names.</p>
 <p>That’s all.</p>
-</div><div class="tags"></div><div class="post-nav"><a class="pre" href="/2014/03/01/2014-03-01-setup-for-a-diary/">Setup for A Plain Text Diary Tools</a><a class="next" href="/2014/02/16/2014-02-15-wubi-on-max-os-10-dot-9/">Wubi on Max OS 10.9</a></div><div id="disqus_thread"><div class="btn_click_load"><button class="disqus_click_btn">阅读评论（请确保 Disqus 可以正常加载）</button></div><script type="text/javascript">var disqus_config = function () {
-    this.page.url = 'https://ev6r.github.io/2014/02/19/2014-02-19-quick-post-and-publish-scripts-for-octopress/';
-    this.page.identifier = '2014/02/19/2014-02-19-quick-post-and-publish-scripts-for-octopress/';
-    this.page.title = 'quick post and publish scripts for octopress';
-  };</script><script type="text/javascript" id="disqus-lazy-load-script">$.ajax({
-url: 'https://disqus.com/next/config.json',
-timeout: 2500,
-type: 'GET',
-success: function(){
-  var d = document;
-  var s = d.createElement('script');
-  s.src = '//ev6rgithubio.disqus.com/embed.js';
-  s.setAttribute('data-timestamp', + new Date());
-  (d.head || d.body).appendChild(s);
-  $('.disqus_click_btn').css('display', 'none');
-},
-error: function() {
-  $('.disqus_click_btn').css('display', 'block');
-}
-});</script><script type="text/javascript" id="disqus-click-load">$('.btn_click_load').click(() => {  //click to load comments
-    (() => { // DON'T EDIT BELOW THIS LINE
-        var d = document;
-        var s = d.createElement('script');
-        s.src = '//ev6rgithubio.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', + new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-    $('.disqus_click_btn').css('display','none');
-});</script><script type="text/javascript" id="disqus-count-script">$(function() {
-     var xhr = new XMLHttpRequest();
-     xhr.open('GET', '//disqus.com/next/config.json', true);
-     xhr.timeout = 2500;
-     xhr.onreadystatechange = function () {
-       if (xhr.readyState === 4 && xhr.status === 200) {
-         $('.post-meta .post-comments-count').show();
-         var s = document.createElement('script');
-         s.id = 'dsq-count-scr';
-         s.src = 'https://ev6rgithubio.disqus.com/count.js';
-         s.async = true;
-         (document.head || document.body).appendChild(s);
-       }
-     };
-     xhr.ontimeout = function () { xhr.abort(); };
-     xhr.send(null);
-   });
-</script></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"><input type="hidden" name="sitesearch" value="https://ev6r.github.io"></form></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> Tags</i></div><div class="tagcloud"><a href="/tags/blog/" style="font-size: 15px;">blog</a> <a href="/tags/project/" style="font-size: 15px;">project</a> <a href="/tags/外星人/" style="font-size: 15px;">外星人</a> <a href="/tags/UML/" style="font-size: 15px;">UML</a> <a href="/tags/目标检测/" style="font-size: 15px;">目标检测</a> <a href="/tags/论语/" style="font-size: 15px;">论语</a> <a href="/tags/健康/" style="font-size: 15px;">健康</a> <a href="/tags/QT-OGRE-图像/" style="font-size: 15px;">QT, OGRE, 图像</a> <a href="/tags/流程图/" style="font-size: 15px;">流程图</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> Recent</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/08/17/2019-08-17-QImage加载图像的坑儿/">QImage加载图像的坑儿</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/24/2019-01-23-不教而诛/">不教而诛</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/10/2019-1-10-程序员防瞎指南/">程序员防瞎指南</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/03/2019-1-2-钢笔保养维护/">C语言中的流程图与钢笔的保养</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/17/2018-12-17-重读论语/">重读《论语》</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/17/2018-12-17-目标检测与识别的威力慢慢展现出来了/">目标检测与识别的威力慢慢展现出来了</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/17/2018-12-16-外星人为什么还不来地球/">外星人为什么还不来地球</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/16/2018-12-15-UML实践详细经典教程/">转：UML实践详细经典教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/11/2018-12-10-Software-design-with-a-workflow/">Software design with a workflow</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/11/2018-12-10-博客迁移/">博客迁移</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-comment-o"> Recent Comments</i></div><script type="text/javascript" src="//ev6rgithubio.disqus.com/recent_comments_widget.js?num_items=5&amp;hide_avatars=1&amp;avatar_size=32&amp;excerpt_length=20&amp;hide_mods=1"></script></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2019 <a href="/." rel="nofollow">J6rry's Blog.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
+</div>
+
+<div class="meta">
+	
+		<span class="comments"><a href="https://ev6r.github.io/2014/02/19/2014-02-19-quick-post-and-publish-scripts-for-octopress/#disqus_thread">Comments</a></span>
+	
+</div>
+</article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+
+
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+            this.page.url = 'https://ev6r.github.io/2014/02/19/2014-02-19-quick-post-and-publish-scripts-for-octopress/';
+            this.page.identifier = 'https://ev6r.github.io/2014/02/19/2014-02-19-quick-post-and-publish-scripts-for-octopress/';
+        };
+
+        (function() {
+          var d = document, s = d.createElement('script');
+          s.src = '//ev6rgithubio.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+
+
+<section id="comment">
+    <h2 class="title">Comments</h2>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
+
+
+    </div>
+    <footer id="footer">
+    <div style="display:inline">
+    Copyright &copy; 2019
+
+    J6rry
+. Powered by <a href="http://zespia.tw/hexo/" target="_blank">Hexo</a> |
+    Theme is <a href="https://github.com/wd/hexo-fabric">hexo-fabric</a>, fork from <a href="http://github.com/panks/fabric">fabric</a> by <a href="http://panks.me">Pankaj Kumar</a>
+</div>
+
+
+    </footer>
+    <script src="/javascripts/fabric.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script>
+ <!-- Delete or comment this line to disable Fancybox -->
+
+
+
+<!-- end toload --> 
+</div>
+</div>
+<script src="/javascripts/jquery.ui.totop.js" type="text/javascript"></script>
+<script type="text/javascript">
+/*<![CDATA[*/
+;(function($){$().UItoTop({easingType:'easeOutCirc'});})(jQuery); 
+/*]]>*/
+</script><!-- remove it to remove the scroll to top button --><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+</html>
