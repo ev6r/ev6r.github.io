@@ -1,124 +1,4 @@
-<!DOCTYPE HTML>
-<html>
-<head><meta name="generator" content="Hexo 3.8.0">
-	<meta charset="utf-8">
-    
-	<title>TPLink703N Hacking - J6rry&#39;s Blog</title>
-    <meta name="author" content="J6rry">
-    
-	<meta name="description" content="&lt;p&gt;偷得半日闲，在TpLink 703N的软件和硬件上同时做一些Hacking的工作，主要是焊制了串口的通信接口TTL，通过与USB转串口工具与PC机连接，以及刷上了&lt;strong&gt;不死&lt;/strong&gt;U-boot，可以开心的使用OpenWRT了。&lt;/p&gt;
-&lt;p&gt;在这个过程中，参考了国内外大量的前辈经验，先一并感谢之。&lt;/p&gt;
-&lt;p&gt;这里记录几个主要要注意的地方：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;开盖需要小心，从USB上方入起子，最好参考openwrt官网查看PCB板子的图之后再进行开盖的操作，不容易损坏外观。&lt;/li&gt;
-&lt;li&gt;在焊TTL线时，PCB上的两上预留的焊点实在太小了（主要还是技术不过硬），不建议直接接线焊，还是按照网上大神给出的PCB电路图找两个相距较远的点来焊，尤其是GND点有多个可选点，就不要在TP_IN和TP_OUT周围找了，我选的是C37的那个大焊点，三个点焊完一定及时的用热胶固定（我在焊TP_IN时不小心拖了一下线，结果那个点直接被撕下来了。。。），我没有将TP_IN和TP_OUT接到Micro USB上，也没有在板子上钻额外的孔，TTL只是用来救砖，以后再考虑串口扩展的问题，先能连上PC的串口就可以了。我是边焊还用万用表检测导通的线路（小心为上，还不熟练）。&lt;/li&gt;
-&lt;li&gt;与PC连的USB转串口是过去的一个开发板送的EasyOpenJTAG转换器，上面有四组接口，我选用了4脚插口（引出5V/GND/TXD/RXD四脚），由于原来的标准接口间距太小，与杜邦线的接头不兼容，所以我取了下原来的标准接口，自己焊了四条杜邦线上去，看着丑点，能用就好。&lt;/li&gt;
-&lt;li&gt;我原来的703N是已经刷过OpenWRT的，也算是物尽其用了，那时候还要用inode拨号上网时就开始Hacking了，后来怎么把内核搞坏了，我也记不清了，反正是Failure Mode（蓝灯狂闪）也是进不去了。就只能从硬件引出串口，重要烧写内核了。我下载的是OpenWRT官风提供的factorysys*.bin，根据网上的资料进入串口模式，将固件烧写进硬件，重启之后就进入了熟悉的OpenWRT界面了。&lt;/li&gt;
-&lt;li&gt;OpenWRT现在的版本变漂亮了，但是本质的配置没有变，通过有线连接&lt;code&gt;telnet&lt;/code&gt;进入后设置root密码，然后就可以&lt;code&gt;ssh&lt;/code&gt;了。基本的无线配置我选择wan使用&lt;code&gt;dhcp&lt;/code&gt;自动获得上次有线网络的IP，无线通过PSK加密连接，重启后，可以用无线连接了，有了基本的使用功能了。&lt;/li&gt;
-&lt;li&gt;最后，我担心又会重蹈覆辙，以后再刷出问题还要拆开TTL，虽然也不困难，但是还是有些麻烦的，我想还是直接刷一个“不死”u-boot“吧。在网上找到了资料，有一个完整的百度盘的完整包，里面包含了上传下载工具和固件，果断按提示改了u-boot.bin中的MAC地址，然后使用SCP下载uboot和art备份以及上传更新过的u-boot.bin文件（还好是在MacOS下，上传下载容易一些），最后将新的uboot刷入，重启搞定。其实，在这个过程中我遇到了uboot分区上锁无法刷入的问题，问题出在我没有用那个完整包里的update*.bin的OpenWRT固件解锁uboot，后来在ssh下先解锁uboot后，就可以成功的替换为&lt;strong&gt;不死&lt;/strong&gt;u-boot啦。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;ps：备忘一下TTL和EasyOpenJTAG的连线接法，&lt;/p&gt;
-&lt;figure class=&#34;highlight plain&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;TXD-&amp;gt;TP_IN  //绿——黑&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;RXD-&amp;gt;TP_OUT //蓝——红&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;GND-&amp;gt;GND    //黄——灰&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;秀一下：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/images/blog_imgs/703n.png&#34; alt=&#34;703n&#34;&gt;&lt;/p&gt;
-"> <!-- TODO: truncate -->
-	
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-	<link href="atom.xml" rel="alternate" title="J6rry&#39;s Blog" type="application/atom+xml">
-	<link href="/favicon.ico" rel="shortcut icon">
-    <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-    <link href="/stylesheets/custom.css" media="screen, projection" rel="stylesheet" type="text/css">
-    <link href="/stylesheets/hljs.css" media="screen, projection" rel="stylesheet" type="text/css">
-
-    <link href="//fonts.googleapis.com/css?family=Slackey" rel="stylesheet" type="text/css">
-    <link href="//fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet" type="text/css">
-    <link href="//fonts.googleapis.com/css?family=Amethysta" rel="stylesheet" type="text/css">
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![}]-->
-
-    <script type="text/javascript" src="/javascripts/jquery-tapir.js"></script>
-
-    <!-- remove or comment it to disable ajaxification -->   
-    <!-- <script src="/javascripts/ajaxify.js"></script> -->
-
-    
-
-    
-
-</head>
-</html>
-
-<body>
-    <div id="wrapper">
-    <header id="header" class="inner"><!-- for more effects see _animate.scss -->
-<h1 class="animated bounceInDown">
-    <div id="headerbg">
-        J6rry&#39;s Blog
-    </div>
-</h1>
-<span class="subtitle">blogging a hacker&#39;s life &amp; style</span>
-<br>
-
-<ul id="social-links" style="text-align:center; clear:both;">
-  
-  <!-- GitHub -->
-  <li>
-  <a href="https://github.com/ev6r" class="github" title="Github"></a>
-  </li>
-  
-  
-  
-  
-  <!-- Twitter -->
-  <li>
-  <a href="http://www.twitter.com/ev6r27" class="twitter" title="Twitter"></a>
-  </li>
-  
-  
-  
-  
-  
-</ul>
-
-
-<!-- use full url including 'index.html' for navigation bar if you are using ajax -->
-<ul id="nav">
-	<li id="ajax"><a href="/index.html">Home</a></li>
-	<li id="ajax"><a href="/archives/index.html">Archives</a></li>
-	<li id="ajax"><a href="/tags/index.html">Tags</a></li>
-    <li><a href="/atom.xml">RSS</a></li>
-    
-    <li>
-    <div id="dark">
-        <form action="//www.google.com.hk/search" method="get" accept-charset="UTF-8" id="search">
-            <input type="hidden" name="sitesearch" value="https://ev6r.github.io">
-            <input type="text" name="q" results="0" placeholder="Search..." x-webkit-speech="">
-        </form>
-    </div>
-    </li>
-        
-</ul>
-
-
-
-
-</header>
-
-<div id="toload">
-<!-- begin toload -->
-    <div id="content" class="inner">
-        <article class="post">
-	<h2 class="title">TPLink703N Hacking</h2>
-    <div class="meta">
-        <div class="date">Published on: <time datetime="2016-11-21T22:09:00.000Z" itemprop="datePublished">Nov 21, 2016</time>
-</div>
-        <div class="tags">Tags: 
-
-
-</div>
-    </div>
-	<div class="entry-content"><p>偷得半日闲，在TpLink 703N的软件和硬件上同时做一些Hacking的工作，主要是焊制了串口的通信接口TTL，通过与USB转串口工具与PC机连接，以及刷上了<strong>不死</strong>U-boot，可以开心的使用OpenWRT了。</p>
+<!DOCTYPE html><html lang="en"><head><meta name="generator" content="Hexo 3.8.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>TPLink703N Hacking | J6rry's Blog</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/8.0.1/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/3.3.1/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">TPLink703N Hacking</h1><a id="logo" href="/.">J6rry's Blog</a><p class="description">blogging a hacker's life &amp; style</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> Home</i></a><a href="/archives/"><i class="fa fa-archive"> Archive</i></a><a href="/atom.xml"><i class="fa fa-rss"> RSS</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">TPLink703N Hacking</h1><div class="post-meta">Nov 22, 2016</div><a class="disqus-comment-count" data-disqus-identifier="2016/11/22/2016-11-21-tplink703n-hacking/" href="/2016/11/22/2016-11-21-tplink703n-hacking/#disqus_thread"></a><div class="post-content"><p>偷得半日闲，在TpLink 703N的软件和硬件上同时做一些Hacking的工作，主要是焊制了串口的通信接口TTL，通过与USB转串口工具与PC机连接，以及刷上了<strong>不死</strong>U-boot，可以开心的使用OpenWRT了。</p>
 <p>在这个过程中，参考了国内外大量的前辈经验，先一并感谢之。</p>
 <p>这里记录几个主要要注意的地方：</p>
 <ul>
@@ -133,86 +13,49 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">TXD-&gt;TP_IN  //绿——黑</span><br><span class="line">RXD-&gt;TP_OUT //蓝——红</span><br><span class="line">GND-&gt;GND    //黄——灰</span><br></pre></td></tr></table></figure>
 <p>秀一下：</p>
 <p><img src="/images/blog_imgs/703n.png" alt="703n"></p>
-</div>
-
-<div class="meta">
-	
-		<span class="comments"><a href="https://ev6r.github.io/2016/11/22/2016-11-21-tplink703n-hacking/#disqus_thread">Comments</a></span>
-	
-</div>
-</article>
-
-	<div class="share">
-	<div class="addthis_toolbox addthis_default_style ">
-	
-	
-	<a class="addthis_button_tweet"></a>
-	
-	
-	<a class="addthis_counter addthis_pill_style"></a>
-	</div>
-  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
-</div>
-
-
-
-
-
-    
-      <script type="text/javascript">
-        var disqus_config = function () {
-            this.page.url = 'https://ev6r.github.io/2016/11/22/2016-11-21-tplink703n-hacking/';
-            this.page.identifier = 'https://ev6r.github.io/2016/11/22/2016-11-21-tplink703n-hacking/';
-        };
-
-        (function() {
-          var d = document, s = d.createElement('script');
-          s.src = '//ev6rgithubio.disqus.com/embed.js';
-          s.setAttribute('data-timestamp', +new Date());
-          (d.head || d.body).appendChild(s);
-        })();
-      </script>
-    
-
-
-<section id="comment">
-    <h2 class="title">Comments</h2>
-    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-</div>
-</section>
-
-
-    </div>
-    <footer id="footer">
-    <div style="display:inline">
-    Copyright &copy; 2019
-
-    J6rry
-. Powered by <a href="http://zespia.tw/hexo/" target="_blank">Hexo</a> |
-    Theme is <a href="https://github.com/wd/hexo-fabric">hexo-fabric</a>, fork from <a href="http://github.com/panks/fabric">fabric</a> by <a href="http://panks.me">Pankaj Kumar</a>
-</div>
-
-
-    </footer>
-    <script src="/javascripts/fabric.js"></script>
-<script src="/javascripts/jquery.fancybox.pack.js"></script>
-<script type="text/javascript">
-(function($){
-	$('.fancybox').fancybox();
-})(jQuery);
-</script>
- <!-- Delete or comment this line to disable Fancybox -->
-
-
-
-<!-- end toload --> 
-</div>
-</div>
-<script src="/javascripts/jquery.ui.totop.js" type="text/javascript"></script>
-<script type="text/javascript">
-/*<![CDATA[*/
-;(function($){$().UItoTop({easingType:'easeOutCirc'});})(jQuery); 
-/*]]>*/
-</script><!-- remove it to remove the scroll to top button -->
-</body>
-</html>
+</div><div class="tags"></div><div class="post-nav"><a class="pre" href="/2016/11/22/2016-11-22-ji-jian-sheng-huo/">极简</a><a class="next" href="/2016/10/26/2016-10-25-cong-tou-kai-shi-you-he-fang/">从头开始又何妨</a></div><div id="disqus_thread"><div class="btn_click_load"><button class="disqus_click_btn">阅读评论（请确保 Disqus 可以正常加载）</button></div><script type="text/javascript">var disqus_config = function () {
+    this.page.url = 'https://ev6r.github.io/2016/11/22/2016-11-21-tplink703n-hacking/';
+    this.page.identifier = '2016/11/22/2016-11-21-tplink703n-hacking/';
+    this.page.title = 'TPLink703N Hacking';
+  };</script><script type="text/javascript" id="disqus-lazy-load-script">$.ajax({
+url: 'https://disqus.com/next/config.json',
+timeout: 2500,
+type: 'GET',
+success: function(){
+  var d = document;
+  var s = d.createElement('script');
+  s.src = '//ev6rgithubio.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', + new Date());
+  (d.head || d.body).appendChild(s);
+  $('.disqus_click_btn').css('display', 'none');
+},
+error: function() {
+  $('.disqus_click_btn').css('display', 'block');
+}
+});</script><script type="text/javascript" id="disqus-click-load">$('.btn_click_load').click(() => {  //click to load comments
+    (() => { // DON'T EDIT BELOW THIS LINE
+        var d = document;
+        var s = d.createElement('script');
+        s.src = '//ev6rgithubio.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', + new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+    $('.disqus_click_btn').css('display','none');
+});</script><script type="text/javascript" id="disqus-count-script">$(function() {
+     var xhr = new XMLHttpRequest();
+     xhr.open('GET', '//disqus.com/next/config.json', true);
+     xhr.timeout = 2500;
+     xhr.onreadystatechange = function () {
+       if (xhr.readyState === 4 && xhr.status === 200) {
+         $('.post-meta .post-comments-count').show();
+         var s = document.createElement('script');
+         s.id = 'dsq-count-scr';
+         s.src = 'https://ev6rgithubio.disqus.com/count.js';
+         s.async = true;
+         (document.head || document.body).appendChild(s);
+       }
+     };
+     xhr.ontimeout = function () { xhr.abort(); };
+     xhr.send(null);
+   });
+</script></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"><input type="hidden" name="sitesearch" value="https://ev6r.github.io"></form></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> Tags</i></div><div class="tagcloud"><a href="/tags/project/" style="font-size: 15px;">project</a> <a href="/tags/blog/" style="font-size: 15px;">blog</a> <a href="/tags/UML/" style="font-size: 15px;">UML</a> <a href="/tags/外星人/" style="font-size: 15px;">外星人</a> <a href="/tags/目标检测/" style="font-size: 15px;">目标检测</a> <a href="/tags/论语/" style="font-size: 15px;">论语</a> <a href="/tags/QT-OGRE-图像/" style="font-size: 15px;">QT, OGRE, 图像</a> <a href="/tags/健康/" style="font-size: 15px;">健康</a> <a href="/tags/流程图/" style="font-size: 15px;">流程图</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> Recent</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/08/17/2019-08-17-QImage加载图像的坑儿/">QImage加载图像的坑儿</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/24/2019-01-23-不教而诛/">不教而诛</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/10/2019-1-10-程序员防瞎指南/">程序员防瞎指南</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/03/2019-1-2-钢笔保养维护/">C语言中的流程图与钢笔的保养</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/17/2018-12-17-重读论语/">重读《论语》</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/17/2018-12-17-目标检测与识别的威力慢慢展现出来了/">目标检测与识别的威力慢慢展现出来了</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/17/2018-12-16-外星人为什么还不来地球/">外星人为什么还不来地球</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/16/2018-12-15-UML实践详细经典教程/">转：UML实践详细经典教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/11/2018-12-10-Software-design-with-a-workflow/">Software design with a workflow</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/11/2018-12-10-博客迁移/">博客迁移</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-comment-o"> Recent Comments</i></div><script type="text/javascript" src="//ev6rgithubio.disqus.com/recent_comments_widget.js?num_items=5&amp;hide_avatars=1&amp;avatar_size=32&amp;excerpt_length=20&amp;hide_mods=1"></script></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2019 <a href="/." rel="nofollow">J6rry's Blog.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//lib.baomitu.com/fancybox/3.5.2/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/fancybox/3.5.2/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
