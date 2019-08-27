@@ -1,0 +1,59 @@
+<!DOCTYPE html><html lang="en"><head><meta name="generator" content="Hexo 3.9.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>Photoshop与Acon中锐利边缘设置 | J6rry's Blog</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/8.0.1/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/3.4.0/jquery.min.js"></script><link rel="icon" mask sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Photoshop与Acon中锐利边缘设置</h1><a id="logo" href="/.">J6rry's Blog</a><p class="description">blogging a hacker's life &amp; style</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> Home</i></a><a href="/archives/"><i class="fa fa-archive"> Archive</i></a><a href="/atom.xml"><i class="fa fa-rss"> RSS</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">Photoshop与Acon中锐利边缘设置</h1><div class="post-meta">Aug 27, 2019</div><a class="disqus-comment-count" data-disqus-identifier="2019/08/27/2019-08-27-Photoshop与Acon中锐利边缘设置/" href="/2019/08/27/2019-08-27-Photoshop与Acon中锐利边缘设置/#disqus_thread"></a><div class="post-content"><h1 id="Photoshop与Acorn中锐利边缘设置"><a href="#Photoshop与Acorn中锐利边缘设置" class="headerlink" title="Photoshop与Acorn中锐利边缘设置"></a>Photoshop与Acorn中锐利边缘设置</h1><p>在图像处理编程中，经常需要一些测试图像，著名的Lena测试图等是一类标准测试图库。这类测试图通常是有版权的（大部分免费，但是需要声明），所以实际上做图像处理的研究者一般都是自己拍摄一些图来谫。但是有时为和其他论文进行对比又不得不找一些标准图来测试，最常用的是<strong>USC-SIPI</strong>测试库了，需要的下载：</p>
+<p><a href="http://sipi.usc.edu/database/" target="_blank" rel="noopener">http://sipi.usc.edu/database/</a></p>
+<p>然而，更重要的是程序员们在测试与调试代码的过程中，往往需要自己“造”一些测试图像，这些测试图像的每一个像素都是程序员自己设计的，比如设计一个32x32大小的，里面的像素值是隔行黑白交替的颜色。这种测试图像在程序调试时是相当有效的，dubug进每一个单步都可以看到程序是否正确地处理每一个像素，即使是要测试每一个像素也是可能的：1024次F10或F11。</p>
+<h2 id="重点"><a href="#重点" class="headerlink" title="重点"></a>重点</h2><p>这次的重点不在于如何设计像素值可控的测试图像，而是如何设计Photoshop或Acorn实现单个像素的绘制。相信Photoshop大家都不陌生，Adobe（<strong>奥多比</strong>）公司的重要产品之一。Acorn是美国一家叫FlySketch的公司出品，仅仅支持macos，与Photoshop是对标关系，相当于macos下的Photoshop。个人感觉Acorn的功能少一些，简单一点，但是平常图像处理足够用了，启动速度足够快，很得程序员的欢心。售价30美金，比Photoshop的订阅收费更容易接受一些吧。</p>
+<p>当然也有免费且强大的GIMP可以使用，或者Krita、Paint.Net、imlab等都是开源免费……这也是个好大的坑儿。</p>
+<h2 id="重点、重点"><a href="#重点、重点" class="headerlink" title="重点、重点"></a>重点、重点</h2><p>为什么需要对这样的图像处理软件进行设置呢？本质原因是这一类图像处理软件对笔刷的控制或边缘的“羽化”效果设计的比较复杂，用来支持各种形式的图像创作，面向的对象主要是设计师、艺术家等。程序员则需要定量可控地绘制一些图像，因此需要精确到每一个像素的控制。所以在软件中要对使用的笔刷或区域选择工具进行设置：首先，对于铅笔或笔刷工具来说，需要设置大小Size为1，单位是像素。透明度为100%（不透明），混合方式为正常（直接叠加背景，不作融合）。</p>
+<p><img src="../images/blog_imgs/image-20190827093755825.png" alt="Acorn区域选择工具的设置"></p>
+<p><img src="../images/blog_imgs/image-20190827093921264.png" alt="Acorn铅笔工具的设置"></p>
+<p><img src="../images/blog_imgs/image-20190827094405450.png" alt="Photoshop CC选择工具设置"></p>
+<p><img src="../images/blog_imgs/Untitled-1.png" alt="Photoshop CC铅笔工具的设置"></p>
+<p>绘制效果如下：</p>
+<p><img src="../images/blog_imgs/rect.gif" alt="铅笔和区域选择定量绘制"></p>
+<p>最后，其实我有个疑问：为什么不用Windows自带的画图来画呢？嗯？</p>
+</div><div class="tags"><a href="/tags/图像处理-编程/">图像处理, 编程</a></div><div class="post-nav"><a class="next" href="/2019/08/26/使用Visual-Studio不可不知的快捷键（持续更新）/">使用Visual Studio不可不知的快捷键（持续更新）</a></div><div id="disqus_thread"><div class="btn_click_load"><button class="disqus_click_btn">阅读评论（请确保 Disqus 可以正常加载）</button></div><script type="text/javascript">var disqus_config = function () {
+    this.page.url = 'https://ev6r.github.io/2019/08/27/2019-08-27-Photoshop与Acon中锐利边缘设置/';
+    this.page.identifier = '2019/08/27/2019-08-27-Photoshop与Acon中锐利边缘设置/';
+    this.page.title = 'Photoshop与Acon中锐利边缘设置';
+  };</script><script type="text/javascript" id="disqus-lazy-load-script">$.ajax({
+url: 'https://disqus.com/next/config.json',
+timeout: 2500,
+type: 'GET',
+success: function(){
+  var d = document;
+  var s = d.createElement('script');
+  s.src = '//ev6rgithubio.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', + new Date());
+  (d.head || d.body).appendChild(s);
+  $('.disqus_click_btn').css('display', 'none');
+},
+error: function() {
+  $('.disqus_click_btn').css('display', 'block');
+}
+});</script><script type="text/javascript" id="disqus-click-load">$('.btn_click_load').click(() => {  //click to load comments
+    (() => { // DON'T EDIT BELOW THIS LINE
+        var d = document;
+        var s = d.createElement('script');
+        s.src = '//ev6rgithubio.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', + new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+    $('.disqus_click_btn').css('display','none');
+});</script><script type="text/javascript" id="disqus-count-script">$(function() {
+     var xhr = new XMLHttpRequest();
+     xhr.open('GET', '//disqus.com/next/config.json', true);
+     xhr.timeout = 2500;
+     xhr.onreadystatechange = function () {
+       if (xhr.readyState === 4 && xhr.status === 200) {
+         $('.post-meta .post-comments-count').show();
+         var s = document.createElement('script');
+         s.id = 'dsq-count-scr';
+         s.src = 'https://ev6rgithubio.disqus.com/count.js';
+         s.async = true;
+         (document.head || document.body).appendChild(s);
+       }
+     };
+     xhr.ontimeout = function () { xhr.abort(); };
+     xhr.send(null);
+   });
+</script></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"><input type="hidden" name="sitesearch" value="https://ev6r.github.io"></form></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> Tags</i></div><div class="tagcloud"><a href="/tags/project/" style="font-size: 15px;">project</a> <a href="/tags/blog/" style="font-size: 15px;">blog</a> <a href="/tags/外星人/" style="font-size: 15px;">外星人</a> <a href="/tags/UML/" style="font-size: 15px;">UML</a> <a href="/tags/目标检测/" style="font-size: 15px;">目标检测</a> <a href="/tags/论语/" style="font-size: 15px;">论语</a> <a href="/tags/QT-OGRE-图像/" style="font-size: 15px;">QT, OGRE, 图像</a> <a href="/tags/图像处理-编程/" style="font-size: 15px;">图像处理, 编程</a> <a href="/tags/健康/" style="font-size: 15px;">健康</a> <a href="/tags/C-Sharp-DoubleBufferred/" style="font-size: 15px;">C-Sharp, DoubleBufferred</a> <a href="/tags/流程图/" style="font-size: 15px;">流程图</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> Recent</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/08/27/2019-08-27-Photoshop与Acon中锐利边缘设置/">Photoshop与Acon中锐利边缘设置</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/26/使用Visual-Studio不可不知的快捷键（持续更新）/">使用Visual Studio不可不知的快捷键（持续更新）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/24/2019-08-23-C-Sharp双缓冲绘制图形无闪烁/">C-Sharp双缓冲绘制图形无闪烁</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/17/2019-08-17-QImage加载图像的坑儿/">QImage加载图像的坑儿</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/24/2019-01-23-不教而诛/">不教而诛</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/10/2019-1-10-程序员防瞎指南/">程序员防瞎指南</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/03/2019-1-2-钢笔保养维护/">C语言中的流程图与钢笔的保养</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/17/2018-12-17-重读论语/">重读《论语》</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/17/2018-12-17-目标检测与识别的威力慢慢展现出来了/">目标检测与识别的威力慢慢展现出来了</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/17/2018-12-16-外星人为什么还不来地球/">外星人为什么还不来地球</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-comment-o"> Recent Comments</i></div><script type="text/javascript" src="//ev6rgithubio.disqus.com/recent_comments_widget.js?num_items=5&amp;hide_avatars=1&amp;avatar_size=32&amp;excerpt_length=20&amp;hide_mods=1"></script></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2019 <a href="/." rel="nofollow">J6rry's Blog.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
